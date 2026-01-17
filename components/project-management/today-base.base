@@ -1,0 +1,35 @@
+filters:
+  and:
+    - file.folder == "_database/database-core/tasks-table"
+views:
+  - type: table
+    name: Today
+    filters:
+      and:
+        - status == "open"
+        - when == today()
+    order:
+      - file.name
+      - priority
+      - title
+      - when
+      - deadline
+      - estimate
+      - project
+      - area
+    sort:
+      - property: priority
+        direction: ASC
+      - property: deadline
+        direction: ASC
+      - property: when
+        direction: ASC
+    columnSize:
+      file.name: 80
+      note.priority: 70
+      note.title: 280
+      note.when: 110
+      note.deadline: 110
+      note.estimate: 80
+      note.project: 180
+      note.area: 140

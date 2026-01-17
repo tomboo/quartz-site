@@ -1,0 +1,157 @@
+filters:
+  and:
+    - file.folder == "_database/database-studio/characters-table"
+views:
+  - type: table
+    name: By Tier
+    groupBy:
+      property: tier
+      direction: ASC
+    order:
+      - file.name
+      - tier
+      - display-name
+      - full-name
+      - mention-count
+      - project
+      - aliases
+    sort:
+      - property: mention-count
+        direction: DESC
+    columnSize:
+      file.name: 80
+      note.tier: 100
+      note.display-name: 150
+      note.full-name: 180
+      note.mention-count: 100
+      note.project: 120
+      note.aliases: 200
+  - type: table
+    name: By Mention Count
+    order:
+      - file.name
+      - mention-count
+      - tier
+      - display-name
+      - full-name
+      - project
+    sort:
+      - property: mention-count
+        direction: DESC
+    columnSize:
+      file.name: 80
+      note.mention-count: 100
+      note.tier: 100
+      note.display-name: 150
+      note.full-name: 180
+      note.project: 120
+  - type: table
+    name: Alphabetical
+    order:
+      - file.name
+      - display-name
+      - full-name
+      - tier
+      - mention-count
+      - project
+      - aliases
+    sort:
+      - property: display-name
+        direction: ASC
+    columnSize:
+      file.name: 80
+      note.display-name: 150
+      note.full-name: 180
+      note.tier: 100
+      note.mention-count: 100
+      note.project: 120
+      note.aliases: 200
+  - type: table
+    name: POV Characters
+    filter:
+      - note.tier == "pov"
+    order:
+      - file.name
+      - display-name
+      - full-name
+      - mention-count
+      - occupation
+      - age-range
+      - arc
+      - goals
+    sort:
+      - property: mention-count
+        direction: DESC
+    columnSize:
+      file.name: 80
+      note.display-name: 150
+      note.full-name: 180
+      note.mention-count: 100
+      note.occupation: 140
+      note.age-range: 80
+      note.arc: 200
+      note.goals: 200
+  - type: table
+    name: Supporting Cast
+    filter:
+      - note.tier == "supporting"
+    order:
+      - file.name
+      - display-name
+      - full-name
+      - mention-count
+      - occupation
+      - relationships
+    sort:
+      - property: mention-count
+        direction: DESC
+    columnSize:
+      file.name: 80
+      note.display-name: 150
+      note.full-name: 180
+      note.mention-count: 100
+      note.occupation: 140
+      note.relationships: 250
+  - type: table
+    name: All Characters
+    order:
+      - file.name
+      - display-name
+      - full-name
+      - canonical-id
+      - tier
+      - project
+      - mention-count
+      - occupation
+      - age-range
+      - gender
+      - aliases
+      - relationships
+      - arc
+      - goals
+      - conflicts
+      - tags
+      - created-at
+    sort:
+      - property: tier
+        direction: ASC
+      - property: mention-count
+        direction: DESC
+    columnSize:
+      file.name: 80
+      note.display-name: 150
+      note.full-name: 180
+      note.canonical-id: 120
+      note.tier: 100
+      note.project: 120
+      note.mention-count: 100
+      note.occupation: 140
+      note.age-range: 80
+      note.gender: 80
+      note.aliases: 150
+      note.relationships: 200
+      note.arc: 180
+      note.goals: 180
+      note.conflicts: 180
+      note.tags: 140
+      note.created-at: 130

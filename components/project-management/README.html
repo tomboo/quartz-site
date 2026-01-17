@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head><title>README</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted Grotesk:wght@400;700&amp;family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="Tom's Notes"/><meta property="og:title" content="README"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="README"/><meta name="twitter:description" content="Project Management App Unified personal project and task management using an Areas → Projects → Tasks → Backlog hierarchy, inspired by Things 3 and the PARA method."/><meta property="og:description" content="Project Management App Unified personal project and task management using an Areas → Projects → Tasks → Backlog hierarchy, inspired by Things 3 and the PARA method."/><meta property="og:image:alt" content="Project Management App Unified personal project and task management using an Areas → Projects → Tasks → Backlog hierarchy, inspired by Things 3 and the PARA method."/><meta property="twitter:domain" content="tomboo.github.io/quartz-site"/><meta property="og:url" content="https://tomboo.github.io/quartz-site/components/project-management/README"/><meta property="twitter:url" content="https://tomboo.github.io/quartz-site/components/project-management/README"/><link rel="icon" href="../../static/icon.png"/><meta name="description" content="Project Management App Unified personal project and task management using an Areas → Projects → Tasks → Backlog hierarchy, inspired by Things 3 and the PARA method."/><meta name="generator" content="Quartz"/><link href="../../index.css" rel="stylesheet" type="text/css" data-persist="true"/><style>.expand-button {
+  position: absolute;
+  display: flex;
+  float: right;
+  padding: 0.4rem;
+  margin: 0.3rem;
+  right: 0;
+  color: var(--gray);
+  border-color: var(--dark);
+  background-color: var(--light);
+  border: 1px solid;
+  border-radius: 5px;
+  opacity: 0;
+  transition: 0.2s;
+}
+.expand-button > svg {
+  fill: var(--light);
+  filter: contrast(0.3);
+}
+.expand-button:hover {
+  cursor: pointer;
+  border-color: var(--secondary);
+}
+.expand-button:focus {
+  outline: 0;
+}
+
+pre:hover > .expand-button {
+  opacity: 1;
+  transition: 0.2s;
+}
+
+#mermaid-container {
+  position: fixed;
+  contain: layout;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: none;
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.5);
+}
+#mermaid-container.active {
+  display: inline-block;
+}
+#mermaid-container > #mermaid-space {
+  border: 1px solid var(--lightgray);
+  background-color: var(--light);
+  border-radius: 5px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 80vh;
+  width: 80vw;
+  overflow: hidden;
+}
+#mermaid-container > #mermaid-space > .mermaid-content {
+  position: relative;
+  transform-origin: 0 0;
+  transition: transform 0.1s ease;
+  overflow: visible;
+  min-height: 200px;
+  min-width: 200px;
+}
+#mermaid-container > #mermaid-space > .mermaid-content pre {
+  margin: 0;
+  border: none;
+}
+#mermaid-container > #mermaid-space > .mermaid-content svg {
+  max-width: none;
+  height: auto;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  background: var(--light);
+  border: 1px solid var(--lightgray);
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--lightgray);
+  background: var(--light);
+  color: var(--dark);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: var(--bodyFont);
+  transition: all 0.2s ease;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:hover {
+  background: var(--lightgray);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:active {
+  transform: translateY(1px);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:nth-child(2) {
+  width: auto;
+  padding: 0 12px;
+  font-size: 14px;
+}
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL1VzZXJzL3RvbS9Qcm9qZWN0cy9sZXhpL3F1YXJ0ei1zaXRlL3F1YXJ0ei9jb21wb25lbnRzL3N0eWxlcyIsInNvdXJjZXMiOlsibWVybWFpZC5pbmxpbmUuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTs7QUFHRjtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTs7O0FBS0Y7RUFDRTtFQUNBOzs7QUFJSjtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTs7QUFHRjtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTs7QUFHRjtFQUNFO0VBQ0E7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7O0FBSUY7RUFDRTtFQUNBO0VBQ0EiLCJzb3VyY2VzQ29udGVudCI6WyIuZXhwYW5kLWJ1dHRvbiB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxvYXQ6IHJpZ2h0O1xuICBwYWRkaW5nOiAwLjRyZW07XG4gIG1hcmdpbjogMC4zcmVtO1xuICByaWdodDogMDsgLy8gTk9URTogcmlnaHQgd2lsbCBiZSBzZXQgaW4gbWVybWFpZC5pbmxpbmUudHNcbiAgY29sb3I6IHZhcigtLWdyYXkpO1xuICBib3JkZXItY29sb3I6IHZhcigtLWRhcmspO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gIGJvcmRlcjogMXB4IHNvbGlkO1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIG9wYWNpdHk6IDA7XG4gIHRyYW5zaXRpb246IDAuMnM7XG5cbiAgJiA+IHN2ZyB7XG4gICAgZmlsbDogdmFyKC0tbGlnaHQpO1xuICAgIGZpbHRlcjogY29udHJhc3QoMC4zKTtcbiAgfVxuXG4gICY6aG92ZXIge1xuICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICBib3JkZXItY29sb3I6IHZhcigtLXNlY29uZGFyeSk7XG4gIH1cblxuICAmOmZvY3VzIHtcbiAgICBvdXRsaW5lOiAwO1xuICB9XG59XG5cbnByZSB7XG4gICY6aG92ZXIgPiAuZXhwYW5kLWJ1dHRvbiB7XG4gICAgb3BhY2l0eTogMTtcbiAgICB0cmFuc2l0aW9uOiAwLjJzO1xuICB9XG59XG5cbiNtZXJtYWlkLWNvbnRhaW5lciB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgY29udGFpbjogbGF5b3V0O1xuICB6LWluZGV4OiA5OTk7XG4gIGxlZnQ6IDA7XG4gIHRvcDogMDtcbiAgd2lkdGg6IDEwMHZ3O1xuICBoZWlnaHQ6IDEwMHZoO1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICBkaXNwbGF5OiBub25lO1xuICBiYWNrZHJvcC1maWx0ZXI6IGJsdXIoNHB4KTtcbiAgYmFja2dyb3VuZDogcmdiYSgwLCAwLCAwLCAwLjUpO1xuXG4gICYuYWN0aXZlIHtcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIH1cblxuICAmID4gI21lcm1haWQtc3BhY2Uge1xuICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tbGlnaHQpO1xuICAgIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgICBwb3NpdGlvbjogZml4ZWQ7XG4gICAgdG9wOiA1MCU7XG4gICAgbGVmdDogNTAlO1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIC01MCUpO1xuICAgIGhlaWdodDogODB2aDtcbiAgICB3aWR0aDogODB2dztcbiAgICBvdmVyZmxvdzogaGlkZGVuO1xuXG4gICAgJiA+IC5tZXJtYWlkLWNvbnRlbnQge1xuICAgICAgcG9zaXRpb246IHJlbGF0aXZlO1xuICAgICAgdHJhbnNmb3JtLW9yaWdpbjogMCAwO1xuICAgICAgdHJhbnNpdGlvbjogdHJhbnNmb3JtIDAuMXMgZWFzZTtcbiAgICAgIG92ZXJmbG93OiB2aXNpYmxlO1xuICAgICAgbWluLWhlaWdodDogMjAwcHg7XG4gICAgICBtaW4td2lkdGg6IDIwMHB4O1xuXG4gICAgICBwcmUge1xuICAgICAgICBtYXJnaW46IDA7XG4gICAgICAgIGJvcmRlcjogbm9uZTtcbiAgICAgIH1cblxuICAgICAgc3ZnIHtcbiAgICAgICAgbWF4LXdpZHRoOiBub25lO1xuICAgICAgICBoZWlnaHQ6IGF1dG87XG4gICAgICB9XG4gICAgfVxuXG4gICAgJiA+IC5tZXJtYWlkLWNvbnRyb2xzIHtcbiAgICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgICAgIGJvdHRvbTogMjBweDtcbiAgICAgIHJpZ2h0OiAyMHB4O1xuICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgIGdhcDogOHB4O1xuICAgICAgcGFkZGluZzogOHB4O1xuICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgIGJvcmRlci1yYWRpdXM6IDZweDtcbiAgICAgIGJveC1zaGFkb3c6IDAgMnB4IDRweCByZ2JhKDAsIDAsIDAsIDAuMSk7XG4gICAgICB6LWluZGV4OiAyO1xuXG4gICAgICAubWVybWFpZC1jb250cm9sLWJ1dHRvbiB7XG4gICAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gICAgICAgIGp1c3RpZnktY29udGVudDogY2VudGVyO1xuICAgICAgICB3aWR0aDogMzJweDtcbiAgICAgICAgaGVpZ2h0OiAzMnB4O1xuICAgICAgICBwYWRkaW5nOiAwO1xuICAgICAgICBib3JkZXI6IDFweCBzb2xpZCB2YXIoLS1saWdodGdyYXkpO1xuICAgICAgICBiYWNrZ3JvdW5kOiB2YXIoLS1saWdodCk7XG4gICAgICAgIGNvbG9yOiB2YXIoLS1kYXJrKTtcbiAgICAgICAgYm9yZGVyLXJhZGl1czogNHB4O1xuICAgICAgICBjdXJzb3I6IHBvaW50ZXI7XG4gICAgICAgIGZvbnQtc2l6ZTogMTZweDtcbiAgICAgICAgZm9udC1mYW1pbHk6IHZhcigtLWJvZHlGb250KTtcbiAgICAgICAgdHJhbnNpdGlvbjogYWxsIDAuMnMgZWFzZTtcblxuICAgICAgICAmOmhvdmVyIHtcbiAgICAgICAgICBiYWNrZ3JvdW5kOiB2YXIoLS1saWdodGdyYXkpO1xuICAgICAgICB9XG5cbiAgICAgICAgJjphY3RpdmUge1xuICAgICAgICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlWSgxcHgpO1xuICAgICAgICB9XG5cbiAgICAgICAgLy8gU3R5bGUgdGhlIHJlc2V0IGJ1dHRvbiBkaWZmZXJlbnRseVxuICAgICAgICAmOm50aC1jaGlsZCgyKSB7XG4gICAgICAgICAgd2lkdGg6IGF1dG87XG4gICAgICAgICAgcGFkZGluZzogMCAxMnB4O1xuICAgICAgICAgIGZvbnQtc2l6ZTogMTRweDtcbiAgICAgICAgfVxuICAgICAgfVxuICAgIH1cbiAgfVxufVxuIl19 */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" data-persist="true"/><script src="../../prescript.js" type="application/javascript" data-persist="true"></script><script type="application/javascript" data-persist="true">const fetchData = fetch("../../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://tomboo.github.io/quartz-site/index.xml"/><meta property="og:image:width" content="1200"/><meta property="og:image:height" content="630"/><meta property="og:image" content="https://tomboo.github.io/quartz-site/components/project-management/README-og-image.webp"/><meta property="og:image:url" content="https://tomboo.github.io/quartz-site/components/project-management/README-og-image.webp"/><meta name="twitter:image" content="https://tomboo.github.io/quartz-site/components/project-management/README-og-image.webp"/><meta property="og:image:type" content="image/.webp"/></head><body data-slug="components/project-management/README"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="../..">Tom's Notes</a></h2><div class="spacer mobile-only"></div><div class="flex-component" style="flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg><p>Search</p></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="readermode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="readerIcon" fill="currentColor" stroke="currentColor" stroke-width="0.2" stroke-linecap="round" stroke-linejoin="round" width="64px" height="64px" viewBox="0 0 24 24" aria-label="Reader mode"><title>Reader mode</title><g transform="translate(-1.8, -1.8) scale(1.15, 1.2)"><path d="M8.9891247,2.5 C10.1384702,2.5 11.2209868,2.96705384 12.0049645,3.76669482 C12.7883914,2.96705384 13.8709081,2.5 15.0202536,2.5 L18.7549359,2.5 C19.1691495,2.5 19.5049359,2.83578644 19.5049359,3.25 L19.5046891,4.004 L21.2546891,4.00457396 C21.6343849,4.00457396 21.9481801,4.28672784 21.9978425,4.6528034 L22.0046891,4.75457396 L22.0046891,20.25 C22.0046891,20.6296958 21.7225353,20.943491 21.3564597,20.9931534 L21.2546891,21 L2.75468914,21 C2.37499337,21 2.06119817,20.7178461 2.01153575,20.3517706 L2.00468914,20.25 L2.00468914,4.75457396 C2.00468914,4.37487819 2.28684302,4.061083 2.65291858,4.01142057 L2.75468914,4.00457396 L4.50368914,4.004 L4.50444233,3.25 C4.50444233,2.87030423 4.78659621,2.55650904 5.15267177,2.50684662 L5.25444233,2.5 L8.9891247,2.5 Z M4.50368914,5.504 L3.50468914,5.504 L3.50468914,19.5 L10.9478955,19.4998273 C10.4513189,18.9207296 9.73864328,18.5588115 8.96709342,18.5065584 L8.77307039,18.5 L5.25444233,18.5 C4.87474657,18.5 4.56095137,18.2178461 4.51128895,17.8517706 L4.50444233,17.75 L4.50368914,5.504 Z M19.5049359,17.75 C19.5049359,18.1642136 19.1691495,18.5 18.7549359,18.5 L15.2363079,18.5 C14.3910149,18.5 13.5994408,18.8724714 13.0614828,19.4998273 L20.5046891,19.5 L20.5046891,5.504 L19.5046891,5.504 L19.5049359,17.75 Z M18.0059359,3.999 L15.0202536,4 L14.8259077,4.00692283 C13.9889509,4.06666544 13.2254227,4.50975805 12.7549359,5.212 L12.7549359,17.777 L12.7782651,17.7601316 C13.4923805,17.2719483 14.3447024,17 15.2363079,17 L18.0059359,16.999 L18.0056891,4.798 L18.0033792,4.75457396 L18.0056891,4.71 L18.0059359,3.999 Z M8.9891247,4 L6.00368914,3.999 L6.00599909,4.75457396 L6.00599909,4.75457396 L6.00368914,4.783 L6.00368914,16.999 L8.77307039,17 C9.57551536,17 10.3461406,17.2202781 11.0128313,17.6202194 L11.2536891,17.776 L11.2536891,5.211 C10.8200889,4.56369974 10.1361548,4.13636104 9.37521067,4.02745763 L9.18347055,4.00692283 L8.9891247,4 Z"></path></g></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="true" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>!a.isFolder&amp;&amp;!b.isFolder||a.isFolder&amp;&amp;b.isFolder?a.displayName.localeCompare(b.displayName,void 0,{numeric:!0,sensitivity:\&quot;base\&quot;}):!a.isFolder&amp;&amp;b.isFolder?1:-1&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>node&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-761"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div id="explorer-761" class="explorer-content" aria-expanded="false" role="group"><ul class="explorer-ul overflow" id="list-0"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../components/">components</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../components/project-management/">project management</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>README</a></div></nav><h1 class="article-title">README</h1><p show-comma="true" class="content-meta"><time datetime="2026-01-06T14:15:44.146Z">Jan 06, 2026</time><span>15 min read</span></p></div></div><article class="popover-hint"><h1 id="project-management-app">Project Management App<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#project-management-app" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>Unified personal project and task management using an Areas → Projects → Tasks → Backlog hierarchy, inspired by Things 3 and the PARA method.</p>
+<h2 id="purpose">Purpose<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#purpose" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>The Project Management app provides structured organization for work and life responsibilities across four levels:</p>
+<ul>
+<li><strong>Areas</strong> - Ongoing life categories (Work, Health, Learning) that don’t have end dates</li>
+<li><strong>Projects</strong> - Goal-oriented containers with defined outcomes and optional deadlines</li>
+<li><strong>Tasks</strong> - Actionable work items that move projects forward</li>
+<li><strong>Backlog</strong> - Quick-capture system for ideas and reminders to prevent distraction</li>
+</ul>
+<p>This creates a clear hierarchy: Life Areas contain Projects, which contain Tasks, fed by the Backlog capture system.</p>
+<h2 id="quick-start">Quick Start<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#quick-start" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="create-a-task">Create a Task<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#create-a-task" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Use natural language during any session:</p>
+<pre><code>create task to design homepage mockup for Website Redesign project due Friday p1
+</code></pre>
+<p>Claude will:</p>
+<ol>
+<li>Generate a ULID for the task</li>
+<li>Create file: <code>task-YYYYMMDD-NNN.md</code></li>
+<li>Link to the specified project</li>
+<li>Set due date and priority</li>
+<li>Confirm creation</li>
+</ol>
+<h3 id="create-a-project">Create a Project<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#create-a-project" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<pre><code>create project Website Redesign in Work area deadline March 1
+</code></pre>
+<h3 id="view-your-tasks">View Your Tasks<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#view-your-tasks" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Open <code>components/project-management/project-management-dashboard.md</code> for:</p>
+<ul>
+<li>Today’s tasks (scheduled or due today)</li>
+<li>Active projects overview</li>
+<li>Areas at a glance</li>
+</ul>
+<h2 id="core-concepts">Core Concepts<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#core-concepts" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="areas">Areas<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#areas" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Areas are the major categories of your life that require continuous attention. Unlike projects, they don’t have end dates—they represent ongoing responsibilities.</p>
+<p><strong>Default Areas:</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Area</th><th>Icon</th><th>Purpose</th></tr></thead><tbody><tr><td>Work</td><td>💼</td><td>Professional responsibilities, career</td></tr><tr><td>Personal</td><td>🏠</td><td>Home, admin, life management</td></tr><tr><td>Health &amp; Fitness</td><td>💪</td><td>Exercise, nutrition, wellness</td></tr><tr><td>Learning</td><td>📚</td><td>Education, skill development</td></tr><tr><td>Family &amp; Friends</td><td>👨‍👩‍👧‍👦</td><td>Relationships, social connections</td></tr><tr><td>Finance</td><td>💰</td><td>Money, investments, budgeting</td></tr><tr><td>Creative</td><td>🎨</td><td>Art, writing, hobbies</td></tr></tbody></table></div>
+<h3 id="projects">Projects<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#projects" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Projects are goal-oriented work with a defined outcome. They optionally have deadlines and always belong to an Area.</p>
+<p><strong>Project characteristics:</strong></p>
+<ul>
+<li>Has a clear definition of “done” (outcome)</li>
+<li>Contains multiple related tasks</li>
+<li>May have a deadline</li>
+<li>Belongs to one Area</li>
+<li>Has a status: not-started, active, completed, on-hold, cancelled</li>
+</ul>
+<h3 id="tasks">Tasks<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#tasks" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Tasks are the atomic unit of work—specific, actionable items you can complete.</p>
+<p><strong>Two key date fields (inspired by Things 3):</strong></p>
+<ul>
+<li><strong>when</strong> - Flexible intention: when you PLAN to work on this</li>
+<li><strong>deadline</strong> - Fixed obligation: when this MUST be done</li>
+</ul>
+<p>This separation lets you schedule tasks for specific days without creating false urgency.</p>
+<h4 id="when-vs-deadline-deep-dive">When vs Deadline: Deep Dive<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#when-vs-deadline-deep-dive" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p>One of Things 3’s most powerful design decisions is the separation between <strong>when</strong> (plan) and <strong>deadline</strong> (obligation). Understanding this distinction is crucial for stress-free task management.</p>
+<p><strong>When (Flexible Intention)</strong></p>
+<ul>
+<li><strong>Purpose:</strong> “I plan to work on this today”</li>
+<li><strong>Feeling:</strong> Low pressure, flexible</li>
+<li><strong>Psychology:</strong> Positive intention, not a commitment</li>
+<li><strong>Typical use:</strong> Daily planning, time blocking</li>
+<li><strong>Behavior:</strong> Can be rescheduled guilt-free</li>
+<li><strong>Visibility:</strong> Shows in Today view, helps focus your day</li>
+</ul>
+<p><strong>Deadline (Fixed Obligation)</strong></p>
+<ul>
+<li><strong>Purpose:</strong> “This must be done by this date”</li>
+<li><strong>Feeling:</strong> High pressure, urgent as it approaches</li>
+<li><strong>Psychology:</strong> External commitment, real consequences</li>
+<li><strong>Typical use:</strong> Client deliverables, bills, appointments</li>
+<li><strong>Behavior:</strong> Rescheduling requires negotiation/consequences</li>
+<li><strong>Visibility:</strong> Shows urgency indicators as date approaches</li>
+</ul>
+<p><strong>Best Practices:</strong></p>
+<ol>
+<li>
+<p><strong>Use deadlines sparingly</strong> - Only for true hard deadlines</p>
+<ul>
+<li>✅ Client project due Friday</li>
+<li>✅ Pay rent by 1st of month</li>
+<li>✅ File taxes by April 15</li>
+<li>❌ “Finish reading book” (no external pressure)</li>
+<li>❌ “Clean garage” (flexible goal)</li>
+</ul>
+</li>
+<li>
+<p><strong>Use when liberally</strong> - For daily planning and intentions</p>
+<ul>
+<li>✅ Schedule “Write blog post” for Wednesday</li>
+<li>✅ Block Thursday morning for “Review quarterly goals”</li>
+<li>✅ Plan “Call mom” for weekend</li>
+</ul>
+</li>
+<li>
+<p><strong>Combine both for buffer time</strong></p>
+<ul>
+<li>Task: Prepare presentation</li>
+<li>when: Wednesday (work on it)</li>
+<li>deadline: Friday (must be done)</li>
+<li>Result: 2-day buffer if something goes wrong</li>
+</ul>
+</li>
+<li>
+<p><strong>Inbox tasks have neither</strong> - Uncategorized, not scheduled</p>
+<ul>
+<li>Captured ideas waiting to be organized</li>
+<li>Will be scheduled during weekly review</li>
+</ul>
+</li>
+</ol>
+<p><strong>Examples:</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Task</th><th>when</th><th>deadline</th><th>Reasoning</th></tr></thead><tbody><tr><td>Submit expense report</td><td>Wed</td><td>Fri</td><td>Work on Wednesday, due Friday (buffer)</td></tr><tr><td>Daily standup</td><td>9am daily</td><td>—</td><td>Recurring intention, not a deadline</td></tr><tr><td>Client deliverable</td><td>—</td><td>Mar 15</td><td>True deadline, plan work separately</td></tr><tr><td>Write blog post</td><td>Mon</td><td>—</td><td>Personal goal, flexible timing</td></tr><tr><td>Pay credit card</td><td>—</td><td>1st</td><td>Hard deadline, do anytime before</td></tr></tbody></table></div>
+<p><strong>Common Patterns:</strong></p>
+<ul>
+<li><strong>when only</strong>: Personal goals, flexible work</li>
+<li><strong>deadline only</strong>: Bills, appointments (do anytime before)</li>
+<li><strong>Both</strong>: Important deliverables with buffer time</li>
+<li><strong>Neither</strong>: Inbox tasks, someday/maybe items</li>
+</ul>
+<h3 id="backlog">Backlog<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#backlog" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>The Backlog is a quick-capture system for ideas, tasks, and reminders that prevents distraction from current work. It’s the entry point for the entire system—ideas flow from Backlog → Tasks → Projects.</p>
+<p><strong>Backlog characteristics:</strong></p>
+<ul>
+<li>Quick capture with natural language</li>
+<li>Minimal friction (no ceremony, AI handles details)</li>
+<li>Triage weekly during reviews</li>
+<li>Promote to Tasks when ready to execute</li>
+<li>Cancel ruthlessly if no longer relevant</li>
+</ul>
+<p><strong>Key properties:</strong></p>
+<ul>
+<li><code>status</code>: open, completed, canceled, someday</li>
+<li><code>priority</code>: p0-p3 for triage</li>
+<li><code>category</code>: Life area classification</li>
+<li><code>estimate</code>: Time/effort estimation</li>
+<li><code>context</code>: Why/where this came up</li>
+</ul>
+<p><strong>Workflow:</strong></p>
+<ol>
+<li><strong>Capture</strong> - Create backlog item during any session</li>
+<li><strong>Triage</strong> - Weekly review, update priorities</li>
+<li><strong>Promote</strong> - Move to Tasks when committed to work</li>
+<li><strong>Complete</strong> - Mark done or cancel if no longer needed</li>
+</ol>
+<p>For detailed documentation, see the <a href="#backlog-app-details" class="internal alias">Backlog section</a> below.</p>
+<h2 id="file-structure">File Structure<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#file-structure" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<pre><code>components/project-management/
+├── README.md                         # This file
+├── project-management-dashboard.md   # Landing page
+├── manifest.json
+├── areas-base.base                   # Areas view
+├── backlog-base.base                 # Backlog items (4 views)
+├── projects-base.base                # Projects (4 views)
+├── tasks-base.base                   # Tasks (8 views)
+└── today-base.base                   # Today's tasks
+
+_database/database-core/               # Data tables
+├── areas-table/
+├── projects-table/
+├── tasks-table/
+└── backlog-table/
+</code></pre>
+<h2 id="property-schemas">Property Schemas<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#property-schemas" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="area-properties">Area Properties<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#area-properties" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="yaml" data-theme="github-light github-dark"><code data-language="yaml" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># Required</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">uid</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">01KCPM001WORK00000000000000</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">date</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">2025-12-17</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">user</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">tomboo</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">type</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">area</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">title</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">Work</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># Standard</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">status</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">active</span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">              # active, paused, archived</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">icon</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">💼</span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">                    # Emoji for visual ID</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">sort-order</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">1</span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">               # Display order</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">tags</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: [</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">area</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">]</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">created-at</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">2025-12-17T10:00:00-08:00</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># Optional</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">description</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">Professional work and career development</span></span></code></pre></figure>
+<h3 id="project-properties">Project Properties<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#project-properties" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="yaml" data-theme="github-light github-dark"><code data-language="yaml" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># Required</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">uid</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">01KCPM002PROJ00000000000000</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">date</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">2025-12-17</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">user</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">tomboo</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">type</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">project</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">title</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">Website Redesign</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># Standard</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">status</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">active</span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">              # not-started, active, completed, on-hold, cancelled</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">priority</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">p1</span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">                # p0-p3</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">area</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;[[../areas-table/area-work]]&quot;</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">tags</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: [</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">project</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">]</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">created-at</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">2025-12-17T10:00:00-08:00</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># Optional</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">description</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">Redesign personal website</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">outcome</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">Live website with new design and portfolio</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">deadline</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">2025-03-01</span></span></code></pre></figure>
+<h3 id="task-properties">Task Properties<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#task-properties" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="yaml" data-theme="github-light github-dark"><code data-language="yaml" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># Required</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">uid</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">01KCPM003TASK00000000000000</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">date</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">2025-12-17</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">user</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">tomboo</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">type</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">task</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">title</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">Design homepage mockup</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># Standard</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">status</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">not-started</span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">         # not-started, in-progress, completed, blocked, cancelled</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">priority</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">p2</span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">                # p0-p3</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">project</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;[[../projects-table/project-20251217-001]]&quot;</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">tags</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: [</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">task</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">]</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">created-at</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">2025-12-17T10:00:00-08:00</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># Scheduling</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">when</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">2025-12-18</span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">            # When you plan to work on it</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">deadline</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">2025-12-20</span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">        # Hard deadline (must be done)</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># Optional</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">area</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;[[../areas-table/area-work]]&quot;</span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">  # Direct area (if no project)</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">estimate</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">PT2H</span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">              # Time estimate (ISO 8601)</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">context</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">Additional notes</span></span></code></pre></figure>
+<h2 id="natural-language-workflow">Natural Language Workflow<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#natural-language-workflow" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="creating-tasks">Creating Tasks<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#creating-tasks" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Basic task:</strong></p>
+<pre><code>create task to review quarterly budget
+</code></pre>
+<p><strong>With project:</strong></p>
+<pre><code>create task to design logo for Website Redesign project
+</code></pre>
+<p><strong>With scheduling:</strong></p>
+<pre><code>create task to call dentist tomorrow
+  → Sets when: tomorrow (flexible plan)
+
+create task to prepare presentation due Friday scheduled Wednesday
+  → Sets when: Wednesday, deadline: Friday (buffer time)
+
+create task to pay rent deadline Dec 1
+  → Sets deadline: Dec 1 only (do anytime before)
+</code></pre>
+<p><strong>With priority:</strong></p>
+<pre><code>create task to fix critical bug p0
+create task to update documentation p3
+</code></pre>
+<p><strong>With estimate:</strong></p>
+<pre><code>create task to write blog post 2h
+create task to send email 15m
+</code></pre>
+<p><strong>Full example:</strong></p>
+<pre><code>create task to design homepage mockup for Website Redesign due Dec 20 scheduled tomorrow p1 2h
+</code></pre>
+<h3 id="creating-projects">Creating Projects<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#creating-projects" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<pre><code>create project Learn Python Basics in Learning area deadline March 2026
+create project Bathroom Renovation in Personal area p1
+</code></pre>
+<h3 id="updating-tasks">Updating Tasks<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#updating-tasks" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<pre><code>mark task-001 as completed
+set task-002 to in-progress
+reschedule task-003 to Monday
+change task-004 priority to p1
+</code></pre>
+<h3 id="quick-queries">Quick Queries<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#quick-queries" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<pre><code>show tasks due today
+show tasks for Website Redesign project
+show all p0 and p1 tasks
+show tasks in Work area
+</code></pre>
+<h2 id="views">Views<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#views" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>The Project Management app provides multiple views optimized for different workflows, inspired by Things 3’s organization philosophy.</p>
+<h3 id="task-views">Task Views<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#task-views" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Access via <code>components/project-management/tasks-base.base</code>:</p>
+<h4 id="1-inbox">1. Inbox<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#1-inbox" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p><strong>Purpose:</strong> Uncategorized tasks waiting to be organized</p>
+<p><strong>Shows:</strong></p>
+<ul>
+<li>All open tasks (status = <code>open</code>)</li>
+<li>No <code>when</code> date</li>
+<li>No <code>deadline</code></li>
+<li>No <code>project</code> assigned</li>
+</ul>
+<p><strong>Workflow:</strong></p>
+<ol>
+<li>New tasks land here by default</li>
+<li>During daily/weekly review, organize them:
+<ul>
+<li>Assign to project or area</li>
+<li>Set <code>when</code> or <code>deadline</code> if time-sensitive</li>
+<li>Cancel if no longer relevant</li>
+</ul>
+</li>
+<li>Goal: Keep inbox at zero</li>
+</ol>
+<p><strong>Best for:</strong> Quick capture, weekly review</p>
+<h4 id="2-today">2. Today<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#2-today" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p><strong>Purpose:</strong> What to work on today</p>
+<p><strong>Shows:</strong></p>
+<ul>
+<li>Tasks with <code>when = today</code> (planned for today)</li>
+<li>Tasks with <code>deadline = today</code> (due today)</li>
+<li>Overdue tasks (<code>deadline &lt; today</code>)</li>
+<li>Status = <code>open</code></li>
+</ul>
+<p><strong>Sorted by:</strong> Priority, then deadline</p>
+<p><strong>Workflow:</strong></p>
+<ul>
+<li>Review each morning</li>
+<li>Reschedule tasks that won’t get done (guilt-free!)</li>
+<li>Focus on completing this list</li>
+</ul>
+<p><strong>Best for:</strong> Daily execution, morning planning</p>
+<h4 id="3-upcoming">3. Upcoming<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#3-upcoming" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p><strong>Purpose:</strong> Next 7 days preview</p>
+<p><strong>Shows:</strong></p>
+<ul>
+<li>Tasks with <code>when</code> in next 7 days</li>
+<li>Tasks with <code>deadline</code> in next 7 days</li>
+<li>Status = <code>open</code></li>
+</ul>
+<p><strong>Sorted by:</strong> Deadline, then priority</p>
+<p><strong>Workflow:</strong></p>
+<ul>
+<li>Weekly planning sessions</li>
+<li>Identify conflicts and capacity issues</li>
+<li>Reschedule overcommitted days</li>
+</ul>
+<p><strong>Best for:</strong> Weekly planning, capacity management</p>
+<h4 id="4-someday">4. Someday<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#4-someday" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p><strong>Purpose:</strong> Tasks without specific timeframes</p>
+<p><strong>Shows:</strong></p>
+<ul>
+<li>No <code>when</code> date</li>
+<li>No <code>deadline</code></li>
+<li>Has <code>project</code> or <code>area</code> assigned (organized, unlike Inbox)</li>
+<li>Status = <code>open</code></li>
+</ul>
+<p><strong>Grouped by:</strong> Project/Area</p>
+<p><strong>Workflow:</strong></p>
+<ul>
+<li>Passive backlog of organized but unscheduled work</li>
+<li>Pull from here during weekly review</li>
+<li>Schedule when ready to commit</li>
+</ul>
+<p><strong>Best for:</strong> Long-term project tasks, “when I have time” items</p>
+<h4 id="5-anytime-by-project">5. Anytime (By Project)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#5-anytime-by-project" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p><strong>Purpose:</strong> All open tasks organized by project</p>
+<p><strong>Shows:</strong></p>
+<ul>
+<li>Status = <code>open</code></li>
+<li>Grouped by project</li>
+</ul>
+<p><strong>Sorted by:</strong> Priority within each project</p>
+<p><strong>Best for:</strong> Project-focused work sessions, understanding project scope</p>
+<h4 id="6-anytime-by-area">6. Anytime (By Area)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#6-anytime-by-area" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p><strong>Purpose:</strong> All open tasks organized by life area</p>
+<p><strong>Shows:</strong></p>
+<ul>
+<li>Status = <code>open</code></li>
+<li>Grouped by area</li>
+</ul>
+<p><strong>Sorted by:</strong> Priority within each area</p>
+<p><strong>Best for:</strong> Area-focused reviews (e.g., “Health week”, “Work sprint”)</p>
+<h4 id="7-logbook">7. Logbook<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#7-logbook" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p><strong>Purpose:</strong> Completed and canceled task history</p>
+<p><strong>Shows:</strong></p>
+<ul>
+<li>Status = <code>completed</code> or <code>canceled</code></li>
+<li>Includes <code>completed-at</code> or <code>canceled-at</code> timestamps</li>
+</ul>
+<p><strong>Sorted by:</strong> Completion date (newest first)</p>
+<p><strong>Best for:</strong> Progress tracking, weekly review retrospectives, accountability</p>
+<h4 id="8-all-tasks">8. All Tasks<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#8-all-tasks" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p><strong>Purpose:</strong> Complete task database</p>
+<p><strong>Shows:</strong> Every task regardless of status</p>
+<p><strong>Columns:</strong> Title, Status, Priority, Project, When, Deadline</p>
+<p><strong>Best for:</strong> Searching, data analysis, troubleshooting</p>
+<h3 id="project-views">Project Views<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#project-views" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Access via <code>components/project-management/projects-base.base</code>:</p>
+<p><strong>All Projects:</strong> Complete project list with status, area, deadline
+<strong>Active Projects:</strong> Only <code>status = open</code> projects
+<strong>Logbook:</strong> Completed/canceled projects with completion dates</p>
+<h3 id="area-views">Area Views<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#area-views" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Access via <code>components/project-management/areas-base.base</code>:</p>
+<p><strong>All Areas:</strong> Complete area list with project count, task count</p>
+<h3 id="today-view-standalone">Today View (Standalone)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#today-view-standalone" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Access via <code>components/project-management/today-base.base</code>:</p>
+<p>Dedicated single-view file for embedding in daily notes or dashboard. Identical to the Today view in tasks-base.base.</p>
+<h3 id="backlog-views">Backlog Views<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#backlog-views" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Access via <code>components/project-management/backlog-base.base</code>:</p>
+<p><strong>All Items:</strong> Complete backlog
+<strong>Open Items:</strong> Active backlog items
+<strong>By Priority:</strong> Grouped by p0/p1/p2/p3
+<strong>Quick Wins:</strong> Short tasks (&lt; 30m) with high priority</p>
+<h2 id="recurring-tasks">Recurring Tasks<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#recurring-tasks" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>The Project Management app supports recurring tasks through the <code>repeat</code> property, inspired by Things 3’s flexible recurrence model.</p>
+<p><strong>Property:</strong> <code>repeat</code> (String)</p>
+<h3 id="pattern-types">Pattern Types<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#pattern-types" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>1. Fixed Schedule</strong> (repeats on calendar intervals)</p>
+<p>Perfect for tasks that happen on a regular schedule regardless of when you complete them:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="yaml" data-theme="github-light github-dark"><code data-language="yaml" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">repeat</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">daily</span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">            # Every day</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">repeat</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">weekly</span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">           # Every week (same day of week)</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">repeat</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">monthly</span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">          # Every month (same day of month)</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">repeat</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">yearly</span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">           # Every year (same date)</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">repeat</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">weekdays</span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">         # Monday-Friday only</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">repeat</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">weekends</span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">         # Saturday-Sunday only</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">repeat</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">every-3-days</span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">     # Custom day interval</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">repeat</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">every-2-weeks</span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">    # Custom week interval</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">repeat</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">every-3-months</span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">   # Custom month interval</span></span></code></pre></figure>
+<p><strong>2. After Completion</strong> (repeats N time after completing)</p>
+<p>Perfect for maintenance tasks where timing starts after completion:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="yaml" data-theme="github-light github-dark"><code data-language="yaml" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">repeat</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">daily-after-completion</span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">         # 1 day after completing</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">repeat</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">weekly-after-completion</span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">        # 1 week after completing</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">repeat</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">monthly-after-completion</span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">       # 1 month after completing</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">repeat</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">yearly-after-completion</span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">        # 1 year after completing</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">repeat</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">3-days-after-completion</span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">        # Custom days</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">repeat</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">2-weeks-after-completion</span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">       # Custom weeks</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">repeat</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">6-months-after-completion</span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">      # Custom months</span></span></code></pre></figure>
+<h3 id="when-to-use-each-type">When to Use Each Type<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#when-to-use-each-type" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Fixed Schedule:</strong></p>
+<ul>
+<li>Team meetings (every Monday)</li>
+<li>Daily habits (meditation, exercise)</li>
+<li>Bills and deadlines (1st of month)</li>
+<li>Regular reviews (weekly, monthly)</li>
+<li>Example: Weekly standup always happens Monday 9am, regardless of when you mark it complete</li>
+</ul>
+<p><strong>After Completion:</strong></p>
+<ul>
+<li>Home maintenance (change air filter every 3 months after changing)</li>
+<li>Health tasks (dental checkup 6 months after last visit)</li>
+<li>Flexible maintenance (water plants 3 days after last watering)</li>
+<li>Example: Change air filter completed Jan 15 → next instance scheduled Apr 15</li>
+</ul>
+<h3 id="complete-examples">Complete Examples<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#complete-examples" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<h4 id="fixed-schedule-team-standup">Fixed Schedule: Team Standup<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#fixed-schedule-team-standup" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="yaml" data-theme="github-light github-dark"><code data-language="yaml" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">uid</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">01XXXXX</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">title</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">Team standup</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">repeat</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">weekly</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">when</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">2025-12-30T09:00:00-08:00</span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">  # Monday 9am</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">project</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;[[../projects-table/project-work-team]]&quot;</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">tags</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: [</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">work</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">meeting</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">recurring</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">]</span></span></code></pre></figure>
+<p>Completes Friday → next instance still Monday 9am</p>
+<h4 id="after-completion-change-air-filter">After Completion: Change Air Filter<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#after-completion-change-air-filter" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="yaml" data-theme="github-light github-dark"><code data-language="yaml" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">uid</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">01YYYYY</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">title</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">Change HVAC air filter</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">repeat</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">3-months-after-completion</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">when</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">2025-12-25</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">area</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;[[../areas-table/area-home]]&quot;</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">estimate</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">PT30M</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">tags</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: [</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">home</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">maintenance</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">recurring</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">]</span></span></code></pre></figure>
+<p>Completes Jan 15 → next instance scheduled Apr 15</p>
+<h4 id="weekdays-review-emails">Weekdays: Review Emails<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#weekdays-review-emails" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="yaml" data-theme="github-light github-dark"><code data-language="yaml" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">uid</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">01ZZZZZ</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">title</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">Review and respond to emails</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">repeat</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">weekdays</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">when</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">2025-12-23T08:00:00-08:00</span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">  # Monday 8am</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">area</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;[[../areas-table/area-work]]&quot;</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">estimate</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">PT30M</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">tags</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: [</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">work</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">communication</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">recurring</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">]</span></span></code></pre></figure>
+<p>Repeats Monday-Friday only, skips weekends</p>
+<h3 id="workflow">Workflow<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#workflow" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li><strong>Create recurring task</strong> with <code>repeat</code> property</li>
+<li><strong>Complete the task</strong> (mark status = <code>completed</code>)</li>
+<li><strong>System auto-creates next instance:</strong>
+<ul>
+<li>Fixed schedule: Increments from original date</li>
+<li>After completion: Increments from completion date</li>
+</ul>
+</li>
+<li><strong>Original task preserved</strong> with <code>completed-at</code> timestamp in Logbook</li>
+</ol>
+<h3 id="best-practices">Best Practices<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#best-practices" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Choose the right pattern:</strong></p>
+<ul>
+<li>Use fixed schedule for time-sensitive commitments</li>
+<li>Use after-completion for flexible maintenance tasks</li>
+<li>Use weekdays for work-only tasks</li>
+<li>Use custom intervals for non-standard schedules</li>
+</ul>
+<p><strong>Keep titles consistent:</strong></p>
+<ul>
+<li>Same title helps track history in Logbook</li>
+<li>Use tags to distinguish instances if needed</li>
+</ul>
+<p><strong>Date field guidance:</strong></p>
+<ul>
+<li>Use <code>when</code> for most recurring tasks (flexible)</li>
+<li>Use <code>deadline</code> only for recurring obligations (bills, reports)</li>
+<li>Combine both if task has fixed deadline but flexible work time</li>
+</ul>
+<p><strong>Don’t over-use:</strong></p>
+<ul>
+<li>Only create recurring tasks for true patterns</li>
+<li>One-off tasks should not have <code>repeat</code></li>
+<li>Review recurring tasks quarterly - cancel outdated ones</li>
+</ul>
+<h3 id="implementation-status">Implementation Status<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#implementation-status" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>✅ Basic patterns (<code>daily</code>, <code>weekly</code>, <code>monthly</code>, <code>yearly</code>)</li>
+<li>🚧 After-completion patterns (schema defined, implementation pending)</li>
+<li>🚧 Complex patterns (<code>weekdays</code>, <code>every-N-days</code>) (schema defined, implementation pending)</li>
+</ul>
+<p>See <code>standards/schemas/app-schemas.md#repeat</code> for complete technical specification.</p>
+<p><strong>See Also:</strong></p>
+<ul>
+<li>Task-070: Enhanced repeat property schema (Phase 2 - complete)</li>
+<li>Things 3 philosophy guide (task-072) for recurrence philosophy</li>
+</ul>
+<h2 id="workflows">Workflows<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#workflows" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="daily-planning">Daily Planning<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#daily-planning" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li>Open Today view each morning</li>
+<li>Review scheduled and due tasks</li>
+<li>Reschedule tasks that won’t get done</li>
+<li>Add any new tasks that came up</li>
+<li>Work through Today list</li>
+</ol>
+<h3 id="weekly-review">Weekly Review<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#weekly-review" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li>Review all active projects</li>
+<li>Check for stalled projects (no recent task activity)</li>
+<li>Process completed tasks</li>
+<li>Schedule tasks for the upcoming week</li>
+<li>Review areas for balance</li>
+</ol>
+<h3 id="creating-from-backlog">Creating from Backlog<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#creating-from-backlog" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Promote backlog items to tasks when ready to execute:</p>
+<pre><code>promote backlog-20251217-001 to task in Website Redesign project
+</code></pre>
+<p>This creates a task linked to the original backlog item.</p>
+<h2 id="best-practices-1">Best Practices<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#best-practices-1" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="task-naming">Task Naming<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#task-naming" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Use action verbs:</p>
+<ul>
+<li>✅ “Design homepage mockup”</li>
+<li>✅ “Review budget spreadsheet”</li>
+<li>✅ “Call dentist to schedule appointment”</li>
+<li>❌ “Homepage” (not actionable)</li>
+<li>❌ “Budget stuff” (vague)</li>
+</ul>
+<h3 id="schedule-strategically">Schedule Strategically<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#schedule-strategically" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Use <code>when</code> and <code>deadline</code> together for important work with buffer time:</p>
+<ul>
+<li><strong>deadline</strong>: External deadlines, commitments to others</li>
+<li><strong>when</strong>: When YOU plan to work on it</li>
+</ul>
+<p>Example: A report due Friday might be scheduled (when) for Wednesday, giving buffer time.</p>
+<p>See the <a href="#when-vs-deadline-deep-dive" class="internal alias">When vs Deadline: Deep Dive</a> section for comprehensive guidance.</p>
+<h3 id="keep-areas-stable">Keep Areas Stable<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#keep-areas-stable" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Areas should be relatively stable life categories. If you’re creating/deleting areas frequently, they might be better as projects.</p>
+<h3 id="project-outcomes">Project Outcomes<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#project-outcomes" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Always define what “done” looks like:</p>
+<ul>
+<li>✅ “Live website with new design and portfolio”</li>
+<li>❌ “Work on website” (never ends)</li>
+</ul>
+<h3 id="limit-active-projects">Limit Active Projects<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#limit-active-projects" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Per PARA method guidance, keep 10-15 active projects maximum. More than that indicates:</p>
+<ul>
+<li>Some projects should be on-hold</li>
+<li>Some “projects” are actually areas</li>
+<li>Scope creep</li>
+</ul>
+<h2 id="integration-with-other-apps">Integration with Other Apps<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#integration-with-other-apps" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="backlog-app">Backlog App<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#backlog-app" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>Backlog</strong>: Quick capture, ideas, someday/maybe</li>
+<li><strong>Project Management</strong>: Committed work with scheduling</li>
+</ul>
+<p>Workflow: Capture in Backlog → Triage weekly → Promote to Tasks</p>
+<h3 id="sessions-app">Sessions App<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#sessions-app" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>Link sessions to projects/tasks worked on</li>
+<li>Session notes reference completed tasks</li>
+<li>Track progress over time</li>
+</ul>
+<h3 id="daily-notes">Daily Notes<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#daily-notes" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>Embed Today view in daily note</li>
+<li>Quick task creation from daily note context</li>
+</ul>
+<h2 id="troubleshooting">Troubleshooting<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#troubleshooting" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="task-not-showing-in-today-view">Task not showing in Today view<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#task-not-showing-in-today-view" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Check:</p>
+<ul>
+<li>Is <code>when</code> or <code>deadline</code> set to today?</li>
+<li>Is <code>status</code> set to <code>open</code> (not <code>completed</code> or <code>canceled</code>)?</li>
+<li>Is the file in <code>_database/database-core/tasks-table/</code>?</li>
+</ul>
+<h3 id="project-has-no-tasks">Project has no tasks<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#project-has-no-tasks" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Either:</p>
+<ul>
+<li>Tasks exist but aren’t linked (check <code>project</code> property)</li>
+<li>Project is newly created and needs tasks added</li>
+</ul>
+<h3 id="area-seems-empty">Area seems empty<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#area-seems-empty" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>Check if projects are linked to the area</li>
+<li>Ensure projects have <code>area</code> property set correctly</li>
+</ul>
+<h2 id="backlog-app-details">Backlog App Details<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#backlog-app-details" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="quick-capture-workflow">Quick Capture Workflow<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#quick-capture-workflow" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Create backlog items with natural language during any session:</p>
+<pre><code>create backlog item to research Obsidian plugin API
+create p1 backlog item to fix critical bug
+create backlog item for health-fitness to schedule checkup estimate 30m
+</code></pre>
+<p><strong>What AI does automatically:</strong></p>
+<ol>
+<li>Generates ULID for unique identification</li>
+<li>Creates file: <code>_database/database-core/backlog-table/backlog-NNN.md</code></li>
+<li>Parses priority, category, estimate from natural language</li>
+<li>Sets defaults (priority: p2, status: open)</li>
+<li>Confirms creation</li>
+</ol>
+<h3 id="backlog-properties">Backlog Properties<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#backlog-properties" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Required:</strong></p>
+<ul>
+<li><code>uid</code> - ULID identifier</li>
+<li><code>date</code> - Creation date</li>
+<li><code>user</code> - Creator</li>
+<li><code>title</code> - Brief description</li>
+</ul>
+<p><strong>Standard:</strong></p>
+<ul>
+<li><code>status</code> - open | completed | canceled | someday</li>
+<li><code>priority</code> - p0 (critical) | p1 (high) | p2 (medium) | p3 (low)</li>
+<li><code>category</code> - Life area (health-fitness, learning, work-projects, etc.)</li>
+<li><code>tags</code> - Categorization</li>
+<li><code>created-at</code> - Timestamps</li>
+</ul>
+<p><strong>Optional:</strong></p>
+<ul>
+<li><code>estimate</code> - Time estimate (30m, 2h, 3d)</li>
+<li><code>context</code> - Why/where this came up</li>
+<li><code>deadline</code> - Due date if time-sensitive</li>
+<li><code>related-to</code> - Links to sessions/projects</li>
+<li><code>github-issue</code> - GitHub issue number if promoted</li>
+</ul>
+<h3 id="triage-strategies">Triage Strategies<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#triage-strategies" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Weekly Review:</strong></p>
+<ol>
+<li>Open backlog views in <code>components/project-management/backlog-base.base</code></li>
+<li>Sort by priority and date</li>
+<li>Review open items</li>
+<li>Update priorities based on current goals</li>
+<li>Cancel items no longer relevant</li>
+</ol>
+<p><strong>Quick Wins:</strong>
+Filter for:</p>
+<ul>
+<li><code>estimate: 30m</code> or less</li>
+<li><code>priority: p0</code>, <code>p1</code>, or <code>p2</code></li>
+<li><code>status: open</code></li>
+</ul>
+<p>Perfect for short productive breaks.</p>
+<p><strong>Category Focus:</strong></p>
+<ul>
+<li>Health week: <code>category: health-fitness</code></li>
+<li>Learning sprint: <code>category: learning</code></li>
+<li>Home maintenance: <code>category: home-maintenance</code></li>
+</ul>
+<h3 id="promoting-to-tasks">Promoting to Tasks<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#promoting-to-tasks" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>When ready to commit to work on a backlog item:</p>
+<pre><code>promote backlog-001 to task in Website Redesign project
+</code></pre>
+<p>This creates a task linked to the backlog item, moving it from “someday” to “committed.”</p>
+<h3 id="best-practices-2">Best Practices<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#best-practices-2" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Capture Immediately:</strong></p>
+<ul>
+<li>Don’t let ideas interrupt current work</li>
+<li>Use natural language, no ceremony</li>
+<li>AI handles all details</li>
+</ul>
+<p><strong>Add Context:</strong></p>
+<ul>
+<li>Include why/where idea came up</li>
+<li>Link to related sessions</li>
+<li>Future you will thank you</li>
+</ul>
+<p><strong>Be Ruthless:</strong></p>
+<ul>
+<li>Cancel items that no longer matter</li>
+<li>Don’t let backlog become overwhelming</li>
+<li>Delete completed items if no history value</li>
+</ul>
+<p><strong>Review Regularly:</strong></p>
+<ul>
+<li>Weekly triage keeps backlog healthy</li>
+<li>Update priorities as life changes</li>
+<li>Celebrate completed items</li>
+</ul>
+<h2 id="related-documentation">Related Documentation<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#related-documentation" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li><code>standards/schemas/app-schemas.md#project-management-app</code> - Full schema</li>
+<li><code>standards/schemas/common-properties.md</code> - Shared properties</li>
+<li><code>standards/development.md</code> - Development standards</li>
+<li><code>PRD.md</code> - Product requirements and roadmap</li>
+</ul>
+<h2 id="version-history">Version History<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#version-history" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li><strong>v2.0</strong> (2025-12-24): Consolidated Tasks and Backlog apps into Project Management umbrella</li>
+<li><strong>v1.0</strong> (2025-12-17): MVP implementation with Areas, Projects, Tasks</li>
+</ul></article><hr/><div class="page-footer"></div></div><div class="right sidebar"><div class="graph"><h3>Graph View</h3><div class="graph-outer"><div class="graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:1,&quot;scale&quot;:1.1,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.3,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:false,&quot;enableRadial&quot;:false}"></div><button class="global-graph-icon" aria-label="Global Graph"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 55 55" fill="currentColor" xml:space="preserve"><path d="M49,0c-3.309,0-6,2.691-6,6c0,1.035,0.263,2.009,0.726,2.86l-9.829,9.829C32.542,17.634,30.846,17,29,17
+                s-3.542,0.634-4.898,1.688l-7.669-7.669C16.785,10.424,17,9.74,17,9c0-2.206-1.794-4-4-4S9,6.794,9,9s1.794,4,4,4
+                c0.74,0,1.424-0.215,2.019-0.567l7.669,7.669C21.634,21.458,21,23.154,21,25s0.634,3.542,1.688,4.897L10.024,42.562
+                C8.958,41.595,7.549,41,6,41c-3.309,0-6,2.691-6,6s2.691,6,6,6s6-2.691,6-6c0-1.035-0.263-2.009-0.726-2.86l12.829-12.829
+                c1.106,0.86,2.44,1.436,3.898,1.619v10.16c-2.833,0.478-5,2.942-5,5.91c0,3.309,2.691,6,6,6s6-2.691,6-6c0-2.967-2.167-5.431-5-5.91
+                v-10.16c1.458-0.183,2.792-0.759,3.898-1.619l7.669,7.669C41.215,39.576,41,40.26,41,41c0,2.206,1.794,4,4,4s4-1.794,4-4
+                s-1.794-4-4-4c-0.74,0-1.424,0.215-2.019,0.567l-7.669-7.669C36.366,28.542,37,26.846,37,25s-0.634-3.542-1.688-4.897l9.665-9.665
+                C46.042,11.405,47.451,12,49,12c3.309,0,6-2.691,6-6S52.309,0,49,0z M11,9c0-1.103,0.897-2,2-2s2,0.897,2,2s-0.897,2-2,2
+                S11,10.103,11,9z M6,51c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S8.206,51,6,51z M33,49c0,2.206-1.794,4-4,4s-4-1.794-4-4
+                s1.794-4,4-4S33,46.794,33,49z M29,31c-3.309,0-6-2.691-6-6s2.691-6,6-6s6,2.691,6,6S32.309,31,29,31z M47,41c0,1.103-0.897,2-2,2
+                s-2-0.897-2-2s0.897-2,2-2S47,39.897,47,41z M49,10c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S51.206,10,49,10z"></path></svg></button></div><div class="global-graph-outer"><div class="global-graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:-1,&quot;scale&quot;:0.9,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.2,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:true,&quot;enableRadial&quot;:true}"></div></div></div><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-373" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><ul id="list-1" class="toc-content overflow"><li class="depth-0"><a href="#project-management-app" data-for="project-management-app">Project Management App</a></li><li class="depth-1"><a href="#purpose" data-for="purpose">Purpose</a></li><li class="depth-1"><a href="#quick-start" data-for="quick-start">Quick Start</a></li><li class="depth-2"><a href="#create-a-task" data-for="create-a-task">Create a Task</a></li><li class="depth-2"><a href="#create-a-project" data-for="create-a-project">Create a Project</a></li><li class="depth-2"><a href="#view-your-tasks" data-for="view-your-tasks">View Your Tasks</a></li><li class="depth-1"><a href="#core-concepts" data-for="core-concepts">Core Concepts</a></li><li class="depth-2"><a href="#areas" data-for="areas">Areas</a></li><li class="depth-2"><a href="#projects" data-for="projects">Projects</a></li><li class="depth-2"><a href="#tasks" data-for="tasks">Tasks</a></li><li class="depth-2"><a href="#backlog" data-for="backlog">Backlog</a></li><li class="depth-1"><a href="#file-structure" data-for="file-structure">File Structure</a></li><li class="depth-1"><a href="#property-schemas" data-for="property-schemas">Property Schemas</a></li><li class="depth-2"><a href="#area-properties" data-for="area-properties">Area Properties</a></li><li class="depth-2"><a href="#project-properties" data-for="project-properties">Project Properties</a></li><li class="depth-2"><a href="#task-properties" data-for="task-properties">Task Properties</a></li><li class="depth-1"><a href="#natural-language-workflow" data-for="natural-language-workflow">Natural Language Workflow</a></li><li class="depth-2"><a href="#creating-tasks" data-for="creating-tasks">Creating Tasks</a></li><li class="depth-2"><a href="#creating-projects" data-for="creating-projects">Creating Projects</a></li><li class="depth-2"><a href="#updating-tasks" data-for="updating-tasks">Updating Tasks</a></li><li class="depth-2"><a href="#quick-queries" data-for="quick-queries">Quick Queries</a></li><li class="depth-1"><a href="#views" data-for="views">Views</a></li><li class="depth-2"><a href="#task-views" data-for="task-views">Task Views</a></li><li class="depth-2"><a href="#project-views" data-for="project-views">Project Views</a></li><li class="depth-2"><a href="#area-views" data-for="area-views">Area Views</a></li><li class="depth-2"><a href="#today-view-standalone" data-for="today-view-standalone">Today View (Standalone)</a></li><li class="depth-2"><a href="#backlog-views" data-for="backlog-views">Backlog Views</a></li><li class="depth-1"><a href="#recurring-tasks" data-for="recurring-tasks">Recurring Tasks</a></li><li class="depth-2"><a href="#pattern-types" data-for="pattern-types">Pattern Types</a></li><li class="depth-2"><a href="#when-to-use-each-type" data-for="when-to-use-each-type">When to Use Each Type</a></li><li class="depth-2"><a href="#complete-examples" data-for="complete-examples">Complete Examples</a></li><li class="depth-2"><a href="#workflow" data-for="workflow">Workflow</a></li><li class="depth-2"><a href="#best-practices" data-for="best-practices">Best Practices</a></li><li class="depth-2"><a href="#implementation-status" data-for="implementation-status">Implementation Status</a></li><li class="depth-1"><a href="#workflows" data-for="workflows">Workflows</a></li><li class="depth-2"><a href="#daily-planning" data-for="daily-planning">Daily Planning</a></li><li class="depth-2"><a href="#weekly-review" data-for="weekly-review">Weekly Review</a></li><li class="depth-2"><a href="#creating-from-backlog" data-for="creating-from-backlog">Creating from Backlog</a></li><li class="depth-1"><a href="#best-practices-1" data-for="best-practices-1">Best Practices</a></li><li class="depth-2"><a href="#task-naming" data-for="task-naming">Task Naming</a></li><li class="depth-2"><a href="#schedule-strategically" data-for="schedule-strategically">Schedule Strategically</a></li><li class="depth-2"><a href="#keep-areas-stable" data-for="keep-areas-stable">Keep Areas Stable</a></li><li class="depth-2"><a href="#project-outcomes" data-for="project-outcomes">Project Outcomes</a></li><li class="depth-2"><a href="#limit-active-projects" data-for="limit-active-projects">Limit Active Projects</a></li><li class="depth-1"><a href="#integration-with-other-apps" data-for="integration-with-other-apps">Integration with Other Apps</a></li><li class="depth-2"><a href="#backlog-app" data-for="backlog-app">Backlog App</a></li><li class="depth-2"><a href="#sessions-app" data-for="sessions-app">Sessions App</a></li><li class="depth-2"><a href="#daily-notes" data-for="daily-notes">Daily Notes</a></li><li class="depth-1"><a href="#troubleshooting" data-for="troubleshooting">Troubleshooting</a></li><li class="depth-2"><a href="#task-not-showing-in-today-view" data-for="task-not-showing-in-today-view">Task not showing in Today view</a></li><li class="depth-2"><a href="#project-has-no-tasks" data-for="project-has-no-tasks">Project has no tasks</a></li><li class="depth-2"><a href="#area-seems-empty" data-for="area-seems-empty">Area seems empty</a></li><li class="depth-1"><a href="#backlog-app-details" data-for="backlog-app-details">Backlog App Details</a></li><li class="depth-2"><a href="#quick-capture-workflow" data-for="quick-capture-workflow">Quick Capture Workflow</a></li><li class="depth-2"><a href="#backlog-properties" data-for="backlog-properties">Backlog Properties</a></li><li class="depth-2"><a href="#triage-strategies" data-for="triage-strategies">Triage Strategies</a></li><li class="depth-2"><a href="#promoting-to-tasks" data-for="promoting-to-tasks">Promoting to Tasks</a></li><li class="depth-2"><a href="#best-practices-2" data-for="best-practices-2">Best Practices</a></li><li class="depth-1"><a href="#related-documentation" data-for="related-documentation">Related Documentation</a></li><li class="depth-1"><a href="#version-history" data-for="version-history">Version History</a></li><li class="overflow-end"></li></ul></div><div class="backlinks"><h3>Backlinks</h3><ul id="list-2" class="overflow"><li><a href="../../_database/database-docs/docs-table/01KDF7XDYA4C2EQ7MGY96097K1" class="internal">Apps Registry</a></li><li><a href="../../_database/database-docs/docs-table/01KDF987RNFVVQ8BQY2JRTXNRW" class="internal">Project Management App PRD</a></li><li><a href="../../_database/database-docs/docs-table/01KDF9D9E35ZCB954V5DV1M3J3" class="internal">Backlog Review Workflow</a></li><li><a href="../../home" class="internal">Vault Dashboard</a></li><li class="overflow-end"></li></ul></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.5.2</a> © 2026</p><ul><li><a href="https://github.com/jackyzha0/quartz">GitHub</a></li><li><a href="https://discord.gg/cRFFHYye7t">Discord Community</a></li></ul></footer></div></div></body><script type="application/javascript" data-persist="true">function n(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.getElementsByClassName("callout-content")[0];if(!e)return;let l=t.classList.contains("is-collapsed");e.style.gridTemplateRows=l?"0fr":"1fr"}function c(){let t=document.getElementsByClassName("callout is-collapsible");for(let e of t){let l=e.getElementsByClassName("callout-title")[0],s=e.getElementsByClassName("callout-content")[0];if(!l||!s)continue;l.addEventListener("click",n),window.addCleanup(()=>l.removeEventListener("click",n));let o=e.classList.contains("is-collapsed");s.style.gridTemplateRows=o?"0fr":"1fr"}}document.addEventListener("nav",c);
+</script><script type="module" data-persist="true">function E(a,e){if(!a)return;function t(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function n(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}a?.addEventListener("click",t),window.addCleanup(()=>a?.removeEventListener("click",t)),document.addEventListener("keydown",n),window.addCleanup(()=>document.removeEventListener("keydown",n))}function f(a){for(;a.firstChild;)a.removeChild(a.firstChild)}var m=class{constructor(e,t){this.container=e;this.content=t;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),t=this.onMouseMove.bind(this),n=this.onMouseUp.bind(this),o=this.onTouchStart.bind(this),r=this.onTouchMove.bind(this),i=this.onTouchEnd.bind(this),s=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",t),document.addEventListener("mouseup",n),this.container.addEventListener("touchstart",o,{passive:!1}),document.addEventListener("touchmove",r,{passive:!1}),document.addEventListener("touchend",i),window.addEventListener("resize",s),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",t),()=>document.removeEventListener("mouseup",n),()=>this.container.removeEventListener("touchstart",o),()=>document.removeEventListener("touchmove",r),()=>document.removeEventListener("touchend",i),()=>window.removeEventListener("resize",s))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let t=this.createButton("+",()=>this.zoom(.1)),n=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(n),e.appendChild(o),e.appendChild(t),this.container.appendChild(e)}createButton(e,t){let n=document.createElement("button");return n.textContent=e,n.className="mermaid-control-button",n.addEventListener("click",t),window.addCleanup(()=>n.removeEventListener("click",t)),n}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}onTouchStart(e){if(e.touches.length!==1)return;this.isDragging=!0;let t=e.touches[0];this.startPan={x:t.clientX-this.currentPan.x,y:t.clientY-this.currentPan.y}}onTouchMove(e){if(!this.isDragging||e.touches.length!==1)return;e.preventDefault();let t=e.touches[0];this.currentPan={x:t.clientX-this.startPan.x,y:t.clientY-this.startPan.y},this.updateTransform()}onTouchEnd(){this.isDragging=!1}zoom(e){let t=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),n=this.content.getBoundingClientRect(),o=n.width/2,r=n.height/2,i=t-this.scale;this.currentPan.x-=o*i,this.currentPan.y-=r*i,this.scale=t,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){let t=this.content.querySelector("svg").getBoundingClientRect(),n=t.width/this.scale,o=t.height/this.scale;this.scale=1,this.currentPan={x:(this.container.clientWidth-n)/2,y:(this.container.clientHeight-o)/2},this.updateTransform()}},T=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],y;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;y||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let t=y.default,n=new WeakMap;for(let r of e)n.set(r,r.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let c=n.get(s);c&&(s.innerHTML=c)}let r=T.reduce((s,c)=>(s[c]=window.getComputedStyle(document.documentElement).getPropertyValue(c),s),{}),i=document.documentElement.getAttribute("saved-theme")==="dark";t.initialize({startOnLoad:!1,securityLevel:"loose",theme:i?"dark":"base",themeVariables:{fontFamily:r["--codeFont"],primaryColor:r["--light"],primaryTextColor:r["--darkgray"],primaryBorderColor:r["--tertiary"],lineColor:r["--darkgray"],secondaryColor:r["--secondary"],tertiaryColor:r["--tertiary"],clusterBkg:r["--light"],edgeLabelBackground:r["--highlight"]}}),await t.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let r=0;r<e.length;r++){let v=function(){let g=l.querySelector("#mermaid-space"),h=l.querySelector(".mermaid-content");if(!h)return;f(h);let w=i.querySelector("svg").cloneNode(!0);h.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new m(g,h)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},i=e[r],s=i.parentElement,c=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(c),L=c.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),E(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
+</script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript" data-persist="true"></script><script src="../../postscript.js" type="module" data-persist="true"></script></html>

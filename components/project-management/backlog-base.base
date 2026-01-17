@@ -1,0 +1,90 @@
+filters:
+  and:
+    - file.folder == "_database/database-core/backlog-table"
+views:
+  - type: table
+    name: All Items
+    groupBy:
+      property: priority
+      direction: ASC
+    order:
+      - file.name
+      - title
+      - date
+      - priority
+      - status
+      - category
+      - estimate
+      - tags
+    sort:
+      - property: priority
+        direction: ASC
+      - property: date
+        direction: DESC
+    columnSize:
+      note.title: 200
+      note.priority: 8
+      note.category: 120
+  - type: table
+    name: Open Items
+    filters:
+      and:
+        - status == "open"
+    order:
+      - file.name
+      - title
+      - date
+      - priority
+      - status
+      - category
+      - estimate
+    sort:
+      - property: priority
+        direction: ASC
+      - property: file.name
+        direction: ASC
+    filter:
+      - status == "open"
+    columnSize:
+      note.title: 220
+      note.priority: 70
+      note.status: 90
+  - type: table
+    name: By Priority
+    filters:
+      and:
+        - status == "open"
+    order:
+      - file.name
+      - priority
+      - date
+      - title
+      - status
+      - category
+      - estimate
+    sort:
+      - property: priority
+        direction: ASC
+      - property: file.name
+        direction: ASC
+    columnSize:
+      note.title: 200
+  - type: table
+    name: Quick Wins
+    order:
+      - file.name
+      - title
+      - date
+      - priority
+      - estimate
+      - category
+    sort:
+      - property: priority
+        direction: ASC
+      - property: estimate
+        direction: ASC
+    filter:
+      - estimate in ["15m", "30m", "45m", "1h"]
+      - status == "open"
+    columnSize:
+      note.title: 240

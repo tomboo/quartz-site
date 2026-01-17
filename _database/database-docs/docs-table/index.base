@@ -1,0 +1,19 @@
+filters:
+  and:
+    - file.folder == "_database/database-docs/docs-table"
+views:
+  - type: table
+    name: Table
+    order:
+      - file.name
+      - date
+      - status
+      - title
+      - description
+      - synopsis
+    sort:
+      - property: file.name
+        direction: ASC
+    columnSize:
+      note.date: 83
+      note.title: 193

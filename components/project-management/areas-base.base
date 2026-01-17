@@ -1,0 +1,23 @@
+filters:
+  and:
+    - file.folder == "_database/database-core/areas-table"
+views:
+  - type: table
+    name: All Areas
+    order:
+      - file.name
+      - icon
+      - title
+      - description
+      - sort-order
+      - tags
+    sort:
+      - property: sort-order
+        direction: ASC
+    columnSize:
+      note.icon: 50
+      file.name: 80
+      note.title: 150
+      note.description: 350
+      note.sort-order: 80
+      note.tags: 150

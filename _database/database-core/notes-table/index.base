@@ -1,0 +1,17 @@
+filters:
+  and:
+    - file.folder == "_database/database-core/notes-table"
+views:
+  - type: table
+    name: Table
+    order:
+      - file.name
+      - date
+      - title
+      - description
+      - synopsis
+    sort:
+      - property: date
+        direction: DESC
+    columnSize:
+      note.title: 129

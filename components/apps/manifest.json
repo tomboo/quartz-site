@@ -1,0 +1,13 @@
+{
+  "name": "apps",
+  "version": "1.0.0",
+  "description": "Meta-registry of all apps/components in the framework",
+  "databases": ["database-core"],
+  "tables": ["apps-table"],
+  "views": [
+    "apps-base.base"
+  ],
+  "dashboards": [],
+  "templates": [],
+  "scripts": []
+}

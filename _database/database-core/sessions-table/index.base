@@ -1,0 +1,13 @@
+filters:
+  and:
+    - file.folder == "_database/database-core/sessions-table"
+views:
+  - type: table
+    name: Table
+    order:
+      - file.name
+      - title
+      - date
+    sort:
+      - property: file.name
+        direction: ASC

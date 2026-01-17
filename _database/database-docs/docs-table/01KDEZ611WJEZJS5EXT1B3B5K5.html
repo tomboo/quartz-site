@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head><title>Framework Changes: Dec 24-25, 2025</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted Grotesk:wght@400;700&amp;family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="Tom's Notes"/><meta property="og:title" content="Framework Changes: Dec 24-25, 2025"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="Framework Changes: Dec 24-25, 2025"/><meta name="twitter:description" content="Checklist of framework changes from vault-personal-tom for porting to lexi-you-da-hoe."/><meta property="og:description" content="Checklist of framework changes from vault-personal-tom for porting to lexi-you-da-hoe."/><meta property="og:image:alt" content="Checklist of framework changes from vault-personal-tom for porting to lexi-you-da-hoe."/><meta property="twitter:domain" content="tomboo.github.io/quartz-site"/><meta property="og:url" content="https://tomboo.github.io/quartz-site/_database/database-docs/docs-table/01KDEZ611WJEZJS5EXT1B3B5K5"/><meta property="twitter:url" content="https://tomboo.github.io/quartz-site/_database/database-docs/docs-table/01KDEZ611WJEZJS5EXT1B3B5K5"/><link rel="icon" href="../../../static/icon.png"/><meta name="description" content="Checklist of framework changes from vault-personal-tom for porting to lexi-you-da-hoe."/><meta name="generator" content="Quartz"/><link href="../../../index.css" rel="stylesheet" type="text/css" data-persist="true"/><style>.expand-button {
+  position: absolute;
+  display: flex;
+  float: right;
+  padding: 0.4rem;
+  margin: 0.3rem;
+  right: 0;
+  color: var(--gray);
+  border-color: var(--dark);
+  background-color: var(--light);
+  border: 1px solid;
+  border-radius: 5px;
+  opacity: 0;
+  transition: 0.2s;
+}
+.expand-button > svg {
+  fill: var(--light);
+  filter: contrast(0.3);
+}
+.expand-button:hover {
+  cursor: pointer;
+  border-color: var(--secondary);
+}
+.expand-button:focus {
+  outline: 0;
+}
+
+pre:hover > .expand-button {
+  opacity: 1;
+  transition: 0.2s;
+}
+
+#mermaid-container {
+  position: fixed;
+  contain: layout;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: none;
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.5);
+}
+#mermaid-container.active {
+  display: inline-block;
+}
+#mermaid-container > #mermaid-space {
+  border: 1px solid var(--lightgray);
+  background-color: var(--light);
+  border-radius: 5px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 80vh;
+  width: 80vw;
+  overflow: hidden;
+}
+#mermaid-container > #mermaid-space > .mermaid-content {
+  position: relative;
+  transform-origin: 0 0;
+  transition: transform 0.1s ease;
+  overflow: visible;
+  min-height: 200px;
+  min-width: 200px;
+}
+#mermaid-container > #mermaid-space > .mermaid-content pre {
+  margin: 0;
+  border: none;
+}
+#mermaid-container > #mermaid-space > .mermaid-content svg {
+  max-width: none;
+  height: auto;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  background: var(--light);
+  border: 1px solid var(--lightgray);
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--lightgray);
+  background: var(--light);
+  color: var(--dark);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: var(--bodyFont);
+  transition: all 0.2s ease;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:hover {
+  background: var(--lightgray);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:active {
+  transform: translateY(1px);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:nth-child(2) {
+  width: auto;
+  padding: 0 12px;
+  font-size: 14px;
+}
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL1VzZXJzL3RvbS9Qcm9qZWN0cy9sZXhpL3F1YXJ0ei1zaXRlL3F1YXJ0ei9jb21wb25lbnRzL3N0eWxlcyIsInNvdXJjZXMiOlsibWVybWFpZC5pbmxpbmUuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTs7QUFHRjtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTs7O0FBS0Y7RUFDRTtFQUNBOzs7QUFJSjtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTs7QUFHRjtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTs7QUFHRjtFQUNFO0VBQ0E7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7O0FBSUY7RUFDRTtFQUNBO0VBQ0EiLCJzb3VyY2VzQ29udGVudCI6WyIuZXhwYW5kLWJ1dHRvbiB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxvYXQ6IHJpZ2h0O1xuICBwYWRkaW5nOiAwLjRyZW07XG4gIG1hcmdpbjogMC4zcmVtO1xuICByaWdodDogMDsgLy8gTk9URTogcmlnaHQgd2lsbCBiZSBzZXQgaW4gbWVybWFpZC5pbmxpbmUudHNcbiAgY29sb3I6IHZhcigtLWdyYXkpO1xuICBib3JkZXItY29sb3I6IHZhcigtLWRhcmspO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gIGJvcmRlcjogMXB4IHNvbGlkO1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIG9wYWNpdHk6IDA7XG4gIHRyYW5zaXRpb246IDAuMnM7XG5cbiAgJiA+IHN2ZyB7XG4gICAgZmlsbDogdmFyKC0tbGlnaHQpO1xuICAgIGZpbHRlcjogY29udHJhc3QoMC4zKTtcbiAgfVxuXG4gICY6aG92ZXIge1xuICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICBib3JkZXItY29sb3I6IHZhcigtLXNlY29uZGFyeSk7XG4gIH1cblxuICAmOmZvY3VzIHtcbiAgICBvdXRsaW5lOiAwO1xuICB9XG59XG5cbnByZSB7XG4gICY6aG92ZXIgPiAuZXhwYW5kLWJ1dHRvbiB7XG4gICAgb3BhY2l0eTogMTtcbiAgICB0cmFuc2l0aW9uOiAwLjJzO1xuICB9XG59XG5cbiNtZXJtYWlkLWNvbnRhaW5lciB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgY29udGFpbjogbGF5b3V0O1xuICB6LWluZGV4OiA5OTk7XG4gIGxlZnQ6IDA7XG4gIHRvcDogMDtcbiAgd2lkdGg6IDEwMHZ3O1xuICBoZWlnaHQ6IDEwMHZoO1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICBkaXNwbGF5OiBub25lO1xuICBiYWNrZHJvcC1maWx0ZXI6IGJsdXIoNHB4KTtcbiAgYmFja2dyb3VuZDogcmdiYSgwLCAwLCAwLCAwLjUpO1xuXG4gICYuYWN0aXZlIHtcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIH1cblxuICAmID4gI21lcm1haWQtc3BhY2Uge1xuICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tbGlnaHQpO1xuICAgIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgICBwb3NpdGlvbjogZml4ZWQ7XG4gICAgdG9wOiA1MCU7XG4gICAgbGVmdDogNTAlO1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIC01MCUpO1xuICAgIGhlaWdodDogODB2aDtcbiAgICB3aWR0aDogODB2dztcbiAgICBvdmVyZmxvdzogaGlkZGVuO1xuXG4gICAgJiA+IC5tZXJtYWlkLWNvbnRlbnQge1xuICAgICAgcG9zaXRpb246IHJlbGF0aXZlO1xuICAgICAgdHJhbnNmb3JtLW9yaWdpbjogMCAwO1xuICAgICAgdHJhbnNpdGlvbjogdHJhbnNmb3JtIDAuMXMgZWFzZTtcbiAgICAgIG92ZXJmbG93OiB2aXNpYmxlO1xuICAgICAgbWluLWhlaWdodDogMjAwcHg7XG4gICAgICBtaW4td2lkdGg6IDIwMHB4O1xuXG4gICAgICBwcmUge1xuICAgICAgICBtYXJnaW46IDA7XG4gICAgICAgIGJvcmRlcjogbm9uZTtcbiAgICAgIH1cblxuICAgICAgc3ZnIHtcbiAgICAgICAgbWF4LXdpZHRoOiBub25lO1xuICAgICAgICBoZWlnaHQ6IGF1dG87XG4gICAgICB9XG4gICAgfVxuXG4gICAgJiA+IC5tZXJtYWlkLWNvbnRyb2xzIHtcbiAgICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgICAgIGJvdHRvbTogMjBweDtcbiAgICAgIHJpZ2h0OiAyMHB4O1xuICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgIGdhcDogOHB4O1xuICAgICAgcGFkZGluZzogOHB4O1xuICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgIGJvcmRlci1yYWRpdXM6IDZweDtcbiAgICAgIGJveC1zaGFkb3c6IDAgMnB4IDRweCByZ2JhKDAsIDAsIDAsIDAuMSk7XG4gICAgICB6LWluZGV4OiAyO1xuXG4gICAgICAubWVybWFpZC1jb250cm9sLWJ1dHRvbiB7XG4gICAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gICAgICAgIGp1c3RpZnktY29udGVudDogY2VudGVyO1xuICAgICAgICB3aWR0aDogMzJweDtcbiAgICAgICAgaGVpZ2h0OiAzMnB4O1xuICAgICAgICBwYWRkaW5nOiAwO1xuICAgICAgICBib3JkZXI6IDFweCBzb2xpZCB2YXIoLS1saWdodGdyYXkpO1xuICAgICAgICBiYWNrZ3JvdW5kOiB2YXIoLS1saWdodCk7XG4gICAgICAgIGNvbG9yOiB2YXIoLS1kYXJrKTtcbiAgICAgICAgYm9yZGVyLXJhZGl1czogNHB4O1xuICAgICAgICBjdXJzb3I6IHBvaW50ZXI7XG4gICAgICAgIGZvbnQtc2l6ZTogMTZweDtcbiAgICAgICAgZm9udC1mYW1pbHk6IHZhcigtLWJvZHlGb250KTtcbiAgICAgICAgdHJhbnNpdGlvbjogYWxsIDAuMnMgZWFzZTtcblxuICAgICAgICAmOmhvdmVyIHtcbiAgICAgICAgICBiYWNrZ3JvdW5kOiB2YXIoLS1saWdodGdyYXkpO1xuICAgICAgICB9XG5cbiAgICAgICAgJjphY3RpdmUge1xuICAgICAgICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlWSgxcHgpO1xuICAgICAgICB9XG5cbiAgICAgICAgLy8gU3R5bGUgdGhlIHJlc2V0IGJ1dHRvbiBkaWZmZXJlbnRseVxuICAgICAgICAmOm50aC1jaGlsZCgyKSB7XG4gICAgICAgICAgd2lkdGg6IGF1dG87XG4gICAgICAgICAgcGFkZGluZzogMCAxMnB4O1xuICAgICAgICAgIGZvbnQtc2l6ZTogMTRweDtcbiAgICAgICAgfVxuICAgICAgfVxuICAgIH1cbiAgfVxufVxuIl19 */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" data-persist="true"/><script src="../../../prescript.js" type="application/javascript" data-persist="true"></script><script type="application/javascript" data-persist="true">const fetchData = fetch("../../../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://tomboo.github.io/quartz-site/index.xml"/><meta property="og:image:width" content="1200"/><meta property="og:image:height" content="630"/><meta property="og:image" content="https://tomboo.github.io/quartz-site/_database/database-docs/docs-table/01KDEZ611WJEZJS5EXT1B3B5K5-og-image.webp"/><meta property="og:image:url" content="https://tomboo.github.io/quartz-site/_database/database-docs/docs-table/01KDEZ611WJEZJS5EXT1B3B5K5-og-image.webp"/><meta name="twitter:image" content="https://tomboo.github.io/quartz-site/_database/database-docs/docs-table/01KDEZ611WJEZJS5EXT1B3B5K5-og-image.webp"/><meta property="og:image:type" content="image/.webp"/></head><body data-slug="_database/database-docs/docs-table/01KDEZ611WJEZJS5EXT1B3B5K5"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="../../..">Tom's Notes</a></h2><div class="spacer mobile-only"></div><div class="flex-component" style="flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg><p>Search</p></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="readermode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="readerIcon" fill="currentColor" stroke="currentColor" stroke-width="0.2" stroke-linecap="round" stroke-linejoin="round" width="64px" height="64px" viewBox="0 0 24 24" aria-label="Reader mode"><title>Reader mode</title><g transform="translate(-1.8, -1.8) scale(1.15, 1.2)"><path d="M8.9891247,2.5 C10.1384702,2.5 11.2209868,2.96705384 12.0049645,3.76669482 C12.7883914,2.96705384 13.8709081,2.5 15.0202536,2.5 L18.7549359,2.5 C19.1691495,2.5 19.5049359,2.83578644 19.5049359,3.25 L19.5046891,4.004 L21.2546891,4.00457396 C21.6343849,4.00457396 21.9481801,4.28672784 21.9978425,4.6528034 L22.0046891,4.75457396 L22.0046891,20.25 C22.0046891,20.6296958 21.7225353,20.943491 21.3564597,20.9931534 L21.2546891,21 L2.75468914,21 C2.37499337,21 2.06119817,20.7178461 2.01153575,20.3517706 L2.00468914,20.25 L2.00468914,4.75457396 C2.00468914,4.37487819 2.28684302,4.061083 2.65291858,4.01142057 L2.75468914,4.00457396 L4.50368914,4.004 L4.50444233,3.25 C4.50444233,2.87030423 4.78659621,2.55650904 5.15267177,2.50684662 L5.25444233,2.5 L8.9891247,2.5 Z M4.50368914,5.504 L3.50468914,5.504 L3.50468914,19.5 L10.9478955,19.4998273 C10.4513189,18.9207296 9.73864328,18.5588115 8.96709342,18.5065584 L8.77307039,18.5 L5.25444233,18.5 C4.87474657,18.5 4.56095137,18.2178461 4.51128895,17.8517706 L4.50444233,17.75 L4.50368914,5.504 Z M19.5049359,17.75 C19.5049359,18.1642136 19.1691495,18.5 18.7549359,18.5 L15.2363079,18.5 C14.3910149,18.5 13.5994408,18.8724714 13.0614828,19.4998273 L20.5046891,19.5 L20.5046891,5.504 L19.5046891,5.504 L19.5049359,17.75 Z M18.0059359,3.999 L15.0202536,4 L14.8259077,4.00692283 C13.9889509,4.06666544 13.2254227,4.50975805 12.7549359,5.212 L12.7549359,17.777 L12.7782651,17.7601316 C13.4923805,17.2719483 14.3447024,17 15.2363079,17 L18.0059359,16.999 L18.0056891,4.798 L18.0033792,4.75457396 L18.0056891,4.71 L18.0059359,3.999 Z M8.9891247,4 L6.00368914,3.999 L6.00599909,4.75457396 L6.00599909,4.75457396 L6.00368914,4.783 L6.00368914,16.999 L8.77307039,17 C9.57551536,17 10.3461406,17.2202781 11.0128313,17.6202194 L11.2536891,17.776 L11.2536891,5.211 C10.8200889,4.56369974 10.1361548,4.13636104 9.37521067,4.02745763 L9.18347055,4.00692283 L8.9891247,4 Z"></path></g></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="true" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>!a.isFolder&amp;&amp;!b.isFolder||a.isFolder&amp;&amp;b.isFolder?a.displayName.localeCompare(b.displayName,void 0,{numeric:!0,sensitivity:\&quot;base\&quot;}):!a.isFolder&amp;&amp;b.isFolder?1:-1&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>node&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-728"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div id="explorer-728" class="explorer-content" aria-expanded="false" role="group"><ul class="explorer-ul overflow" id="list-0"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../../../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../../_database/">_database</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../../_database/database-docs/">database docs</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../../_database/database-docs/docs-table/">docs table</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>Framework Changes: Dec 24 25, 2025</a></div></nav><h1 class="article-title">Framework Changes: Dec 24-25, 2025</h1><p show-comma="true" class="content-meta"><time datetime="2026-01-17T14:03:26.265Z">Jan 17, 2026</time><span>9 min read</span></p><ul class="tags"><li><a href="../../../tags/framework" class="internal tag-link">framework</a></li><li><a href="../../../tags/migration" class="internal tag-link">migration</a></li><li><a href="../../../tags/lexi" class="internal tag-link">lexi</a></li><li><a href="../../../tags/changelog" class="internal tag-link">changelog</a></li></ul></div></div><article class="popover-hint"><h1 id="framework-changes-dec-24-25-2025">Framework Changes: Dec 24-25, 2025<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#framework-changes-dec-24-25-2025" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p><strong>Purpose:</strong> Checklist of framework changes from vault-personal-tom to evaluate for porting to lexi-you-da-hoe.</p>
+<p><strong>Sessions Analyzed:</strong> 13 sessions (20251224-001 through 20251225-005)</p>
+<hr/>
+<h2 id="1-schema-changes-things-3-alignment">1. Schema Changes (Things 3 Alignment)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#1-schema-changes-things-3-alignment" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="status-value-simplification">Status Value Simplification<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#status-value-simplification" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled/> <strong>Tasks:</strong> <code>not-started</code>/<code>in-progress</code> → <code>open</code>, <code>cancelled</code> → <code>canceled</code></li>
+<li class="task-list-item"><input type="checkbox" disabled/> <strong>Projects:</strong> <code>active</code>/<code>planning</code> → <code>open</code>, <code>cancelled</code> → <code>canceled</code></li>
+<li class="task-list-item"><input type="checkbox" disabled/> <strong>Backlog:</strong> Same pattern as Tasks</li>
+<li class="task-list-item"><input type="checkbox" disabled/> <strong>Areas:</strong> Remove <code>status</code> property entirely (areas are perpetually active)</li>
+</ul>
+<h3 id="completion-tracking">Completion Tracking<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#completion-tracking" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled/> Add <code>completed-at</code> property (auto-set when status → completed)</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Add <code>canceled-at</code> property (auto-set when status → canceled)</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Add to: Tasks, Projects, Backlog</li>
+</ul>
+<h3 id="property-renaming-tasks">Property Renaming (Tasks)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#property-renaming-tasks" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled/> <code>scheduled-date</code> → <code>when</code> (intention: “I plan to work on this”)</li>
+<li class="task-list-item"><input type="checkbox" disabled/> <code>due-date</code> → <code>deadline</code> (obligation: “This must be done by”)</li>
+</ul>
+<h3 id="property-removal">Property Removal<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#property-removal" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled/> Remove <code>date</code> from Tasks (redundant with <code>created-at</code>)</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Remove <code>context</code> from Tasks (low value)</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Remove <code>actual-duration</code> from Tasks (rarely used)</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Remove <code>modified-at</code> from ALL files (use <code>file.mtime</code> instead)</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Remove <code>status</code> from Areas (perpetually active)</li>
+</ul>
+<h3 id="property-additions">Property Additions<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#property-additions" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled/> Add <code>repeat</code> to Tasks (daily, weekly, monthly, yearly, after-completion)</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Add <code>checklist</code> to Tasks (subtask items)</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Add <code>project-type</code> to Projects (<code>finite</code> | <code>ongoing</code>)</li>
+</ul>
+<h3 id="property-order-standard">Property Order Standard<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#property-order-standard" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<pre><code>uid, user, type, title, status, priority, description, when, deadline,
+repeat, estimate, project, area, checklist, tags, created-at
+</code></pre>
+<hr/>
+<h2 id="2-file-naming-convention">2. File Naming Convention<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#2-file-naming-convention" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="sequential-naming-migration">Sequential Naming Migration<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#sequential-naming-migration" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled/> Tasks: <code>task-YYYYMMDD-###.md</code> → <code>task-###.md</code></li>
+<li class="task-list-item"><input type="checkbox" disabled/> Backlog: <code>backlog-YYYYMMDD-###.md</code> → <code>backlog-###.md</code></li>
+<li class="task-list-item"><input type="checkbox" disabled/> Subscriptions: <code>subscription-YYYYMMDD-###.md</code> → <code>subscription-###.md</code></li>
+<li class="task-list-item"><input type="checkbox" disabled/> Sessions: Keep <code>session-YYYYMMDD-###.md</code> (date is semantically important)</li>
+</ul>
+<p><strong>Benefits:</strong></p>
+<ul>
+<li>Shorter filenames (9 chars saved per file)</li>
+<li>Easier references: “task 7” vs “task-20251217-007”</li>
+<li>Cleaner wikilinks: <code>[[01KCPDVSFB19AJ4EHZYJAT9H78]]</code> vs <code>[[task-20251217-005]]</code></li>
+</ul>
+<p><strong>Migration Script:</strong> <code>scripts/migrate-to-sequential-naming.py</code></p>
+<hr/>
+<h2 id="3-app-structure-changes">3. App Structure Changes<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#3-app-structure-changes" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="app-consolidation">App Consolidation<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#app-consolidation" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled/> Merge <code>apps/tasks/</code> into <code>apps/project-management/</code></li>
+<li class="task-list-item"><input type="checkbox" disabled/> Merge <code>apps/backlog/</code> into <code>apps/project-management/</code></li>
+<li class="task-list-item"><input type="checkbox" disabled/> Create unified umbrella app with sub-views</li>
+</ul>
+<h3 id="app-flattening-simple-apps">App Flattening (Simple Apps)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#app-flattening-simple-apps" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled/> Remove <code>views/</code> subdirectory (files go directly in app folder)</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Remove <code>dashboards/</code> subdirectory</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Keep nested structure only for complex apps (project-management)</li>
+</ul>
+<h3 id="notes-app">Notes App<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#notes-app" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled/> Create Notes app for casual note capture</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Status workflow: <code>draft</code> → <code>active</code> → <code>archived</code></li>
+<li class="task-list-item"><input type="checkbox" disabled/> Replace <code>inbox/</code> folder with <code>status: draft</code> workflow</li>
+</ul>
+<h3 id="backend-structure">Backend Structure<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#backend-structure" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled/> Move <code>daily-notes/</code> → <code>_database/database-core/daily-notes-table/</code></li>
+<li class="task-list-item"><input type="checkbox" disabled/> Create <code>_database/database-core/notes-table/</code></li>
+<li class="task-list-item"><input type="checkbox" disabled/> Ensure all data tables are in <code>_database/database-core/*-table/</code> format</li>
+</ul>
+<hr/>
+<h2 id="4-bases-view-improvements">4. Bases View Improvements<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#4-bases-view-improvements" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="syntax-fixes-critical">Syntax Fixes (Critical)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#syntax-fixes-critical" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled/> Use <code>filters:</code> not <code>filter:</code> (plural is correct)</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Use <code>today()</code> function, not <code>date(now)</code></li>
+<li class="task-list-item"><input type="checkbox" disabled/> Remove <code>formulas:</code> sections (not yet supported)</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Remove <code>summaries:</code> sections (not yet supported)</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Add <code>file.name</code> as first column in all views (enables clickable rows)</li>
+</ul>
+<h3 id="things-3-views-tasks">Things 3 Views (Tasks)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#things-3-views-tasks" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled/> <strong>Inbox:</strong> Uncategorized tasks (no project)</li>
+<li class="task-list-item"><input type="checkbox" disabled/> <strong>Today:</strong> <code>when == today() OR deadline == today() OR status == 'in-progress'</code></li>
+<li class="task-list-item"><input type="checkbox" disabled/> <strong>Upcoming:</strong> Next 7 days, grouped by <code>when</code></li>
+<li class="task-list-item"><input type="checkbox" disabled/> <strong>Someday:</strong> Organized but unscheduled</li>
+<li class="task-list-item"><input type="checkbox" disabled/> <strong>Anytime (By Project):</strong> Grouped by project</li>
+<li class="task-list-item"><input type="checkbox" disabled/> <strong>Anytime (By Area):</strong> Grouped by area</li>
+<li class="task-list-item"><input type="checkbox" disabled/> <strong>Logbook:</strong> Completed tasks, sorted by <code>completed-at DESC</code></li>
+<li class="task-list-item"><input type="checkbox" disabled/> <strong>All Tasks:</strong> Unfiltered master view</li>
+</ul>
+<h3 id="dashboard-views">Dashboard Views<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#dashboard-views" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled/> Sessions dashboard (last 5 sessions)</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Tasks dashboard (high-priority, sorted by priority)</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Backlog dashboard (p0/p1 items only)</li>
+</ul>
+<hr/>
+<h2 id="5-documentation--standards">5. Documentation &amp; Standards<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#5-documentation--standards" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="new-standards-documents">New Standards Documents<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#new-standards-documents" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled/> <code>standards/property-standards.md</code> - Comprehensive property schema reference</li>
+<li class="task-list-item"><input type="checkbox" disabled/> <code>standards/migration-guide.md</code> - Migration workflow with rollback procedures</li>
+<li class="task-list-item"><input type="checkbox" disabled/> <code>standards/things3-philosophy.md</code> - Things 3 design philosophy (512 lines)</li>
+<li class="task-list-item"><input type="checkbox" disabled/> <code>standards/projects-areas-schema-analysis.md</code> - Detailed schema comparison</li>
+</ul>
+<h3 id="claudemd-additions">CLAUDE.md Additions<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#claudemd-additions" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled/> Research &amp; Documentation Guidelines (check official docs first)</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Task Comment Format (<code>## Comments</code> / <code>### YYYY-MM-DD: Title</code>)</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Link Standards (wiki-links for internal, markdown for external)</li>
+</ul>
+<h3 id="template-updates">Template Updates<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#template-updates" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled/> Add <code>## Comments</code> section to task-template.md</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Add <code>## Comments</code> section to backlog-template.md</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Update templates with current schema (remove deprecated properties)</li>
+</ul>
+<hr/>
+<h2 id="6-tooling--scripts">6. Tooling &amp; Scripts<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#6-tooling--scripts" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="migration-scripts">Migration Scripts<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#migration-scripts" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled/> <code>scripts/add-uids.py</code> - Add UIDs to files missing them</li>
+<li class="task-list-item"><input type="checkbox" disabled/> <code>scripts/standardize-properties.py</code> - Property ordering and format</li>
+<li class="task-list-item"><input type="checkbox" disabled/> <code>scripts/validate-schema.py</code> - Schema validation with detailed reports</li>
+<li class="task-list-item"><input type="checkbox" disabled/> <code>scripts/migrate-to-sequential-naming.py</code> - File naming migration</li>
+<li class="task-list-item"><input type="checkbox" disabled/> <code>scripts/migrate-tasks-to-things3.py</code> - Task schema migration</li>
+<li class="task-list-item"><input type="checkbox" disabled/> <code>scripts/migrate-areas.py</code> - Area schema updates</li>
+<li class="task-list-item"><input type="checkbox" disabled/> <code>scripts/migrate-projects.py</code> - Project schema updates</li>
+<li class="task-list-item"><input type="checkbox" disabled/> <code>scripts/migrate-backlog.py</code> - Backlog status alignment</li>
+</ul>
+<h3 id="health-check-enhancements">Health Check Enhancements<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#health-check-enhancements" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled/> Update validator to accept new status values (<code>open</code>, <code>canceled</code>)</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Validate completion timestamps on completed/canceled items</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Check for deprecated properties</li>
+</ul>
+<h3 id="testing-infrastructure">Testing Infrastructure<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#testing-infrastructure" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled/> <code>tests/test_backend_tables.py</code> - Comprehensive tests for all backend tables</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Schema validation tests for all app types</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Integration tests for backlog and sessions</li>
+</ul>
+<hr/>
+<h2 id="7-slash-command-improvements">7. Slash Command Improvements<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#7-slash-command-improvements" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="session-start">/session-start<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#session-start" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled/> Dynamic focus suggestions based on recent activity</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Analyze last session’s Next Steps</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Check recent backlog/tasks for pending work</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Generate contextual recommendations vs static options</li>
+</ul>
+<h3 id="session-end">/session-end<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#session-end" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled/> 6-step Next Steps generation strategy</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Context-aware task recommendations</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Auto-generate commit message from session work</li>
+</ul>
+<h3 id="health-check">/health-check<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#health-check" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled/> Integration with migration scripts</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Auto-fix capabilities with user approval</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Validation of new schema properties</li>
+</ul>
+<hr/>
+<h2 id="8-home-dashboard">8. Home Dashboard<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#8-home-dashboard" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="embedded-bases-views">Embedded Bases Views<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#embedded-bases-views" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled/> Quick Actions section</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Database Apps with metrics</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Recent Activity (sessions, tasks, backlog)</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Vault Metrics (file counts, app stats)</li>
+</ul>
+<h3 id="link-standards">Link Standards<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#link-standards" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled/> Use wiki-links for internal files (not markdown links)</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Use plain text for directory paths</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Use markdown links only for external URLs</li>
+</ul>
+<hr/>
+<h2 id="priority-recommendations-for-lexi-you-da-hoe">Priority Recommendations for lexi-you-da-hoe<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#priority-recommendations-for-lexi-you-da-hoe" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="high-priority-core-schema">High Priority (Core Schema)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#high-priority-core-schema" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li>Status value simplification (Things 3 alignment)</li>
+<li>Completion tracking (<code>completed-at</code>, <code>canceled-at</code>)</li>
+<li><code>when</code>/<code>deadline</code> property renaming</li>
+<li>Remove <code>modified-at</code> (use <code>file.mtime</code>)</li>
+</ol>
+<h3 id="medium-priority-structure">Medium Priority (Structure)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#medium-priority-structure" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol start="5">
+<li>Sequential file naming</li>
+<li>Bases view syntax fixes</li>
+<li>App consolidation/flattening</li>
+<li>Home dashboard improvements</li>
+</ol>
+<h3 id="lower-priority-nice-to-have">Lower Priority (Nice to Have)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#lower-priority-nice-to-have" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol start="9">
+<li>Notes app</li>
+<li>Migration scripts</li>
+<li>Testing infrastructure</li>
+<li>Documentation standards</li>
+</ol>
+<hr/>
+<h2 id="files-changed-summary">Files Changed Summary<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#files-changed-summary" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Session</th><th>Files Changed</th><th>Key Changes</th></tr></thead><tbody><tr><td>001</td><td>3</td><td>/session-start enhancement</td></tr><tr><td>002</td><td>16</td><td>Property standards, dashboard, migration scripts</td></tr><tr><td>003</td><td>104</td><td>Sequential naming migration (98 files renamed)</td></tr><tr><td>004</td><td>5</td><td>Migration documentation</td></tr><tr><td>005</td><td>56</td><td>Tasks Things 3 schema migration</td></tr><tr><td>006</td><td>71</td><td>Views, project organization, normalization</td></tr><tr><td>007</td><td>155</td><td>Complete Things 3 alignment (131 files migrated)</td></tr><tr><td>008</td><td>8</td><td>Phase 2 documentation (1,351 lines)</td></tr><tr><td>20251225-001</td><td>56</td><td>Bases syntax fixes, project split</td></tr><tr><td>20251225-002</td><td>27</td><td>Notes app, vault structure, tests</td></tr><tr><td>20251225-003</td><td>225+</td><td>Remove modified-at from entire vault</td></tr><tr><td>20251225-004</td><td>15</td><td>Task triage, link standards</td></tr><tr><td>20251225-005</td><td>44</td><td>Status spelling, completion timestamps</td></tr></tbody></table></div>
+<p><strong>Total:</strong> ~780+ file changes over 13 sessions</p>
+<hr/>
+<h2 id="key-architectural-decisions">Key Architectural Decisions<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#key-architectural-decisions" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ol>
+<li><strong>Things 3 Philosophy:</strong> Simple status model (open/completed/canceled), when vs deadline semantics</li>
+<li><strong>Status-Based Workflow:</strong> Use status properties instead of folder-based organization (e.g., <code>status: draft</code> vs <code>inbox/</code> folder)</li>
+<li><strong>Flat App Structure:</strong> Simple apps don’t need <code>views/</code> and <code>dashboards/</code> subdirectories</li>
+<li><strong>Sequential Naming:</strong> Stable IDs for long-lived content, date-based only for sessions</li>
+<li><strong>Official Docs First:</strong> Always check official documentation before web searches</li>
+<li><strong>Wiki-Links Standard:</strong> Use wiki-links for all internal references</li>
+</ol>
+<hr/>
+<h2 id="vault-comparison-vault-personal-tom-vs-lexi-you-da-hoe">Vault Comparison: vault-personal-tom vs lexi-you-da-hoe<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#vault-comparison-vault-personal-tom-vs-lexi-you-da-hoe" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="structural-overview">Structural Overview<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#structural-overview" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Aspect</th><th>vault-personal-tom</th><th>lexi-you-da-hoe</th></tr></thead><tbody><tr><td><strong>Purpose</strong></td><td>Personal OS (tasks, projects, notes)</td><td>Creative writing (manuscript, beats, characters)</td></tr><tr><td><strong>Apps</strong></td><td>4 (Sessions, PM, Subscriptions, Notes)</td><td>7 (Sessions, Tasks, Beats, Characters, Locations, Library, Manuscript)</td></tr><tr><td><strong>Backend Tables</strong></td><td>9 tables</td><td>6 tables</td></tr><tr><td><strong>Task Count</strong></td><td>92 tasks</td><td>19 tasks</td></tr><tr><td><strong>Session Count</strong></td><td>38 sessions</td><td>19 sessions</td></tr></tbody></table></div>
+<h3 id="schema-differences">Schema Differences<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#schema-differences" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Property</th><th>vault-personal-tom</th><th>lexi-you-da-hoe</th><th>Notes</th></tr></thead><tbody><tr><td><strong>Task Status</strong></td><td><code>open</code>, <code>completed</code>, <code>canceled</code> (string)</td><td><code>true</code>, <code>false</code> (boolean)</td><td><strong>Major difference</strong></td></tr><tr><td><strong>Priority</strong></td><td><code>p0</code>, <code>p1</code>, <code>p2</code>, <code>p3</code></td><td><code>high</code>, <code>medium</code>, <code>low</code></td><td>Different conventions</td></tr><tr><td><strong>Scheduling</strong></td><td><code>when</code> + <code>deadline</code></td><td><code>due-date</code> only</td><td>Lexi simpler</td></tr><tr><td><strong>modified-at</strong></td><td>Removed (use file.mtime)</td><td>Still present</td><td>vault-personal-tom newer</td></tr><tr><td><strong>completed-at</strong></td><td>Present on completed items</td><td>Present but inconsistent</td><td></td></tr><tr><td><strong>canceled-at</strong></td><td>Present on canceled items</td><td>Not used</td><td></td></tr></tbody></table></div>
+<h3 id="structure-differences">Structure Differences<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#structure-differences" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Aspect</th><th>vault-personal-tom</th><th>lexi-you-da-hoe</th></tr></thead><tbody><tr><td><strong>File naming</strong></td><td>Sequential (<code>task-###.md</code>)</td><td>Sequential (<code>task-NNN.md</code>)</td></tr><tr><td><strong>inbox/ folder</strong></td><td>Removed (use status: draft)</td><td>Still exists</td></tr><tr><td><strong>App structure</strong></td><td>Flattened (most apps)</td><td>Nested (all apps)</td></tr><tr><td><strong>App consolidation</strong></td><td>tasks+backlog → PM</td><td>Separate apps</td></tr><tr><td><strong>Bases syntax</strong></td><td>Fixed (filters:, today())</td><td>Unknown state</td></tr></tbody></table></div>
+<h3 id="what-lexi-already-has">What Lexi Already Has<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#what-lexi-already-has" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" checked disabled/> Sequential file naming for tasks, beats</li>
+<li class="task-list-item"><input type="checkbox" checked disabled/> ULID-based unique identifiers</li>
+<li class="task-list-item"><input type="checkbox" checked disabled/> Property order standards (uid first, timestamps last)</li>
+<li class="task-list-item"><input type="checkbox" checked disabled/> Session workflow commands (/session-start, /session-end, etc.)</li>
+<li class="task-list-item"><input type="checkbox" checked disabled/> Home dashboard with embedded Bases</li>
+<li class="task-list-item"><input type="checkbox" checked disabled/> Health check system</li>
+<li class="task-list-item"><input type="checkbox" checked disabled/> property-standards.md documentation</li>
+</ul>
+<h3 id="what-lexi-is-missing">What Lexi Is Missing<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#what-lexi-is-missing" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled/> String status values (uses boolean)</li>
+<li class="task-list-item"><input type="checkbox" disabled/> <code>when</code> property (scheduling intention)</li>
+<li class="task-list-item"><input type="checkbox" disabled/> <code>deadline</code> property rename (still uses <code>due-date</code>)</li>
+<li class="task-list-item"><input type="checkbox" disabled/> <code>completed-at</code> on all completed items</li>
+<li class="task-list-item"><input type="checkbox" disabled/> <code>canceled-at</code> property</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Things 3 view patterns (Inbox, Today, Upcoming, Someday)</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Removal of <code>modified-at</code></li>
+<li class="task-list-item"><input type="checkbox" disabled/> Removal of <code>inbox/</code> folder</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Task comment format (<code>## Comments</code>)</li>
+</ul>
+<hr/>
+<h2 id="detailed-recommendations-for-lexi-you-da-hoe">Detailed Recommendations for lexi-you-da-hoe<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#detailed-recommendations-for-lexi-you-da-hoe" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="must-apply-high-impact-low-risk">MUST APPLY (High Impact, Low Risk)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#must-apply-high-impact-low-risk" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<h4 id="1-remove-modified-at-property">1. Remove <code>modified-at</code> Property<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#1-remove-modified-at-property" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p><strong>Effort:</strong> Low (script-based)
+<strong>Impact:</strong> High (schema simplification)
+<strong>Rationale:</strong> <code>file.mtime</code> is automatic and maintenance-free. Lexi has 200+ files with <code>modified-at</code> that requires manual updates.</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># Migration approach</span></span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># 1. Create script to remove modified-at from all files</span></span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># 2. Update templates to remove modified-at</span></span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># 3. Update property-standards.md</span></span></code></pre></figure>
+<h4 id="2-bases-syntax-audit--fix">2. Bases Syntax Audit &amp; Fix<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#2-bases-syntax-audit--fix" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p><strong>Effort:</strong> Low
+<strong>Impact:</strong> Critical (views may not work correctly)
+<strong>Rationale:</strong> vault-personal-tom discovered <code>filters:</code> (not <code>filter:</code>), <code>today()</code> (not <code>date(now)</code>), and that <code>formulas:</code> aren’t supported.</p>
+<p><strong>Check in lexi:</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled/> All .base files use <code>filters:</code> (plural)</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Date filtering uses <code>today()</code> function</li>
+<li class="task-list-item"><input type="checkbox" disabled/> No unsupported <code>formulas:</code> sections</li>
+<li class="task-list-item"><input type="checkbox" disabled/> All views have <code>file.name</code> as first column</li>
+</ul>
+<h4 id="3-task-comment-format">3. Task Comment Format<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#3-task-comment-format" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p><strong>Effort:</strong> Low
+<strong>Impact:</strong> Medium (consistency)
+<strong>Rationale:</strong> Standardized format for tracking task completion notes.</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="markdown" data-theme="github-light github-dark"><code data-language="markdown" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">---</span></span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">## Comments</span></span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">### YYYY-MM-DD: Completed</span></span>
+<span data-line><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">Summary of what was done.</span></span></code></pre></figure>
+<h3 id="should-apply-medium-impact">SHOULD APPLY (Medium Impact)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#should-apply-medium-impact" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<h4 id="4-task-status-boolean--string">4. Task Status: Boolean → String<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#4-task-status-boolean--string" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p><strong>Effort:</strong> Medium (migration script needed)
+<strong>Impact:</strong> High (enables Things 3 views)
+<strong>Rationale:</strong> Boolean status (<code>true</code>/<code>false</code>) doesn’t support intermediate states or canceled items.</p>
+<p><strong>Current lexi:</strong></p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="yaml" data-theme="github-light github-dark"><code data-language="yaml" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">status</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">true</span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">    # completed</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">status</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">false</span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">   # not completed</span></span></code></pre></figure>
+<p><strong>Proposed:</strong></p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="yaml" data-theme="github-light github-dark"><code data-language="yaml" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">status</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">open</span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">        # active task</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">status</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">completed</span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">   # done</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">status</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">canceled</span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">    # abandoned</span></span></code></pre></figure>
+<p><strong>Migration:</strong></p>
+<ul>
+<li><code>status: true</code> → <code>status: completed</code></li>
+<li><code>status: false</code> → <code>status: open</code></li>
+</ul>
+<h4 id="5-add-when-property">5. Add <code>when</code> Property<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#5-add-when-property" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p><strong>Effort:</strong> Medium
+<strong>Impact:</strong> High (Things 3 semantics)
+<strong>Rationale:</strong> Separates “when I intend to work” from “when it’s due”.</p>
+<p><strong>Current lexi:</strong> Only <code>due-date</code>
+<strong>Proposed:</strong> <code>when</code> (intention) + <code>deadline</code> (obligation)</p>
+<p><strong>Migration:</strong></p>
+<ul>
+<li>Rename <code>due-date</code> → <code>deadline</code></li>
+<li>Add <code>when</code> as optional property</li>
+<li>Most lexi tasks don’t have <code>due-date</code> anyway (9/19 are null)</li>
+</ul>
+<h4 id="6-completion-tracking">6. Completion Tracking<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#6-completion-tracking" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p><strong>Effort:</strong> Low
+<strong>Impact:</strong> Medium (better history)
+<strong>Rationale:</strong> Know when tasks were completed for analytics.</p>
+<p><strong>Add to tasks:</strong></p>
+<ul>
+<li><code>completed-at</code> - Auto-set when status → completed</li>
+<li><code>canceled-at</code> - Auto-set when status → canceled</li>
+</ul>
+<h3 id="consider-applying-lower-priority">CONSIDER APPLYING (Lower Priority)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#consider-applying-lower-priority" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<h4 id="7-remove-inbox-folder">7. Remove <code>inbox/</code> Folder<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#7-remove-inbox-folder" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p><strong>Effort:</strong> Medium
+<strong>Impact:</strong> Low (structural cleanup)
+<strong>Rationale:</strong> Status-based workflow (<code>status: draft</code>) is cleaner than folder-based.</p>
+<p><strong>Current lexi:</strong> 17 files in <code>inbox/</code>
+<strong>Migration:</strong> Move to appropriate locations, use status properties</p>
+<h4 id="8-app-flattening">8. App Flattening<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#8-app-flattening" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p><strong>Effort:</strong> Low
+<strong>Impact:</strong> Low (simplification)
+<strong>Rationale:</strong> Simple apps don’t need <code>views/</code> subdirectories.</p>
+<p><strong>Affected apps in lexi:</strong></p>
+<ul>
+<li>apps/beats/ (already flat)</li>
+<li>apps/characters/</li>
+<li>apps/locations/</li>
+<li>apps/library/</li>
+<li>apps/manuscript/</li>
+<li>apps/sessions/</li>
+<li>apps/tasks/</li>
+</ul>
+<h4 id="9-priority-alignment">9. Priority Alignment<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#9-priority-alignment" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p><strong>Effort:</strong> Low
+<strong>Impact:</strong> Low (convention change)
+<strong>Current:</strong> <code>high</code>, <code>medium</code>, <code>low</code>
+<strong>Proposed:</strong> <code>p0</code>, <code>p1</code>, <code>p2</code>, <code>p3</code></p>
+<p><strong>Recommendation:</strong> Keep lexi’s current format. It’s clear and works for a writing vault with fewer tasks.</p>
+<h3 id="do-not-apply">DO NOT APPLY<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#do-not-apply" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<h4 id="app-consolidation-tasksbacklog--pm">App Consolidation (tasks+backlog → PM)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#app-consolidation-tasksbacklog--pm" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p><strong>Reason:</strong> Lexi doesn’t have a backlog app. Task structure is simpler and appropriate for writing context.</p>
+<h4 id="notes-app-1">Notes App<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#notes-app-1" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p><strong>Reason:</strong> Lexi has <code>drafts/</code> for WIP content and a different organizational model focused on writing artifacts (beats, characters, locations).</p>
+<h4 id="things-3-views-full-set">Things 3 Views (Full Set)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#things-3-views-full-set" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p><strong>Reason:</strong> Lexi’s task model is simpler. 19 tasks don’t need 8 views. Keep existing 5-view structure (Active, By Priority, By Status, Completed, All Tasks).</p>
+<hr/>
+<h2 id="migration-priority-order-for-lexi-you-da-hoe">Migration Priority Order for lexi-you-da-hoe<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#migration-priority-order-for-lexi-you-da-hoe" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="phase-1-quick-wins-1-2-hours">Phase 1: Quick Wins (1-2 hours)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#phase-1-quick-wins-1-2-hours" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li>Audit and fix Bases syntax (<code>filters:</code>, <code>today()</code>, <code>file.name</code>)</li>
+<li>Remove <code>modified-at</code> from templates</li>
+<li>Add Task Comment format to CLAUDE.md</li>
+</ol>
+<h3 id="phase-2-schema-migration-2-4-hours">Phase 2: Schema Migration (2-4 hours)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#phase-2-schema-migration-2-4-hours" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol start="4">
+<li>Task status: boolean → string (<code>open</code>/<code>completed</code>/<code>canceled</code>)</li>
+<li>Rename <code>due-date</code> → <code>deadline</code></li>
+<li>Add <code>when</code> property (optional)</li>
+<li>Add <code>completed-at</code> to completed tasks</li>
+<li>Remove <code>modified-at</code> from all files</li>
+</ol>
+<h3 id="phase-3-cleanup-optional-1-2-hours">Phase 3: Cleanup (Optional, 1-2 hours)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#phase-3-cleanup-optional-1-2-hours" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol start="9">
+<li>Remove <code>inbox/</code> folder (migrate files)</li>
+<li>App structure review (flatten if desired)</li>
+</ol>
+<hr/>
+<h2 id="scripts-to-port-from-vault-personal-tom">Scripts to Port from vault-personal-tom<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#scripts-to-port-from-vault-personal-tom" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Script</th><th>Purpose</th><th>Port?</th><th>Notes</th></tr></thead><tbody><tr><td><code>add-uids.py</code></td><td>Add missing UIDs</td><td>✓ Already exists in lexi</td><td></td></tr><tr><td><code>standardize-properties.py</code></td><td>Property ordering</td><td>✓ Already exists in lexi</td><td></td></tr><tr><td><code>migrate-to-sequential-naming.py</code></td><td>File naming</td><td>✗ Not needed</td><td>Lexi already sequential</td></tr><tr><td><code>migrate-tasks-to-things3.py</code></td><td>Task schema</td><td>✓ Adapt for lexi</td><td>Boolean→string migration</td></tr><tr><td><code>fix-timestamps-iso8601.py</code></td><td>Timestamp format</td><td>✓ Already exists in lexi</td><td></td></tr></tbody></table></div>
+<hr/>
+<h2 id="estimated-total-effort">Estimated Total Effort<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#estimated-total-effort" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Phase</th><th>Effort</th><th>Files Affected</th></tr></thead><tbody><tr><td>Phase 1</td><td>1-2h</td><td>~10 files</td></tr><tr><td>Phase 2</td><td>2-4h</td><td>~50 files</td></tr><tr><td>Phase 3</td><td>1-2h</td><td>~20 files</td></tr><tr><td><strong>Total</strong></td><td><strong>4-8h</strong></td><td><strong>~80 files</strong></td></tr></tbody></table></div>
+<hr/>
+<p><em>Generated: 2025-12-26</em>
+<em>Sessions: 20251224-001 through 20251225-005</em>
+<em>Comparison with: lexi-you-da-hoe-v1 (Dec 24 state)</em></p></article><hr/><div class="page-footer"></div></div><div class="right sidebar"><div class="graph"><h3>Graph View</h3><div class="graph-outer"><div class="graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:1,&quot;scale&quot;:1.1,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.3,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:false,&quot;enableRadial&quot;:false}"></div><button class="global-graph-icon" aria-label="Global Graph"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 55 55" fill="currentColor" xml:space="preserve"><path d="M49,0c-3.309,0-6,2.691-6,6c0,1.035,0.263,2.009,0.726,2.86l-9.829,9.829C32.542,17.634,30.846,17,29,17
+                s-3.542,0.634-4.898,1.688l-7.669-7.669C16.785,10.424,17,9.74,17,9c0-2.206-1.794-4-4-4S9,6.794,9,9s1.794,4,4,4
+                c0.74,0,1.424-0.215,2.019-0.567l7.669,7.669C21.634,21.458,21,23.154,21,25s0.634,3.542,1.688,4.897L10.024,42.562
+                C8.958,41.595,7.549,41,6,41c-3.309,0-6,2.691-6,6s2.691,6,6,6s6-2.691,6-6c0-1.035-0.263-2.009-0.726-2.86l12.829-12.829
+                c1.106,0.86,2.44,1.436,3.898,1.619v10.16c-2.833,0.478-5,2.942-5,5.91c0,3.309,2.691,6,6,6s6-2.691,6-6c0-2.967-2.167-5.431-5-5.91
+                v-10.16c1.458-0.183,2.792-0.759,3.898-1.619l7.669,7.669C41.215,39.576,41,40.26,41,41c0,2.206,1.794,4,4,4s4-1.794,4-4
+                s-1.794-4-4-4c-0.74,0-1.424,0.215-2.019,0.567l-7.669-7.669C36.366,28.542,37,26.846,37,25s-0.634-3.542-1.688-4.897l9.665-9.665
+                C46.042,11.405,47.451,12,49,12c3.309,0,6-2.691,6-6S52.309,0,49,0z M11,9c0-1.103,0.897-2,2-2s2,0.897,2,2s-0.897,2-2,2
+                S11,10.103,11,9z M6,51c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S8.206,51,6,51z M33,49c0,2.206-1.794,4-4,4s-4-1.794-4-4
+                s1.794-4,4-4S33,46.794,33,49z M29,31c-3.309,0-6-2.691-6-6s2.691-6,6-6s6,2.691,6,6S32.309,31,29,31z M47,41c0,1.103-0.897,2-2,2
+                s-2-0.897-2-2s0.897-2,2-2S47,39.897,47,41z M49,10c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S51.206,10,49,10z"></path></svg></button></div><div class="global-graph-outer"><div class="global-graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:-1,&quot;scale&quot;:0.9,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.2,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:true,&quot;enableRadial&quot;:true}"></div></div></div><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-340" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><ul id="list-1" class="toc-content overflow"><li class="depth-0"><a href="#framework-changes-dec-24-25-2025" data-for="framework-changes-dec-24-25-2025">Framework Changes: Dec 24-25, 2025</a></li><li class="depth-1"><a href="#1-schema-changes-things-3-alignment" data-for="1-schema-changes-things-3-alignment">1. Schema Changes (Things 3 Alignment)</a></li><li class="depth-2"><a href="#status-value-simplification" data-for="status-value-simplification">Status Value Simplification</a></li><li class="depth-2"><a href="#completion-tracking" data-for="completion-tracking">Completion Tracking</a></li><li class="depth-2"><a href="#property-renaming-tasks" data-for="property-renaming-tasks">Property Renaming (Tasks)</a></li><li class="depth-2"><a href="#property-removal" data-for="property-removal">Property Removal</a></li><li class="depth-2"><a href="#property-additions" data-for="property-additions">Property Additions</a></li><li class="depth-2"><a href="#property-order-standard" data-for="property-order-standard">Property Order Standard</a></li><li class="depth-1"><a href="#2-file-naming-convention" data-for="2-file-naming-convention">2. File Naming Convention</a></li><li class="depth-2"><a href="#sequential-naming-migration" data-for="sequential-naming-migration">Sequential Naming Migration</a></li><li class="depth-1"><a href="#3-app-structure-changes" data-for="3-app-structure-changes">3. App Structure Changes</a></li><li class="depth-2"><a href="#app-consolidation" data-for="app-consolidation">App Consolidation</a></li><li class="depth-2"><a href="#app-flattening-simple-apps" data-for="app-flattening-simple-apps">App Flattening (Simple Apps)</a></li><li class="depth-2"><a href="#notes-app" data-for="notes-app">Notes App</a></li><li class="depth-2"><a href="#backend-structure" data-for="backend-structure">Backend Structure</a></li><li class="depth-1"><a href="#4-bases-view-improvements" data-for="4-bases-view-improvements">4. Bases View Improvements</a></li><li class="depth-2"><a href="#syntax-fixes-critical" data-for="syntax-fixes-critical">Syntax Fixes (Critical)</a></li><li class="depth-2"><a href="#things-3-views-tasks" data-for="things-3-views-tasks">Things 3 Views (Tasks)</a></li><li class="depth-2"><a href="#dashboard-views" data-for="dashboard-views">Dashboard Views</a></li><li class="depth-1"><a href="#5-documentation--standards" data-for="5-documentation--standards">5. Documentation &amp; Standards</a></li><li class="depth-2"><a href="#new-standards-documents" data-for="new-standards-documents">New Standards Documents</a></li><li class="depth-2"><a href="#claudemd-additions" data-for="claudemd-additions">CLAUDE.md Additions</a></li><li class="depth-2"><a href="#template-updates" data-for="template-updates">Template Updates</a></li><li class="depth-1"><a href="#6-tooling--scripts" data-for="6-tooling--scripts">6. Tooling &amp; Scripts</a></li><li class="depth-2"><a href="#migration-scripts" data-for="migration-scripts">Migration Scripts</a></li><li class="depth-2"><a href="#health-check-enhancements" data-for="health-check-enhancements">Health Check Enhancements</a></li><li class="depth-2"><a href="#testing-infrastructure" data-for="testing-infrastructure">Testing Infrastructure</a></li><li class="depth-1"><a href="#7-slash-command-improvements" data-for="7-slash-command-improvements">7. Slash Command Improvements</a></li><li class="depth-2"><a href="#session-start" data-for="session-start">/session-start</a></li><li class="depth-2"><a href="#session-end" data-for="session-end">/session-end</a></li><li class="depth-2"><a href="#health-check" data-for="health-check">/health-check</a></li><li class="depth-1"><a href="#8-home-dashboard" data-for="8-home-dashboard">8. Home Dashboard</a></li><li class="depth-2"><a href="#embedded-bases-views" data-for="embedded-bases-views">Embedded Bases Views</a></li><li class="depth-2"><a href="#link-standards" data-for="link-standards">Link Standards</a></li><li class="depth-1"><a href="#priority-recommendations-for-lexi-you-da-hoe" data-for="priority-recommendations-for-lexi-you-da-hoe">Priority Recommendations for lexi-you-da-hoe</a></li><li class="depth-2"><a href="#high-priority-core-schema" data-for="high-priority-core-schema">High Priority (Core Schema)</a></li><li class="depth-2"><a href="#medium-priority-structure" data-for="medium-priority-structure">Medium Priority (Structure)</a></li><li class="depth-2"><a href="#lower-priority-nice-to-have" data-for="lower-priority-nice-to-have">Lower Priority (Nice to Have)</a></li><li class="depth-1"><a href="#files-changed-summary" data-for="files-changed-summary">Files Changed Summary</a></li><li class="depth-1"><a href="#key-architectural-decisions" data-for="key-architectural-decisions">Key Architectural Decisions</a></li><li class="depth-1"><a href="#vault-comparison-vault-personal-tom-vs-lexi-you-da-hoe" data-for="vault-comparison-vault-personal-tom-vs-lexi-you-da-hoe">Vault Comparison: vault-personal-tom vs lexi-you-da-hoe</a></li><li class="depth-2"><a href="#structural-overview" data-for="structural-overview">Structural Overview</a></li><li class="depth-2"><a href="#schema-differences" data-for="schema-differences">Schema Differences</a></li><li class="depth-2"><a href="#structure-differences" data-for="structure-differences">Structure Differences</a></li><li class="depth-2"><a href="#what-lexi-already-has" data-for="what-lexi-already-has">What Lexi Already Has</a></li><li class="depth-2"><a href="#what-lexi-is-missing" data-for="what-lexi-is-missing">What Lexi Is Missing</a></li><li class="depth-1"><a href="#detailed-recommendations-for-lexi-you-da-hoe" data-for="detailed-recommendations-for-lexi-you-da-hoe">Detailed Recommendations for lexi-you-da-hoe</a></li><li class="depth-2"><a href="#must-apply-high-impact-low-risk" data-for="must-apply-high-impact-low-risk">MUST APPLY (High Impact, Low Risk)</a></li><li class="depth-2"><a href="#should-apply-medium-impact" data-for="should-apply-medium-impact">SHOULD APPLY (Medium Impact)</a></li><li class="depth-2"><a href="#consider-applying-lower-priority" data-for="consider-applying-lower-priority">CONSIDER APPLYING (Lower Priority)</a></li><li class="depth-2"><a href="#do-not-apply" data-for="do-not-apply">DO NOT APPLY</a></li><li class="depth-1"><a href="#migration-priority-order-for-lexi-you-da-hoe" data-for="migration-priority-order-for-lexi-you-da-hoe">Migration Priority Order for lexi-you-da-hoe</a></li><li class="depth-2"><a href="#phase-1-quick-wins-1-2-hours" data-for="phase-1-quick-wins-1-2-hours">Phase 1: Quick Wins (1-2 hours)</a></li><li class="depth-2"><a href="#phase-2-schema-migration-2-4-hours" data-for="phase-2-schema-migration-2-4-hours">Phase 2: Schema Migration (2-4 hours)</a></li><li class="depth-2"><a href="#phase-3-cleanup-optional-1-2-hours" data-for="phase-3-cleanup-optional-1-2-hours">Phase 3: Cleanup (Optional, 1-2 hours)</a></li><li class="depth-1"><a href="#scripts-to-port-from-vault-personal-tom" data-for="scripts-to-port-from-vault-personal-tom">Scripts to Port from vault-personal-tom</a></li><li class="depth-1"><a href="#estimated-total-effort" data-for="estimated-total-effort">Estimated Total Effort</a></li><li class="overflow-end"></li></ul></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.5.2</a> © 2026</p><ul><li><a href="https://github.com/jackyzha0/quartz">GitHub</a></li><li><a href="https://discord.gg/cRFFHYye7t">Discord Community</a></li></ul></footer></div></div></body><script type="application/javascript" data-persist="true">function n(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.getElementsByClassName("callout-content")[0];if(!e)return;let l=t.classList.contains("is-collapsed");e.style.gridTemplateRows=l?"0fr":"1fr"}function c(){let t=document.getElementsByClassName("callout is-collapsible");for(let e of t){let l=e.getElementsByClassName("callout-title")[0],s=e.getElementsByClassName("callout-content")[0];if(!l||!s)continue;l.addEventListener("click",n),window.addCleanup(()=>l.removeEventListener("click",n));let o=e.classList.contains("is-collapsed");s.style.gridTemplateRows=o?"0fr":"1fr"}}document.addEventListener("nav",c);
+</script><script type="module" data-persist="true">function E(a,e){if(!a)return;function t(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function n(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}a?.addEventListener("click",t),window.addCleanup(()=>a?.removeEventListener("click",t)),document.addEventListener("keydown",n),window.addCleanup(()=>document.removeEventListener("keydown",n))}function f(a){for(;a.firstChild;)a.removeChild(a.firstChild)}var m=class{constructor(e,t){this.container=e;this.content=t;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),t=this.onMouseMove.bind(this),n=this.onMouseUp.bind(this),o=this.onTouchStart.bind(this),r=this.onTouchMove.bind(this),i=this.onTouchEnd.bind(this),s=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",t),document.addEventListener("mouseup",n),this.container.addEventListener("touchstart",o,{passive:!1}),document.addEventListener("touchmove",r,{passive:!1}),document.addEventListener("touchend",i),window.addEventListener("resize",s),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",t),()=>document.removeEventListener("mouseup",n),()=>this.container.removeEventListener("touchstart",o),()=>document.removeEventListener("touchmove",r),()=>document.removeEventListener("touchend",i),()=>window.removeEventListener("resize",s))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let t=this.createButton("+",()=>this.zoom(.1)),n=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(n),e.appendChild(o),e.appendChild(t),this.container.appendChild(e)}createButton(e,t){let n=document.createElement("button");return n.textContent=e,n.className="mermaid-control-button",n.addEventListener("click",t),window.addCleanup(()=>n.removeEventListener("click",t)),n}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}onTouchStart(e){if(e.touches.length!==1)return;this.isDragging=!0;let t=e.touches[0];this.startPan={x:t.clientX-this.currentPan.x,y:t.clientY-this.currentPan.y}}onTouchMove(e){if(!this.isDragging||e.touches.length!==1)return;e.preventDefault();let t=e.touches[0];this.currentPan={x:t.clientX-this.startPan.x,y:t.clientY-this.startPan.y},this.updateTransform()}onTouchEnd(){this.isDragging=!1}zoom(e){let t=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),n=this.content.getBoundingClientRect(),o=n.width/2,r=n.height/2,i=t-this.scale;this.currentPan.x-=o*i,this.currentPan.y-=r*i,this.scale=t,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){let t=this.content.querySelector("svg").getBoundingClientRect(),n=t.width/this.scale,o=t.height/this.scale;this.scale=1,this.currentPan={x:(this.container.clientWidth-n)/2,y:(this.container.clientHeight-o)/2},this.updateTransform()}},T=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],y;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;y||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let t=y.default,n=new WeakMap;for(let r of e)n.set(r,r.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let c=n.get(s);c&&(s.innerHTML=c)}let r=T.reduce((s,c)=>(s[c]=window.getComputedStyle(document.documentElement).getPropertyValue(c),s),{}),i=document.documentElement.getAttribute("saved-theme")==="dark";t.initialize({startOnLoad:!1,securityLevel:"loose",theme:i?"dark":"base",themeVariables:{fontFamily:r["--codeFont"],primaryColor:r["--light"],primaryTextColor:r["--darkgray"],primaryBorderColor:r["--tertiary"],lineColor:r["--darkgray"],secondaryColor:r["--secondary"],tertiaryColor:r["--tertiary"],clusterBkg:r["--light"],edgeLabelBackground:r["--highlight"]}}),await t.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let r=0;r<e.length;r++){let v=function(){let g=l.querySelector("#mermaid-space"),h=l.querySelector(".mermaid-content");if(!h)return;f(h);let w=i.querySelector("svg").cloneNode(!0);h.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new m(g,h)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},i=e[r],s=i.parentElement,c=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(c),L=c.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),E(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
+</script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript" data-persist="true"></script><script src="../../../postscript.js" type="module" data-persist="true"></script></html>

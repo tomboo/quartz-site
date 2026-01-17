@@ -1,0 +1,12 @@
+{
+  "name": "docs",
+  "version": "1.0.0",
+  "description": "Documentation management for technical docs, guides, and reference materials",
+  "databases": ["database-docs"],
+  "tables": ["docs-table"],
+  "views": [
+    "docs-base.base"
+  ],
+  "templates": [],
+  "scripts": []
+}

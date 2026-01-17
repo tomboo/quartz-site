@@ -1,0 +1,13 @@
+{
+  "name": "subscriptions",
+  "version": "1.0.0",
+  "description": "Track recurring payments and subscriptions",
+  "databases": ["database-core"],
+  "tables": ["subscriptions-table"],
+  "views": [
+    "subscriptions-base.base"
+  ],
+  "dashboards": [],
+  "templates": [],
+  "scripts": []
+}

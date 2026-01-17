@@ -1,0 +1,29 @@
+filters:
+  and:
+    - file.folder == "_database/content-storage/youtube"
+views:
+  - type: table
+    name: Table
+    order:
+      - file.name
+      - title
+      - channel
+      - thumbnail
+      - duration
+      - upload-date
+      - view-count
+    columnSize:
+      file.name: 159
+  - type: cards
+    name: Table 2
+    order:
+      - title
+      - channel
+      - duration
+      - upload-date
+      - view-count
+    columnSize:
+      file.name: 159
+    image: note.thumbnail
+    imageFit: contain
+    cardSize: 160

@@ -1,0 +1,12 @@
+{
+  "name": "sessions",
+  "version": "1.0.0",
+  "description": "Work session tracking with Claude Code",
+  "databases": ["database-core"],
+  "tables": ["sessions-table"],
+  "views": [
+    "sessions-base.base"
+  ],
+  "templates": [],
+  "scripts": []
+}

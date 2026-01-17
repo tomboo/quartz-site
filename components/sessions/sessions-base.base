@@ -1,0 +1,41 @@
+filters:
+  and:
+    - file.folder == "_database/database-core/sessions-table"
+views:
+  - type: table
+    name: Recent Sessions
+    order:
+      - file.name
+      - date
+      - focus
+      - actual-duration
+      - context-usage
+    sort:
+      - property: date
+        direction: DESC
+      - property: file.name
+        direction: DESC
+    limit: 5
+    columnSize:
+      file.name: 170
+      note.date: 100
+      note.focus: 250
+      note.actual-duration: 90
+      note.context-usage: 120
+  - type: table
+    name: All Sessions
+    order:
+      - file.name
+      - date
+      - session
+      - focus
+      - user
+      - duration-estimate
+      - tags
+    sort:
+      - property: date
+        direction: DESC
+      - property: session
+        direction: DESC
+    columnSize:
+      note.focus: 143

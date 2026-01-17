@@ -1,0 +1,267 @@
+filters:
+  and:
+    - file.folder == "_database/database-core/tasks-table"
+views:
+  - type: table
+    name: Inbox
+    groupBy:
+      property: project
+      direction: ASC
+    order:
+      - file.name
+      - title
+      - priority
+      - status
+      - when
+      - deadline
+      - project
+      - tags
+      - created-at
+    sort:
+      - property: title
+        direction: ASC
+      - property: created-at
+        direction: DESC
+    filter:
+      - not:
+          - or:
+              - note.status == "completed"
+              - note.status == "canceled"
+    columnSize:
+      file.name: 263
+      note.title: 340
+      note.priority: 70
+      note.when: 110
+      note.deadline: 110
+      note.tags: 180
+      note.created-at: 130
+  - type: table
+    name: Today
+    filters:
+      and:
+        - status == "open"
+        - when == today()
+    order:
+      - file.name
+      - priority
+      - title
+      - when
+      - deadline
+      - estimate
+      - project
+      - area
+    sort:
+      - property: priority
+        direction: ASC
+      - property: deadline
+        direction: ASC
+      - property: when
+        direction: ASC
+    columnSize:
+      file.name: 80
+      note.priority: 70
+      note.title: 280
+      note.when: 110
+      note.deadline: 110
+      note.estimate: 80
+      note.project: 180
+      note.area: 140
+  - type: table
+    name: Upcoming
+    groupBy:
+      property: when
+      direction: ASC
+    order:
+      - file.name
+      - when
+      - deadline
+      - title
+      - priority
+      - project
+      - estimate
+    sort:
+      - property: deadline
+        direction: ASC
+      - property: priority
+        direction: ASC
+    filter:
+      - not:
+          - or:
+              - note.status == "completed"
+              - note.status == "canceled"
+    columnSize:
+      file.name: 80
+      note.when: 110
+      note.deadline: 110
+      note.title: 260
+      note.priority: 70
+      note.project: 170
+      note.estimate: 80
+  - type: table
+    name: Someday
+    groupBy:
+      property: project
+      direction: ASC
+    order:
+      - file.name
+      - project
+      - area
+      - title
+      - priority
+      - estimate
+      - tags
+    sort:
+      - property: priority
+        direction: ASC
+      - property: created-at
+        direction: DESC
+    filter:
+      - not:
+          - or:
+              - note.status == "completed"
+              - note.status == "canceled"
+    columnSize:
+      file.name: 80
+      note.project: 180
+      note.area: 140
+      note.title: 280
+      note.priority: 70
+      note.estimate: 80
+      note.tags: 140
+  - type: table
+    name: Anytime (By Project)
+    groupBy:
+      property: project
+      direction: ASC
+    order:
+      - file.name
+      - project
+      - priority
+      - title
+      - when
+      - deadline
+      - estimate
+      - status
+    sort:
+      - property: priority
+        direction: ASC
+      - property: when
+        direction: ASC
+      - property: deadline
+        direction: ASC
+    filter:
+      - not:
+          - or:
+              - note.status == "completed"
+              - note.status == "canceled"
+    columnSize:
+      file.name: 80
+      note.project: 180
+      note.priority: 70
+      note.title: 280
+      note.when: 110
+      note.deadline: 110
+      note.estimate: 80
+      note.status: 100
+  - type: table
+    name: Anytime (By Area)
+    groupBy:
+      property: area
+      direction: ASC
+    order:
+      - file.name
+      - area
+      - priority
+      - title
+      - when
+      - deadline
+      - estimate
+      - status
+    sort:
+      - property: priority
+        direction: ASC
+      - property: when
+        direction: ASC
+      - property: deadline
+        direction: ASC
+    filter:
+      - not:
+          - or:
+              - note.status == "completed"
+              - note.status == "canceled"
+    columnSize:
+      file.name: 80
+      note.area: 160
+      note.priority: 70
+      note.title: 280
+      note.when: 110
+      note.deadline: 110
+      note.estimate: 80
+      note.status: 100
+  - type: table
+    name: Logbook
+    order:
+      - file.name
+      - completed-at
+      - canceled-at
+      - modified-at
+      - title
+      - status
+      - project
+      - area
+      - priority
+    sort:
+      - property: completed-at
+        direction: DESC
+      - property: canceled-at
+        direction: DESC
+      - property: modified-at
+        direction: DESC
+    limit: 50
+    filter:
+      - or:
+          - note.status == "completed"
+          - note.status == "canceled"
+    columnSize:
+      file.name: 80
+      note.completed-at: 110
+      note.canceled-at: 110
+      note.modified-at: 120
+      note.title: 260
+      note.status: 90
+      note.project: 150
+      note.area: 130
+      note.priority: 70
+  - type: table
+    name: All Tasks
+    order:
+      - file.name
+      - title
+      - status
+      - priority
+      - when
+      - deadline
+      - project
+      - area
+      - estimate
+      - tags
+      - created-at
+      - modified-at
+    sort:
+      - property: status
+        direction: ASC
+      - property: created-at
+        direction: DESC
+    columnSize:
+      file.name: 80
+      note.title: 300
+      note.status: 100
+      note.priority: 70
+      note.when: 110
+      note.deadline: 110
+      note.project: 180
+      note.area: 150
+      note.estimate: 80
+      note.tags: 150
+      note.created-at: 130
+      note.modified-at: 130

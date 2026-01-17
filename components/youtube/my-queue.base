@@ -1,0 +1,40 @@
+filters:
+  and:
+    - file.folder == "_database/database-core/youtube-table"
+formulas:
+  Untitled: ""
+  thumbnail: note["content-file"]
+views:
+  - type: table
+    name: Table
+    order:
+      - file.name
+      - title
+      - duration
+      - status
+      - priority
+      - tags
+    columnSize:
+      file.name: 120
+  - type: cards
+    name: Cards
+    groupBy:
+      property: status
+      direction: ASC
+    order:
+      - title
+      - duration
+      - status
+      - priority
+      - tags
+      - channel
+      - rating
+      - watched-at
+      - file.mtime
+      - content-file
+      - formula.thumbnail
+    sort:
+      - property: priority
+        direction: ASC
+    columnSize:
+      file.name: 120

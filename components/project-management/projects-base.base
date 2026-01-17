@@ -1,0 +1,94 @@
+filters:
+  and:
+    - file.folder == "_database/database-core/projects-table"
+views:
+  - type: table
+    name: All Projects
+    order:
+      - file.name
+      - title
+      - status
+      - project-type
+      - priority
+      - area
+      - deadline
+      - completed-at
+    sort:
+      - property: status
+        direction: DESC
+      - property: priority
+        direction: ASC
+    columnSize:
+      file.name: 105
+      note.title: 250
+      note.status: 90
+      note.project-type: 80
+      note.priority: 70
+      note.area: 140
+      note.deadline: 110
+      note.completed-at: 110
+  - type: table
+    name: Active Projects
+    filters:
+      and:
+        - note.status == "open"
+    order:
+      - file.name
+      - title
+      - priority
+      - area
+      - deadline
+    sort:
+      - property: priority
+        direction: ASC
+    columnSize:
+      note.title: 300
+      note.area: 150
+  - type: table
+    name: By Area
+    groupBy:
+      property: area
+      direction: ASC
+    order:
+      - file.name
+      - title
+      - status
+      - project-type
+      - priority
+      - deadline
+    sort:
+      - property: priority
+        direction: ASC
+    columnSize:
+      note.title: 260
+      note.status: 90
+      note.project-type: 80
+      note.priority: 70
+      note.deadline: 110
+  - type: table
+    name: Logbook
+    filters:
+      or:
+        - note.status == "completed"
+        - note.status == "canceled"
+    order:
+      - file.name
+      - completed-at
+      - canceled-at
+      - title
+      - status
+      - project-type
+      - area
+    sort:
+      - property: completed-at
+        direction: DESC
+      - property: canceled-at
+        direction: DESC
+    limit: 50
+    columnSize:
+      note.completed-at: 110
+      note.canceled-at: 110
+      note.title: 280
+      note.status: 90
+      note.project-type: 80
+      note.area: 150

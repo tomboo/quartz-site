@@ -1,0 +1,13 @@
+filters:
+  and:
+    - file.folder == "_database/database-core/apps-table"
+views:
+  - type: table
+    name: Table
+    order:
+      - file.name
+      - date
+      - title
+    sort:
+      - property: file.name
+        direction: ASC

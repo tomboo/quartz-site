@@ -1,0 +1,533 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "database-core-schema",
+  "title": "Core Database Schema",
+  "description": "Schema for all core tables in the Personal Operating System framework",
+  "type": "object",
+
+  "$defs": {
+    "uid": {
+      "type": "string",
+      "pattern": "^[0-9A-HJKMNP-TV-Z]{26}$",
+      "description": "26-character ULID (Crockford Base32)"
+    },
+    "iso-date": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+      "description": "ISO 8601 date (YYYY-MM-DD)"
+    },
+    "iso-date-nullable": {
+      "oneOf": [
+        { "type": "null" },
+        { "$ref": "#/$defs/iso-date" }
+      ],
+      "description": "ISO 8601 date or null"
+    },
+    "iso-datetime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 datetime with timezone"
+    },
+    "iso-date-or-datetime": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}(T\\d{2}:\\d{2}:\\d{2}([+-]\\d{2}:\\d{2}|Z)?)?$",
+      "description": "ISO 8601 date or datetime"
+    },
+    "iso-duration": {
+      "type": "string",
+      "pattern": "^P(\\d+W)?(\\d+D)?(T?(\\d+H)?(\\d+M)?(\\d+S)?)?$",
+      "description": "ISO 8601 duration (e.g., PT30M, P2H, P1W, P1DT2H)"
+    },
+    "iso-duration-nullable": {
+      "oneOf": [
+        { "type": "null" },
+        { "$ref": "#/$defs/iso-duration" }
+      ],
+      "description": "ISO 8601 duration or null"
+    },
+    "kebab-case": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "description": "Lowercase kebab-case string"
+    },
+    "tag": {
+      "type": "string",
+      "pattern": "^[a-zA-Z0-9]+([-.][a-zA-Z0-9]+)*$",
+      "description": "Tag string (kebab-case, allows dots for versions)"
+    },
+    "wikilink": {
+      "type": "string",
+      "pattern": "^\"?\\[\\[.+\\]\\]\"?$",
+      "description": "Obsidian wikilink format [[path|alias]] or [[path]]"
+    },
+    "wikilink-nullable": {
+      "oneOf": [
+        { "type": "null" },
+        { "$ref": "#/$defs/wikilink" }
+      ],
+      "description": "Optional wikilink"
+    },
+    "priority": {
+      "type": "string",
+      "enum": ["p0", "p1", "p2", "p3"],
+      "description": "Priority level: p0 (critical) to p3 (low)"
+    },
+    "status-lifecycle": {
+      "type": "string",
+      "enum": ["open", "completed", "canceled"],
+      "description": "Standard lifecycle status (Things 3 aligned)"
+    },
+    "status-backlog": {
+      "type": "string",
+      "enum": ["not-started", "in-progress", "open", "completed", "canceled", "someday"],
+      "description": "Backlog item status"
+    },
+    "status-note": {
+      "type": "string",
+      "enum": ["draft", "active", "archived", "deprecated"],
+      "description": "Note status"
+    },
+    "status-subscription": {
+      "type": "string",
+      "enum": ["active", "paused", "cancelled", "trial"],
+      "description": "Subscription status"
+    },
+    "status-project": {
+      "type": "string",
+      "enum": ["open", "completed", "canceled"],
+      "description": "Project status"
+    },
+    "duration-estimate": {
+      "type": "string",
+      "pattern": "^~?\\d+(\\.\\d+)?h?(\\d+m)?$|^~?\\d+m$",
+      "description": "Duration estimate (e.g., ~2h, ~45m, ~1.5h, ~1h30m)"
+    },
+    "repeat-pattern": {
+      "type": "string",
+      "pattern": "^(daily|weekly|monthly|yearly|weekdays|weekends|every-\\d+-days|every-\\d+-weeks|every-\\d+-months|daily-after-completion|weekly-after-completion|monthly-after-completion|yearly-after-completion|\\d+-days-after-completion|\\d+-weeks-after-completion|\\d+-months-after-completion)$",
+      "description": "Task recurrence pattern"
+    },
+    "billing-frequency": {
+      "type": "string",
+      "enum": ["weekly", "monthly", "quarterly", "yearly"],
+      "description": "Subscription billing frequency"
+    },
+    "subscription-category": {
+      "type": "string",
+      "enum": ["entertainment", "software", "services", "news", "health", "utilities", "education", "other"],
+      "description": "Subscription category"
+    }
+  },
+
+  "properties": {
+    "uid": {
+      "$ref": "#/$defs/uid"
+    },
+    "date": {
+      "$ref": "#/$defs/iso-date",
+      "description": "Primary date (creation or reference)"
+    },
+    "user": {
+      "$ref": "#/$defs/kebab-case",
+      "description": "Username of item owner"
+    },
+    "type": {
+      "type": "string",
+      "enum": ["session", "backlog", "area", "project", "task", "subscription", "note", "daily-note", "app"],
+      "description": "Entity type identifier"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Item title or name"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/tag"
+      },
+      "uniqueItems": true,
+      "default": [],
+      "description": "Categorization tags"
+    },
+    "created-at": {
+      "$ref": "#/$defs/iso-datetime",
+      "description": "Creation timestamp"
+    }
+  },
+
+  "required": ["uid", "type"],
+
+  "allOf": [
+    {
+      "if": {
+        "properties": { "type": { "const": "session" } }
+      },
+      "then": {
+        "properties": {
+          "session": {
+            "type": "integer",
+            "minimum": 1,
+            "description": "Session number for this date"
+          },
+          "focus": {
+            "type": "array",
+            "items": { "$ref": "#/$defs/kebab-case" },
+            "minItems": 1,
+            "description": "Session focus areas"
+          },
+          "duration-estimate": {
+            "$ref": "#/$defs/duration-estimate",
+            "description": "Planned session duration"
+          },
+          "actual-duration": {
+            "type": "string",
+            "pattern": "^~?\\d+(\\.\\d+)?h?(\\d+m)?$|^~?\\d+m$",
+            "description": "Actual time spent"
+          },
+          "context-usage": {
+            "type": "string",
+            "pattern": "^\\d+K/\\d+K$",
+            "description": "Context at session end"
+          },
+          "commits": {
+            "type": "array",
+            "items": {
+              "oneOf": [
+                { "type": "string" },
+                { "type": "integer" }
+              ]
+            },
+            "description": "Git commit hashes"
+          },
+          "related-backlog": {
+            "type": "array",
+            "items": { "$ref": "#/$defs/wikilink" },
+            "description": "Backlog items addressed"
+          }
+        },
+        "required": ["date", "user", "session", "focus"]
+      }
+    },
+    {
+      "if": {
+        "properties": { "type": { "const": "backlog" } }
+      },
+      "then": {
+        "properties": {
+          "title": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "status": {
+            "$ref": "#/$defs/status-backlog"
+          },
+          "priority": {
+            "$ref": "#/$defs/priority",
+            "default": "p2"
+          },
+          "category": {
+            "oneOf": [
+              { "type": "null" },
+              { "$ref": "#/$defs/kebab-case" },
+              {
+                "type": "array",
+                "items": { "$ref": "#/$defs/kebab-case" }
+              }
+            ],
+            "description": "Life area classification (optional)"
+          },
+          "estimate": {
+            "$ref": "#/$defs/iso-duration-nullable",
+            "description": "Time/effort estimate (optional)"
+          },
+          "context": {
+            "type": "string",
+            "description": "Why this was captured"
+          },
+          "related-to": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "Related items (wikilinks or references)"
+          },
+          "github-issue": {
+            "type": "integer",
+            "description": "Promoted GitHub issue number"
+          },
+          "deadline": {
+            "$ref": "#/$defs/iso-date",
+            "description": "Due date"
+          }
+        },
+        "required": ["date", "user", "title"]
+      }
+    },
+    {
+      "if": {
+        "properties": { "type": { "const": "area" } }
+      },
+      "then": {
+        "properties": {
+          "title": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Area name"
+          },
+          "icon": {
+            "type": "string",
+            "description": "Emoji for visual identification"
+          },
+          "sort-order": {
+            "type": "integer",
+            "minimum": 1,
+            "description": "Display order in views"
+          },
+          "description": {
+            "type": "string",
+            "description": "What this area encompasses"
+          }
+        },
+        "required": ["user", "title"]
+      }
+    },
+    {
+      "if": {
+        "properties": { "type": { "const": "project" } }
+      },
+      "then": {
+        "properties": {
+          "title": {
+            "type": "string",
+            "minLength": 1
+          },
+          "status": {
+            "$ref": "#/$defs/status-project"
+          },
+          "project-type": {
+            "type": "string",
+            "enum": ["finite", "ongoing"],
+            "description": "Project classification"
+          },
+          "area": {
+            "$ref": "#/$defs/wikilink",
+            "description": "Parent area"
+          },
+          "description": {
+            "type": "string",
+            "description": "Project description"
+          },
+          "outcome": {
+            "type": "string",
+            "description": "Definition of done"
+          },
+          "deadline": {
+            "$ref": "#/$defs/iso-date-nullable",
+            "description": "Target completion date (optional)"
+          },
+          "completed-at": {
+            "$ref": "#/$defs/iso-date-nullable",
+            "description": "Actual completion date (auto-set)"
+          },
+          "canceled-at": {
+            "$ref": "#/$defs/iso-date-nullable",
+            "description": "Cancellation date (auto-set)"
+          }
+        },
+        "required": ["date", "user", "title", "status", "project-type"]
+      }
+    },
+    {
+      "if": {
+        "properties": { "type": { "const": "task" } }
+      },
+      "then": {
+        "properties": {
+          "title": {
+            "type": "string",
+            "minLength": 1
+          },
+          "status": {
+            "$ref": "#/$defs/status-lifecycle"
+          },
+          "priority": {
+            "$ref": "#/$defs/priority",
+            "default": "p2"
+          },
+          "description": {
+            "type": "string",
+            "description": "One-sentence summary"
+          },
+          "when": {
+            "$ref": "#/$defs/iso-date-or-datetime",
+            "description": "When you plan to work on this"
+          },
+          "deadline": {
+            "$ref": "#/$defs/iso-date-or-datetime",
+            "description": "When it must be done"
+          },
+          "repeat": {
+            "$ref": "#/$defs/repeat-pattern",
+            "description": "Recurrence pattern"
+          },
+          "estimate": {
+            "$ref": "#/$defs/iso-duration-nullable",
+            "description": "Time estimate (optional)"
+          },
+          "project": {
+            "$ref": "#/$defs/wikilink-nullable",
+            "description": "Parent project (optional)"
+          },
+          "area": {
+            "$ref": "#/$defs/wikilink-nullable",
+            "description": "Parent area (optional, if no project)"
+          },
+          "completed-at": {
+            "$ref": "#/$defs/iso-date-nullable",
+            "description": "Completion date (auto-set)"
+          },
+          "canceled-at": {
+            "$ref": "#/$defs/iso-date-nullable",
+            "description": "Cancellation date (auto-set)"
+          }
+        },
+        "required": ["user", "title"]
+      }
+    },
+    {
+      "if": {
+        "properties": { "type": { "const": "subscription" } }
+      },
+      "then": {
+        "properties": {
+          "title": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Service name"
+          },
+          "status": {
+            "$ref": "#/$defs/status-subscription"
+          },
+          "amount": {
+            "type": "number",
+            "minimum": 0,
+            "description": "Cost per billing cycle"
+          },
+          "currency": {
+            "type": "string",
+            "pattern": "^[A-Z]{3}$",
+            "default": "USD",
+            "description": "Currency code (ISO 4217)"
+          },
+          "frequency": {
+            "$ref": "#/$defs/billing-frequency",
+            "description": "Billing cycle"
+          },
+          "billing-day": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 31,
+            "description": "Day of period when billed"
+          },
+          "next-billing": {
+            "$ref": "#/$defs/iso-date",
+            "description": "Next charge date"
+          },
+          "category": {
+            "$ref": "#/$defs/subscription-category",
+            "description": "Service category"
+          },
+          "payment-method": {
+            "oneOf": [
+              { "type": "null" },
+              { "type": "string" }
+            ],
+            "description": "Card/account identifier (optional)"
+          },
+          "auto-renew": {
+            "type": "boolean",
+            "description": "Whether it auto-renews"
+          },
+          "cancellation-url": {
+            "type": "string",
+            "format": "uri",
+            "description": "Direct link to cancel"
+          },
+          "provider": {
+            "type": "string",
+            "description": "Company name"
+          },
+          "started-at": {
+            "$ref": "#/$defs/iso-date-nullable",
+            "description": "When subscription began (optional)"
+          },
+          "cancelled-at": {
+            "$ref": "#/$defs/iso-date-nullable",
+            "description": "When cancelled (optional)"
+          }
+        },
+        "required": ["date", "user", "title"]
+      }
+    },
+    {
+      "if": {
+        "properties": { "type": { "const": "note" } }
+      },
+      "then": {
+        "properties": {
+          "title": {
+            "type": "string",
+            "minLength": 1
+          },
+          "status": {
+            "$ref": "#/$defs/status-note"
+          },
+          "category": {
+            "$ref": "#/$defs/kebab-case",
+            "description": "Note category"
+          },
+          "source": {
+            "type": "string",
+            "enum": ["original", "synthesized", "imported", "reference"],
+            "description": "Note origin"
+          },
+          "url": {
+            "type": "string",
+            "format": "uri",
+            "description": "Source URL for external content"
+          }
+        },
+        "required": ["date", "user", "title"]
+      }
+    },
+    {
+      "if": {
+        "properties": { "type": { "const": "daily-note" } }
+      },
+      "then": {
+        "required": ["date", "user"]
+      }
+    },
+    {
+      "if": {
+        "properties": { "type": { "const": "app" } }
+      },
+      "then": {
+        "properties": {
+          "title": {
+            "type": "string",
+            "minLength": 1,
+            "description": "App name"
+          },
+          "home": {
+            "$ref": "#/$defs/wikilink",
+            "description": "Link to app home/dashboard"
+          }
+        },
+        "required": ["date", "user", "title"]
+      }
+    }
+  ],
+
+  "additionalProperties": true
+}

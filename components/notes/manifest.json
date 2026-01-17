@@ -1,0 +1,13 @@
+{
+  "name": "notes",
+  "version": "1.0.0",
+  "description": "Casual notes and knowledge management",
+  "databases": ["database-core"],
+  "tables": ["notes-table"],
+  "views": [
+    "notes-base.base"
+  ],
+  "dashboards": [],
+  "templates": [],
+  "scripts": []
+}

@@ -1,0 +1,111 @@
+filters:
+  and:
+    - file.folder == "_database/database-core/subscriptions-table"
+formulas:
+  total-payment: amount + tax
+  next-payment: if(next-billing >= today(), next-billing, if(frequency == "monthly", next-billing + "1M", next-billing + "1Y"))
+views:
+  - type: table
+    name: All Subscriptions
+    order:
+      - file.name
+      - title
+      - amount
+      - tax
+      - next-payment
+      - frequency
+      - next-billing
+      - status
+      - category
+      - payment-method
+      - formula.next-payment
+    sort:
+      - property: next-billing
+        direction: ASC
+    columnSize:
+      note.title: 180
+      note.amount: 80
+      note.tax: 60
+      note.next-payment: 100
+      note.frequency: 100
+      note.category: 120
+  - type: table
+    name: Active Only
+    groupBy:
+      property: category
+      direction: ASC
+    order:
+      - file.name
+      - title
+      - amount
+      - frequency
+      - next-billing
+      - payment-method
+    sort:
+      - property: amount
+        direction: DESC
+    filter:
+      - status == "active"
+    columnSize:
+      note.title: 180
+      note.amount: 80
+      note.frequency: 100
+  - type: table
+    name: By Category
+    groupBy:
+      property: category
+      direction: ASC
+    order:
+      - file.name
+      - title
+      - amount
+      - frequency
+      - status
+      - next-billing
+    sort:
+      - property: amount
+        direction: DESC
+    columnSize:
+      note.title: 200
+      note.amount: 80
+  - type: table
+    name: Upcoming Renewals
+    order:
+      - file.name
+      - next-billing
+      - title
+      - amount
+      - tax
+      - next-payment
+      - frequency
+      - category
+      - auto-renew
+    sort:
+      - property: next-billing
+        direction: ASC
+    filter:
+      - status == "active"
+    columnSize:
+      note.title: 180
+      note.next-billing: 110
+      note.amount: 80
+      note.tax: 60
+      note.next-payment: 100
+  - type: table
+    name: Cancelled
+    order:
+      - file.name
+      - cancelled-at
+      - title
+      - amount
+      - frequency
+      - category
+      - started-at
+    sort:
+      - property: cancelled-at
+        direction: DESC
+    filter:
+      - status == "canceled"
+    columnSize:
+      note.title: 200
+      note.cancelled-at: 110

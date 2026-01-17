@@ -1,0 +1,125 @@
+filters:
+  and:
+    - file.folder == "_database/database-studio/locations-table"
+views:
+  - type: table
+    name: By Category
+    groupBy:
+      property: category
+      direction: ASC
+    order:
+      - file.name
+      - category
+      - display-name
+      - location-type
+      - description
+      - parent-location
+    sort:
+      - property: display-name
+        direction: ASC
+    columnSize:
+      file.name: 80
+      note.category: 140
+      note.display-name: 180
+      note.location-type: 100
+      note.description: 300
+      note.parent-location: 150
+  - type: table
+    name: By Type
+    groupBy:
+      property: location-type
+      direction: ASC
+    order:
+      - file.name
+      - location-type
+      - display-name
+      - category
+      - description
+      - atmosphere
+    sort:
+      - property: display-name
+        direction: ASC
+    columnSize:
+      file.name: 80
+      note.location-type: 100
+      note.display-name: 180
+      note.category: 140
+      note.description: 280
+      note.atmosphere: 200
+  - type: table
+    name: Hierarchical
+    order:
+      - file.name
+      - parent-location
+      - display-name
+      - location-type
+      - category
+      - description
+    sort:
+      - property: parent-location
+        direction: ASC
+      - property: display-name
+        direction: ASC
+    columnSize:
+      file.name: 80
+      note.parent-location: 150
+      note.display-name: 180
+      note.location-type: 100
+      note.category: 140
+      note.description: 280
+  - type: table
+    name: Alphabetical
+    order:
+      - file.name
+      - display-name
+      - category
+      - location-type
+      - description
+      - significance
+    sort:
+      - property: display-name
+        direction: ASC
+    columnSize:
+      file.name: 80
+      note.display-name: 180
+      note.category: 140
+      note.location-type: 100
+      note.description: 280
+      note.significance: 200
+  - type: table
+    name: All Locations
+    order:
+      - file.name
+      - display-name
+      - canonical-id
+      - category
+      - location-type
+      - description
+      - atmosphere
+      - significance
+      - parent-location
+      - aliases
+      - related-scenes
+      - related-characters
+      - tags
+      - created-at
+    sort:
+      - property: category
+        direction: ASC
+      - property: display-name
+        direction: ASC
+    columnSize:
+      file.name: 80
+      note.display-name: 180
+      note.canonical-id: 160
+      note.category: 140
+      note.location-type: 100
+      note.description: 250
+      note.atmosphere: 150
+      note.significance: 150
+      note.parent-location: 150
+      note.aliases: 150
+      note.related-scenes: 150
+      note.related-characters: 150
+      note.tags: 140
+      note.created-at: 130

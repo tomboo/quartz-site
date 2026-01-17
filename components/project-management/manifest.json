@@ -1,0 +1,16 @@
+{
+  "name": "project-management",
+  "version": "1.0.0",
+  "description": "Personal project and task management using Areas, Projects, Tasks hierarchy",
+  "databases": ["database-core"],
+  "tables": ["areas-table", "projects-table", "tasks-table", "backlog-table"],
+  "views": [
+    "areas-base.base",
+    "backlog-base.base",
+    "projects-base.base",
+    "tasks-base.base",
+    "today-base.base"
+  ],
+  "templates": [],
+  "scripts": []
+}

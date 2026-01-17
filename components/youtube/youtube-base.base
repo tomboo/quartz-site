@@ -1,0 +1,104 @@
+filters:
+  and:
+    - file.folder == "_database/database-core/youtube-table"
+views:
+  - type: table
+    name: Watch Next
+    order:
+      - file.name
+      - priority
+      - title
+      - channel
+      - duration
+      - category
+      - created-at
+    sort:
+      - property: priority
+        direction: ASC
+      - property: created-at
+        direction: ASC
+    filter:
+      - status == "queued"
+    columnSize:
+      note.title: 250
+      note.channel: 150
+      note.duration: 80
+      note.category: 100
+  - type: table
+    name: By Category
+    groupBy:
+      property: category
+      direction: ASC
+    order:
+      - file.name
+      - priority
+      - title
+      - channel
+      - duration
+      - status
+    sort:
+      - property: priority
+        direction: ASC
+    filter:
+      - status == "queued" OR status == "watching"
+    columnSize:
+      note.title: 250
+      note.channel: 150
+      note.duration: 80
+  - type: table
+    name: Currently Watching
+    order:
+      - file.name
+      - title
+      - channel
+      - duration
+      - category
+      - created-at
+    sort:
+      - property: created-at
+        direction: DESC
+    filter:
+      - status == "watching"
+    columnSize:
+      note.title: 250
+      note.channel: 150
+  - type: table
+    name: Watched
+    order:
+      - file.name
+      - watched-at
+      - title
+      - channel
+      - rating
+      - category
+      - duration
+    sort:
+      - property: watched-at
+        direction: DESC
+    filter:
+      - status == "watched"
+    columnSize:
+      note.title: 250
+      note.channel: 150
+      note.rating: 60
+  - type: table
+    name: All Items
+    order:
+      - file.name
+      - status
+      - priority
+      - title
+      - channel
+      - duration
+      - category
+      - created-at
+    sort:
+      - property: created-at
+        direction: DESC
+    columnSize:
+      note.status: 80
+      note.priority: 60
+      note.title: 250
+      note.channel: 150
+      note.duration: 96
+      note.category: 100

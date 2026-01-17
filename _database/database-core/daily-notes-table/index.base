@@ -1,0 +1,14 @@
+filters:
+  and:
+    - file.folder == "_database/database-core/daily-notes-table"
+views:
+  - type: table
+    name: Table
+    order:
+      - file.name
+      - date
+      - tags
+    sort:
+      - property: date
+        direction: DESC
+    columnSize: {}

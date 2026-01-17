@@ -1,0 +1,91 @@
+filters:
+  and:
+    - file.folder == "_database/database-docs/docs-table"
+views:
+  - type: table
+    name: All Docs
+    order:
+      - file.name
+      - title
+      - status
+      - category
+      - date
+      - tags
+    sort:
+      - property: file.name
+        direction: DESC
+      - property: date
+        direction: DESC
+    columnSize:
+      note.title: 250
+      note.status: 80
+      note.category: 120
+  - type: table
+    name: Active Docs
+    filters:
+      and:
+        - status == "active"
+    order:
+      - file.name
+      - title
+      - status
+      - category
+      - date
+      - tags
+    sort:
+      - property: status
+        direction: ASC
+      - property: date
+        direction: DESC
+    columnSize:
+      note.title: 280
+      note.category: 120
+  - type: table
+    name: Drafts
+    filters:
+      and:
+        - status == "draft"
+    order:
+      - file.name
+      - title
+      - category
+      - date
+    sort:
+      - property: date
+        direction: DESC
+    columnSize:
+      note.title: 300
+  - type: table
+    name: By Category
+    groupBy:
+      property: category
+      direction: ASC
+    order:
+      - file.name
+      - title
+      - status
+      - date
+    sort:
+      - property: file.name
+        direction: DESC
+      - property: category
+        direction: ASC
+      - property: date
+        direction: DESC
+    columnSize:
+      note.title: 280
+  - type: table
+    name: Archived
+    filters:
+      and:
+        - status == "archived"
+    order:
+      - file.name
+      - title
+      - category
+      - date
+    sort:
+      - property: date
+        direction: DESC
+    columnSize:
+      note.title: 300

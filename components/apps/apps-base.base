@@ -1,0 +1,16 @@
+filters:
+  and:
+    - file.folder == "_database/database-core/apps-table"
+views:
+  - type: table
+    name: Table
+    order:
+      - file.name
+      - home
+      - title
+  - type: cards
+    name: Cards
+    order:
+      - file.name
+      - title
+      - home

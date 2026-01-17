@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+    <channel>
+      <title>Tom&#039;s Notes</title>
+      <link>https://tomboo.github.io/quartz-site</link>
+      <description>Last 10 notes on Tom&#039;s Notes</description>
+      <generator>Quartz -- quartz.jzhao.xyz</generator>
+      <item>
+    <title>Evaluate and set up Quartz for vault publishing</title>
+    <link>https://tomboo.github.io/quartz-site/_database/database-core/tasks-table/01KF61GF9E8WQ22E02S4VHSEJH</link>
+    <guid>https://tomboo.github.io/quartz-site/_database/database-core/tasks-table/01KF61GF9E8WQ22E02S4VHSEJH</guid>
+    <description><![CDATA[ Evaluate and set up Quartz for vault publishing Set up Quartz static site generator to publish most of the vault to the web. ]]></description>
+    <pubDate>Sat, 17 Jan 2026 14:15:58 GMT</pubDate>
+  </item><item>
+    <title>JSONL Format</title>
+    <link>https://tomboo.github.io/quartz-site/_database/database-core/notes-table/01KEJ3MCECTNB24Q5RY6DVH59W</link>
+    <guid>https://tomboo.github.io/quartz-site/_database/database-core/notes-table/01KEJ3MCECTNB24Q5RY6DVH59W</guid>
+    <description><![CDATA[ Newline-delimited JSON format where each line is a complete, valid JSON object. ]]></description>
+    <pubDate>Sat, 17 Jan 2026 14:15:27 GMT</pubDate>
+  </item><item>
+    <title>Add updated-at property with auto-update plugin</title>
+    <link>https://tomboo.github.io/quartz-site/_database/database-core/tasks-table/01KF61GF9EGQBB476E7PTJTX7Z</link>
+    <guid>https://tomboo.github.io/quartz-site/_database/database-core/tasks-table/01KF61GF9EGQBB476E7PTJTX7Z</guid>
+    <description><![CDATA[ Add updated-at property with auto-update plugin Install and configure the Update Frontmatter Modified Date plugin to automatically track when notes are modified. ]]></description>
+    <pubDate>Sat, 17 Jan 2026 14:04:33 GMT</pubDate>
+  </item><item>
+    <title>Common Properties Schema</title>
+    <link>https://tomboo.github.io/quartz-site/_database/database-docs/docs-table/01KDF7XE1NT0TCGWNZWGTXTDJW</link>
+    <guid>https://tomboo.github.io/quartz-site/_database/database-docs/docs-table/01KDF7XE1NT0TCGWNZWGTXTDJW</guid>
+    <description><![CDATA[ Shared properties used across all apps in the Personal Operating System framework. ]]></description>
+    <pubDate>Sat, 17 Jan 2026 14:03:58 GMT</pubDate>
+  </item><item>
+    <title>Property Standards</title>
+    <link>https://tomboo.github.io/quartz-site/_database/database-docs/docs-table/01KDF7XE6MKC5Q7RS72C0KN1MH</link>
+    <guid>https://tomboo.github.io/quartz-site/_database/database-docs/docs-table/01KDF7XE6MKC5Q7RS72C0KN1MH</guid>
+    <description><![CDATA[ Standard property schema for all markdown documents in the vault. ]]></description>
+    <pubDate>Sat, 17 Jan 2026 14:03:41 GMT</pubDate>
+  </item><item>
+    <title>Web Publishing Comparison and Recommendation</title>
+    <link>https://tomboo.github.io/quartz-site/_database/database-docs/docs-table/01KF61MH10Q8V8SDB0H4728VWA</link>
+    <guid>https://tomboo.github.io/quartz-site/_database/database-docs/docs-table/01KF61MH10Q8V8SDB0H4728VWA</guid>
+    <description><![CDATA[ Comprehensive comparison of Obsidian vault web publishing options with recommendation for this vault. ]]></description>
+    <pubDate>Sat, 17 Jan 2026 14:03:26 GMT</pubDate>
+  </item><item>
+    <title>Framework v3 Implementation Plan</title>
+    <link>https://tomboo.github.io/quartz-site/_database/database-docs/docs-table/01KF14BECW1ETYSA06VKQ6CEQQ</link>
+    <guid>https://tomboo.github.io/quartz-site/_database/database-docs/docs-table/01KF14BECW1ETYSA06VKQ6CEQQ</guid>
+    <description><![CDATA[ Step-by-step implementation plan for framework v3 migration ]]></description>
+    <pubDate>Sat, 17 Jan 2026 14:03:26 GMT</pubDate>
+  </item><item>
+    <title>Framework v2 Architecture Plan</title>
+    <link>https://tomboo.github.io/quartz-site/_database/database-docs/docs-table/01KF12M59VHJZEM1842GBDXEB0</link>
+    <guid>https://tomboo.github.io/quartz-site/_database/database-docs/docs-table/01KF12M59VHJZEM1842GBDXEB0</guid>
+    <description><![CDATA[ SQLite indexing architecture with ULID filenames and universal frontmatter standards ]]></description>
+    <pubDate>Sat, 17 Jan 2026 14:03:26 GMT</pubDate>
+  </item><item>
+    <title>Framework v3 PRD</title>
+    <link>https://tomboo.github.io/quartz-site/_database/database-docs/docs-table/01KF132T2718J6XC7X103JAPG9</link>
+    <guid>https://tomboo.github.io/quartz-site/_database/database-docs/docs-table/01KF132T2718J6XC7X103JAPG9</guid>
+    <description><![CDATA[ Product requirements for Personal Operating System framework v3 ]]></description>
+    <pubDate>Sat, 17 Jan 2026 14:03:26 GMT</pubDate>
+  </item><item>
+    <title>Architectural Review - Personal Operating System Framework</title>
+    <link>https://tomboo.github.io/quartz-site/_database/database-docs/docs-table/01KF0N3VFC12P7FKSCSF75J1X5</link>
+    <guid>https://tomboo.github.io/quartz-site/_database/database-docs/docs-table/01KF0N3VFC12P7FKSCSF75J1X5</guid>
+    <description><![CDATA[ Senior architect review of vault framework design, patterns, scalability, and recommendations ]]></description>
+    <pubDate>Sat, 17 Jan 2026 14:03:26 GMT</pubDate>
+  </item>
+    </channel>
+  </rss>

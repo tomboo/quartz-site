@@ -1,0 +1,17 @@
+{
+  "name": "studio",
+  "version": "1.0.0",
+  "description": "Creative writing database for story beats, characters, and locations",
+  "databases": ["database-studio"],
+  "tables": [
+    "beats-table",
+    "characters-table",
+    "locations-table"
+  ],
+  "views": [
+    "beats-base.base",
+    "characters-base.base",
+    "locations-base.base"
+  ],
+  "dashboards": []
+}

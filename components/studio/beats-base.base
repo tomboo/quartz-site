@@ -1,0 +1,112 @@
+filters:
+  and:
+    - file.folder == "_database/database-studio/beats-table"
+views:
+  - type: table
+    name: By Act
+    groupBy:
+      property: act
+      direction: ASC
+    order:
+      - file.name
+      - sequence
+      - display-name
+      - pov-character
+      - scene-date
+      - scene-time-start
+      - what-happens
+    sort:
+      - property: sequence
+        direction: ASC
+    columnSize:
+      file.name: 80
+      note.sequence: 70
+      note.display-name: 150
+      note.pov-character: 120
+      note.scene-date: 100
+      note.scene-time-start: 100
+      note.what-happens: 300
+  - type: table
+    name: By Sequence
+    order:
+      - file.name
+      - sequence
+      - act
+      - display-name
+      - pov-character
+      - scene-date
+      - what-happens
+      - reader-now-knows
+    sort:
+      - property: sequence
+        direction: ASC
+    columnSize:
+      file.name: 80
+      note.sequence: 70
+      note.act: 120
+      note.display-name: 150
+      note.pov-character: 120
+      note.scene-date: 100
+      note.what-happens: 280
+      note.reader-now-knows: 250
+  - type: table
+    name: By POV Character
+    groupBy:
+      property: pov-character
+      direction: ASC
+    order:
+      - file.name
+      - pov-character
+      - sequence
+      - act
+      - display-name
+      - scene-date
+      - what-happens
+    sort:
+      - property: sequence
+        direction: ASC
+    columnSize:
+      file.name: 80
+      note.pov-character: 120
+      note.sequence: 70
+      note.act: 120
+      note.display-name: 150
+      note.scene-date: 100
+      note.what-happens: 300
+  - type: table
+    name: All Beats
+    order:
+      - file.name
+      - sequence
+      - act
+      - display-name
+      - pov-character
+      - scene
+      - scene-date
+      - scene-time-start
+      - scene-duration
+      - moon-phase
+      - what-happens
+      - reader-now-knows
+      - still-hidden
+      - tags
+      - created-at
+    sort:
+      - property: sequence
+        direction: ASC
+    columnSize:
+      file.name: 80
+      note.sequence: 70
+      note.act: 120
+      note.display-name: 150
+      note.pov-character: 120
+      note.scene: 100
+      note.scene-date: 100
+      note.scene-time-start: 100
+      note.scene-duration: 100
+      note.moon-phase: 100
+      note.what-happens: 250
+      note.reader-now-knows: 200
+      note.still-hidden: 200
+      note.tags: 140
+      note.created-at: 130

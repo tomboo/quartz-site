@@ -1,0 +1,13 @@
+{
+  "name": "youtube",
+  "version": "1.0.0",
+  "description": "YouTube queue management for intentional video consumption",
+  "databases": ["database-core"],
+  "tables": ["youtube-table"],
+  "views": [
+    "youtube-base.base"
+  ],
+  "dashboards": [],
+  "templates": [],
+  "scripts": []
+}

@@ -1,0 +1,139 @@
+filters:
+  and:
+    - file.folder == "_database/database-core/notes-table"
+views:
+  - type: table
+    name: Drafts
+    order:
+      - file.name
+      - title
+      - date
+      - status
+      - category
+      - tags
+    sort:
+      - property: date
+        direction: DESC
+    columnSize:
+      note.title: 131
+      note.category: 100
+      note.tags: 150
+      note.date: 100
+  - type: table
+    name: All Notes
+    order:
+      - file.name
+      - title
+      - date
+      - status
+      - category
+      - tags
+      - source
+      - created-at
+      - modified-at
+    sort:
+      - property: file.name
+        direction: DESC
+    columnSize:
+      note.title: 218
+      note.date: 131
+      note.status: 80
+      note.category: 100
+      note.tags: 150
+  - type: table
+    name: Active Notes
+    filters:
+      and:
+        - note.status == "active"
+    order:
+      - file.name
+      - title
+      - date
+      - status
+      - category
+      - tags
+    sort:
+      - property: tags
+        direction: ASC
+      - property: date
+        direction: DESC
+    columnSize:
+      note.title: 195
+      note.status: 80
+      note.category: 100
+      note.tags: 150
+      note.date: 100
+  - type: table
+    name: By Category
+    filters:
+      not:
+        - note.status == "archived"
+    groupBy:
+      property: category
+      direction: ASC
+    order:
+      - file.name
+      - title
+      - date
+      - status
+      - category
+      - tags
+    sort:
+      - property: category
+        direction: ASC
+      - property: date
+        direction: DESC
+    columnSize:
+      note.title: 300
+      note.status: 80
+      note.tags: 150
+      note.date: 100
+  - type: table
+    name: Learning
+    filters:
+      and:
+        - note.category == "learning"
+        - not:
+            - note.status == "archived"
+    order:
+      - file.name
+      - title
+      - date
+      - status
+      - category
+      - tags
+    sort:
+      - property: date
+        direction: DESC
+    columnSize:
+      note.title: 225
+      note.status: 80
+      note.category: 100
+      note.tags: 150
+  - type: table
+    name: Tools & Reference
+    filters:
+      and:
+        - or:
+            - note.category == "tools"
+            - note.category == "reference"
+        - not:
+            - note.status == "archived"
+    order:
+      - file.name
+      - title
+      - date
+      - status
+      - category
+      - tags
+    sort:
+      - property: category
+        direction: ASC
+      - property: date
+        direction: DESC
+    columnSize:
+      note.title: 236
+      note.date: 100
+      note.status: 80
+      note.category: 100
+      note.tags: 224
