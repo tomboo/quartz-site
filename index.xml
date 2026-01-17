@@ -6,65 +6,65 @@
       <description>Last 10 notes on Tom&#039;s Notes</description>
       <generator>Quartz -- quartz.jzhao.xyz</generator>
       <item>
-    <title>Evaluate and set up Quartz for vault publishing</title>
-    <link>https://tomboo.github.io/quartz-site/_database/database-core/tasks-table/01KF61GF9E8WQ22E02S4VHSEJH</link>
-    <guid>https://tomboo.github.io/quartz-site/_database/database-core/tasks-table/01KF61GF9E8WQ22E02S4VHSEJH</guid>
-    <description><![CDATA[ Evaluate and set up Quartz for vault publishing Set up Quartz static site generator to publish most of the vault to the web. ]]></description>
-    <pubDate>Sat, 17 Jan 2026 15:30:53 GMT</pubDate>
+    <title>Task &amp; Backlog Triage + Schema Migration</title>
+    <link>https://tomboo.github.io/quartz-site/_database/database-core/sessions-table/01KDCT029GA13AQDPNJSXPZKSK</link>
+    <guid>https://tomboo.github.io/quartz-site/_database/database-core/sessions-table/01KDCT029GA13AQDPNJSXPZKSK</guid>
+    <description><![CDATA[ Session 20251225-005: Task &amp; Backlog Triage + Schema Migration User: tomboo Focus: Organization, Triage, Schema Migration Summary Major triage session covering both tasks and backlog items. ]]></description>
+    <pubDate>Sat, 17 Jan 2026 15:38:46 GMT</pubDate>
   </item><item>
-    <title>Web Publishing</title>
-    <link>https://tomboo.github.io/quartz-site/_database/database-core/projects-table/01KF69EAQSY00K5XZEXWANRQNP</link>
-    <guid>https://tomboo.github.io/quartz-site/_database/database-core/projects-table/01KF69EAQSY00K5XZEXWANRQNP</guid>
-    <description><![CDATA[ Publish vault content to the web using Quartz static site generator ]]></description>
-    <pubDate>Sat, 17 Jan 2026 15:30:44 GMT</pubDate>
+    <title>Health Check JSON Schema Integration</title>
+    <link>https://tomboo.github.io/quartz-site/_database/database-core/sessions-table/01KDG8PKB2X4VRETW1PYJNV95E</link>
+    <guid>https://tomboo.github.io/quartz-site/_database/database-core/sessions-table/01KDG8PKB2X4VRETW1PYJNV95E</guid>
+    <description><![CDATA[ Session 20251227-002: Health Check JSON Schema Integration User: tomboo Focus: Framework, Health Check, Testing Summary Major refactor of the health-check system to use JSON Schema validation instead of ad-hoc Python validators. ]]></description>
+    <pubDate>Sat, 17 Jan 2026 15:38:46 GMT</pubDate>
   </item><item>
-    <title>Tom&#039;s Digital Garden</title>
-    <link>https://tomboo.github.io/quartz-site/</link>
-    <guid>https://tomboo.github.io/quartz-site/</guid>
-    <description><![CDATA[ Welcome A collection of notes, projects, and ideas. ]]></description>
-    <pubDate>Sat, 17 Jan 2026 14:21:37 GMT</pubDate>
+    <title>Testing Cleanup and Health-Check Enhancements</title>
+    <link>https://tomboo.github.io/quartz-site/_database/database-core/sessions-table/01KDGCBMQH40MY2JH9AQB2A1V2</link>
+    <guid>https://tomboo.github.io/quartz-site/_database/database-core/sessions-table/01KDGCBMQH40MY2JH9AQB2A1V2</guid>
+    <description><![CDATA[ Session 20251227-004: Testing Cleanup and Health-Check Enhancements User: tomboo Focus: Framework, Testing, Health-Check Summary Completed test suite cleanup (5 failures → 0) and significantly enhanced health-check auto-fix capabilities. ]]></description>
+    <pubDate>Sat, 17 Jan 2026 15:38:46 GMT</pubDate>
   </item><item>
-    <title>JSONL Format</title>
-    <link>https://tomboo.github.io/quartz-site/_database/database-core/notes-table/01KEJ3MCECTNB24Q5RY6DVH59W</link>
-    <guid>https://tomboo.github.io/quartz-site/_database/database-core/notes-table/01KEJ3MCECTNB24Q5RY6DVH59W</guid>
-    <description><![CDATA[ Newline-delimited JSON format where each line is a complete, valid JSON object. ]]></description>
-    <pubDate>Sat, 17 Jan 2026 14:15:27 GMT</pubDate>
+    <title>Framework Improvements - Port Best Features from Lexi</title>
+    <link>https://tomboo.github.io/quartz-site/_database/database-core/sessions-table/01JGAB8NVQXR4ZTMK3P2WH6Y9E</link>
+    <guid>https://tomboo.github.io/quartz-site/_database/database-core/sessions-table/01JGAB8NVQXR4ZTMK3P2WH6Y9E</guid>
+    <description><![CDATA[ Session 20251224-002: Framework Improvements - Port Best Features from Lexi User: tomboo Focus: Organization, Framework Development, Documentation Summary Completed comprehensive framework improvements by porting mature features from lexi-you-da-hoe-v1 vault while preserving vault-personal-tom’s uni... ]]></description>
+    <pubDate>Sat, 17 Jan 2026 15:38:46 GMT</pubDate>
   </item><item>
-    <title>Add updated-at property with auto-update plugin</title>
-    <link>https://tomboo.github.io/quartz-site/_database/database-core/tasks-table/01KF61GF9EGQBB476E7PTJTX7Z</link>
-    <guid>https://tomboo.github.io/quartz-site/_database/database-core/tasks-table/01KF61GF9EGQBB476E7PTJTX7Z</guid>
-    <description><![CDATA[ Add updated-at property with auto-update plugin Install and configure the Update Frontmatter Modified Date plugin to automatically track when notes are modified. ]]></description>
-    <pubDate>Sat, 17 Jan 2026 14:04:33 GMT</pubDate>
+    <title>Framework Planning</title>
+    <link>https://tomboo.github.io/quartz-site/_database/database-core/sessions-table/01KCC813T7P5NKXVRJXF284WQT</link>
+    <guid>https://tomboo.github.io/quartz-site/_database/database-core/sessions-table/01KCC813T7P5NKXVRJXF284WQT</guid>
+    <description><![CDATA[ Session 20251213-001: Framework Planning User: tomboo Focus: Organization / Planning Summary Designed comprehensive architecture for a Personal Operating System framework within Obsidian. ]]></description>
+    <pubDate>Sat, 17 Jan 2026 15:38:46 GMT</pubDate>
   </item><item>
-    <title>Common Properties Schema</title>
-    <link>https://tomboo.github.io/quartz-site/_database/database-docs/docs-table/01KDF7XE1NT0TCGWNZWGTXTDJW</link>
-    <guid>https://tomboo.github.io/quartz-site/_database/database-docs/docs-table/01KDF7XE1NT0TCGWNZWGTXTDJW</guid>
-    <description><![CDATA[ Shared properties used across all apps in the Personal Operating System framework. ]]></description>
-    <pubDate>Sat, 17 Jan 2026 14:03:58 GMT</pubDate>
+    <title>Vault Naming Standardization &amp; Migration</title>
+    <link>https://tomboo.github.io/quartz-site/_database/database-core/sessions-table/01KCCBJ6N1Y79VGEJ2N1X5SKZT</link>
+    <guid>https://tomboo.github.io/quartz-site/_database/database-core/sessions-table/01KCCBJ6N1Y79VGEJ2N1X5SKZT</guid>
+    <description><![CDATA[ Session 20251213-004: Vault Naming Standardization &amp; Migration User: tomboo Focus: Organization / Standardization / Migration Summary Completed comprehensive vault naming standardization audit and executed three-phase migration to achieve kebab-case compliance across templates, root directories,... ]]></description>
+    <pubDate>Sat, 17 Jan 2026 15:38:46 GMT</pubDate>
   </item><item>
-    <title>Property Standards</title>
-    <link>https://tomboo.github.io/quartz-site/_database/database-docs/docs-table/01KDF7XE6MKC5Q7RS72C0KN1MH</link>
-    <guid>https://tomboo.github.io/quartz-site/_database/database-docs/docs-table/01KDF7XE6MKC5Q7RS72C0KN1MH</guid>
-    <description><![CDATA[ Standard property schema for all markdown documents in the vault. ]]></description>
-    <pubDate>Sat, 17 Jan 2026 14:03:41 GMT</pubDate>
+    <title>Things 3 Migration &amp; App Consolidation</title>
+    <link>https://tomboo.github.io/quartz-site/_database/database-core/sessions-table/01KDA29KD5NQ3S461WZ1WWN8ES</link>
+    <guid>https://tomboo.github.io/quartz-site/_database/database-core/sessions-table/01KDA29KD5NQ3S461WZ1WWN8ES</guid>
+    <description><![CDATA[ Session 20251224-007: Things 3 Migration &amp; App Consolidation User: tomboo Focus: Projects, Organization Summary Completed comprehensive Things 3 schema alignment (Phase 1) migrating 131 files across Areas, Projects, Tasks, and Backlog. ]]></description>
+    <pubDate>Sat, 17 Jan 2026 15:38:46 GMT</pubDate>
   </item><item>
-    <title>Web Publishing Comparison and Recommendation</title>
-    <link>https://tomboo.github.io/quartz-site/_database/database-docs/docs-table/01KF61MH10Q8V8SDB0H4728VWA</link>
-    <guid>https://tomboo.github.io/quartz-site/_database/database-docs/docs-table/01KF61MH10Q8V8SDB0H4728VWA</guid>
-    <description><![CDATA[ Comprehensive comparison of Obsidian vault web publishing options with recommendation for this vault. ]]></description>
-    <pubDate>Sat, 17 Jan 2026 14:03:26 GMT</pubDate>
+    <title>Phase 7 Documentation Review &amp; Framework Validation</title>
+    <link>https://tomboo.github.io/quartz-site/_database/database-core/sessions-table/06DHJM6FF62D4YQ9XT2K52KV1C</link>
+    <guid>https://tomboo.github.io/quartz-site/_database/database-core/sessions-table/06DHJM6FF62D4YQ9XT2K52KV1C</guid>
+    <description><![CDATA[ Session 20251213-008: Phase 7 Documentation Review &amp; Framework Validation User: tomboo Focus: Framework / Organization / Review Summary Completed Phase 7 of the Personal Operating System framework implementation - comprehensive documentation review, slash command testing, and framework validatio... ]]></description>
+    <pubDate>Sat, 17 Jan 2026 15:38:46 GMT</pubDate>
   </item><item>
-    <title>Framework v3 Implementation Plan</title>
-    <link>https://tomboo.github.io/quartz-site/_database/database-docs/docs-table/01KF14BECW1ETYSA06VKQ6CEQQ</link>
-    <guid>https://tomboo.github.io/quartz-site/_database/database-docs/docs-table/01KF14BECW1ETYSA06VKQ6CEQQ</guid>
-    <description><![CDATA[ Step-by-step implementation plan for framework v3 migration ]]></description>
-    <pubDate>Sat, 17 Jan 2026 14:03:26 GMT</pubDate>
+    <title>v1.1.0 Release &amp; Framework Milestone</title>
+    <link>https://tomboo.github.io/quartz-site/_database/database-core/sessions-table/01KCHT9G8JXE7VTF74JQF1WB2A</link>
+    <guid>https://tomboo.github.io/quartz-site/_database/database-core/sessions-table/01KCHT9G8JXE7VTF74JQF1WB2A</guid>
+    <description><![CDATA[ Session 20251215-004: v1.1.0 Release &amp; Framework Milestone User: tomboo Focus: Framework / Release / Organization Summary Successfully released framework v1.1.0, the first stable version with proper semantic versioning, CHANGELOG, and professional release process. ]]></description>
+    <pubDate>Sat, 17 Jan 2026 15:38:46 GMT</pubDate>
   </item><item>
-    <title>Framework v2 Architecture Plan</title>
-    <link>https://tomboo.github.io/quartz-site/_database/database-docs/docs-table/01KF12M59VHJZEM1842GBDXEB0</link>
-    <guid>https://tomboo.github.io/quartz-site/_database/database-docs/docs-table/01KF12M59VHJZEM1842GBDXEB0</guid>
-    <description><![CDATA[ SQLite indexing architecture with ULID filenames and universal frontmatter standards ]]></description>
-    <pubDate>Sat, 17 Jan 2026 14:03:26 GMT</pubDate>
+    <title>Migration Follow-up &amp; Documentation</title>
+    <link>https://tomboo.github.io/quartz-site/_database/database-core/sessions-table/01KD93N4MY6VC57P7W7A9ZK6AX</link>
+    <guid>https://tomboo.github.io/quartz-site/_database/database-core/sessions-table/01KD93N4MY6VC57P7W7A9ZK6AX</guid>
+    <description><![CDATA[ Session 20251224-004: Migration Follow-up &amp; Documentation User: tomboo Focus: Organization, Framework Development, Documentation Summary Completed all migration follow-up tasks from session 003, including updating app documentation for sequential naming, testing item creation workflows, and clea... ]]></description>
+    <pubDate>Sat, 17 Jan 2026 15:38:46 GMT</pubDate>
   </item>
     </channel>
   </rss>
