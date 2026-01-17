@@ -10,7 +10,13 @@
     <link>https://tomboo.github.io/quartz-site/_database/database-core/tasks-table/01KF61GF9E8WQ22E02S4VHSEJH</link>
     <guid>https://tomboo.github.io/quartz-site/_database/database-core/tasks-table/01KF61GF9E8WQ22E02S4VHSEJH</guid>
     <description><![CDATA[ Evaluate and set up Quartz for vault publishing Set up Quartz static site generator to publish most of the vault to the web. ]]></description>
-    <pubDate>Sat, 17 Jan 2026 14:23:06 GMT</pubDate>
+    <pubDate>Sat, 17 Jan 2026 15:30:53 GMT</pubDate>
+  </item><item>
+    <title>Web Publishing</title>
+    <link>https://tomboo.github.io/quartz-site/_database/database-core/projects-table/01KF69EAQSY00K5XZEXWANRQNP</link>
+    <guid>https://tomboo.github.io/quartz-site/_database/database-core/projects-table/01KF69EAQSY00K5XZEXWANRQNP</guid>
+    <description><![CDATA[ Publish vault content to the web using Quartz static site generator ]]></description>
+    <pubDate>Sat, 17 Jan 2026 15:30:44 GMT</pubDate>
   </item><item>
     <title>Tom&#039;s Digital Garden</title>
     <link>https://tomboo.github.io/quartz-site/</link>
@@ -58,12 +64,6 @@
     <link>https://tomboo.github.io/quartz-site/_database/database-docs/docs-table/01KF12M59VHJZEM1842GBDXEB0</link>
     <guid>https://tomboo.github.io/quartz-site/_database/database-docs/docs-table/01KF12M59VHJZEM1842GBDXEB0</guid>
     <description><![CDATA[ SQLite indexing architecture with ULID filenames and universal frontmatter standards ]]></description>
-    <pubDate>Sat, 17 Jan 2026 14:03:26 GMT</pubDate>
-  </item><item>
-    <title>Framework v3 PRD</title>
-    <link>https://tomboo.github.io/quartz-site/_database/database-docs/docs-table/01KF132T2718J6XC7X103JAPG9</link>
-    <guid>https://tomboo.github.io/quartz-site/_database/database-docs/docs-table/01KF132T2718J6XC7X103JAPG9</guid>
-    <description><![CDATA[ Product requirements for Personal Operating System framework v3 ]]></description>
     <pubDate>Sat, 17 Jan 2026 14:03:26 GMT</pubDate>
   </item>
     </channel>
