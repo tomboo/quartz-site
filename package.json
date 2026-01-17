@@ -19,7 +19,8 @@
     "test": "tsx --test",
     "profile": "0x -D prof ./quartz/bootstrap-cli.mjs build --concurrency=1",
     "build": "npx quartz build",
-    "deploy": "npx quartz build && touch public/.nojekyll && gh-pages -d public -b gh-pages --dotfiles"
+    "pre-deploy": "cd ../vault-personal-tom && (python3 -m _framework.cli.main index || true) && python3 -m _framework.lib.bases_to_markdown",
+    "deploy": "npm run pre-deploy && npx quartz build && touch public/.nojekyll && gh-pages -d public -b gh-pages --dotfiles"
   },
   "engines": {
     "npm": ">=10.9.2",
