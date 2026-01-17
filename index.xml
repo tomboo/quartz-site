@@ -6,65 +6,35 @@
       <description>Last 10 notes on Tom&#039;s Notes</description>
       <generator>Quartz -- quartz.jzhao.xyz</generator>
       <item>
-    <title>How to publish your notes for free with Quartz</title>
-    <link>https://tomboo.github.io/quartz-site/_database/database-core/youtube-table/01KF6AXH5JWS5KR6X5T3GX7SP3</link>
-    <guid>https://tomboo.github.io/quartz-site/_database/database-core/youtube-table/01KF6AXH5JWS5KR6X5T3GX7SP3</guid>
-    <description><![CDATA[ How to publish your notes for free with Quartz Channel: Nicole van der Hoeven Category: learning Status: Queued Tutorial on using Quartz, a free open-source static site generator, to publish Obsidian notes to the web via GitHub Pages. ]]></description>
-    <pubDate>Sat, 17 Jan 2026 19:25:15 GMT</pubDate>
+    <title>Active Projects</title>
+    <link>https://tomboo.github.io/quartz-site/_generated/projects-active</link>
+    <guid>https://tomboo.github.io/quartz-site/_generated/projects-active</guid>
+    <description><![CDATA[ Active Projects Currently active projects ProjectDescriptionTypeDocs AppDesign and implement documentation/reference app for storing polished reference documents, guides, and long-form documentationfiniteFramework InfrastructureMaintain framework health through testing, documentation, and operationa... ]]></description>
+    <pubDate>Sat, 17 Jan 2026 22:30:40 GMT</pubDate>
   </item><item>
-    <title>How to publish your notes for free with Quartz</title>
-    <link>https://tomboo.github.io/quartz-site/_database/content-storage/youtube/6s6DT1yN4dw</link>
-    <guid>https://tomboo.github.io/quartz-site/_database/content-storage/youtube/6s6DT1yN4dw</guid>
-    <description><![CDATA[ How to publish your notes for free with Quartz Summary Nicole van der Hoeven demonstrates how to use Quartz, a free open-source static site generator, as an alternative to Obsidian Publish. ]]></description>
-    <pubDate>Sat, 17 Jan 2026 19:25:08 GMT</pubDate>
+    <title>YouTube Queue</title>
+    <link>https://tomboo.github.io/quartz-site/_generated/youtube-queue</link>
+    <guid>https://tomboo.github.io/quartz-site/_generated/youtube-queue</guid>
+    <description><![CDATA[ YouTube Queue Videos queued for watching VideoChannelDurationStatusHow to publish your notes for free with QuartzNicole van der Hoeven19:35queuedTask Queues Are Replacing Chat Interfaces. ]]></description>
+    <pubDate>Sat, 17 Jan 2026 22:30:40 GMT</pubDate>
   </item><item>
-    <title>Transcript: How to publish your notes for free with Quartz</title>
-    <link>https://tomboo.github.io/quartz-site/_database/content-storage/youtube/transcripts/6s6DT1yN4dw</link>
-    <guid>https://tomboo.github.io/quartz-site/_database/content-storage/youtube/transcripts/6s6DT1yN4dw</guid>
-    <description><![CDATA[ Most of the notes that I write are published online and I’ve mentioned in previous videos that the service that I used to do that is Obsidian’s own paid service Obsidian Publish. ]]></description>
-    <pubDate>Sat, 17 Jan 2026 19:24:47 GMT</pubDate>
+    <title>Watched Videos</title>
+    <link>https://tomboo.github.io/quartz-site/_generated/youtube-watched</link>
+    <guid>https://tomboo.github.io/quartz-site/_generated/youtube-watched</guid>
+    <description><![CDATA[ Watched Videos Videos I have watched VideoChannelCategoryTrump Finally Gets His Nobel Peace Prize, Float…Jimmy Kimmel LiveentertainmentBuild a Foolproof Pickleball Serve from Scratch…Athena PickleballlearningBuilding a Second Brain: Capturing, Organizing,…Tiago Fortelearning 3 items Generated: 2026-... ]]></description>
+    <pubDate>Sat, 17 Jan 2026 22:30:40 GMT</pubDate>
   </item><item>
-    <title>Task &amp; Backlog Triage + Schema Migration</title>
-    <link>https://tomboo.github.io/quartz-site/_database/database-core/sessions-table/01KDCT029GA13AQDPNJSXPZKSK</link>
-    <guid>https://tomboo.github.io/quartz-site/_database/database-core/sessions-table/01KDCT029GA13AQDPNJSXPZKSK</guid>
-    <description><![CDATA[ Session 20251225-005: Task &amp; Backlog Triage + Schema Migration User: tomboo Focus: Organization, Triage, Schema Migration Summary Major triage session covering both tasks and backlog items. ]]></description>
-    <pubDate>Sat, 17 Jan 2026 15:38:46 GMT</pubDate>
+    <title>Projects</title>
+    <link>https://tomboo.github.io/quartz-site/_database/database-core/projects-table/01KF712QKAJQ4AMEE8Z6VD6XJ8</link>
+    <guid>https://tomboo.github.io/quartz-site/_database/database-core/projects-table/01KF712QKAJQ4AMEE8Z6VD6XJ8</guid>
+    <description><![CDATA[ Projects Active projects I’m working on. Transclude of projects-active. ]]></description>
+    <pubDate>Sat, 17 Jan 2026 22:26:52 GMT</pubDate>
   </item><item>
-    <title>Health Check JSON Schema Integration</title>
-    <link>https://tomboo.github.io/quartz-site/_database/database-core/sessions-table/01KDG8PKB2X4VRETW1PYJNV95E</link>
-    <guid>https://tomboo.github.io/quartz-site/_database/database-core/sessions-table/01KDG8PKB2X4VRETW1PYJNV95E</guid>
-    <description><![CDATA[ Session 20251227-002: Health Check JSON Schema Integration User: tomboo Focus: Framework, Health Check, Testing Summary Major refactor of the health-check system to use JSON Schema validation instead of ad-hoc Python validators. ]]></description>
-    <pubDate>Sat, 17 Jan 2026 15:38:46 GMT</pubDate>
-  </item><item>
-    <title>Testing Cleanup and Health-Check Enhancements</title>
-    <link>https://tomboo.github.io/quartz-site/_database/database-core/sessions-table/01KDGCBMQH40MY2JH9AQB2A1V2</link>
-    <guid>https://tomboo.github.io/quartz-site/_database/database-core/sessions-table/01KDGCBMQH40MY2JH9AQB2A1V2</guid>
-    <description><![CDATA[ Session 20251227-004: Testing Cleanup and Health-Check Enhancements User: tomboo Focus: Framework, Testing, Health-Check Summary Completed test suite cleanup (5 failures → 0) and significantly enhanced health-check auto-fix capabilities. ]]></description>
-    <pubDate>Sat, 17 Jan 2026 15:38:46 GMT</pubDate>
-  </item><item>
-    <title>Framework Improvements - Port Best Features from Lexi</title>
-    <link>https://tomboo.github.io/quartz-site/_database/database-core/sessions-table/01JGAB8NVQXR4ZTMK3P2WH6Y9E</link>
-    <guid>https://tomboo.github.io/quartz-site/_database/database-core/sessions-table/01JGAB8NVQXR4ZTMK3P2WH6Y9E</guid>
-    <description><![CDATA[ Session 20251224-002: Framework Improvements - Port Best Features from Lexi User: tomboo Focus: Organization, Framework Development, Documentation Summary Completed comprehensive framework improvements by porting mature features from lexi-you-da-hoe-v1 vault while preserving vault-personal-tom’s uni... ]]></description>
-    <pubDate>Sat, 17 Jan 2026 15:38:46 GMT</pubDate>
-  </item><item>
-    <title>Framework Planning</title>
-    <link>https://tomboo.github.io/quartz-site/_database/database-core/sessions-table/01KCC813T7P5NKXVRJXF284WQT</link>
-    <guid>https://tomboo.github.io/quartz-site/_database/database-core/sessions-table/01KCC813T7P5NKXVRJXF284WQT</guid>
-    <description><![CDATA[ Session 20251213-001: Framework Planning User: tomboo Focus: Organization / Planning Summary Designed comprehensive architecture for a Personal Operating System framework within Obsidian. ]]></description>
-    <pubDate>Sat, 17 Jan 2026 15:38:46 GMT</pubDate>
-  </item><item>
-    <title>Vault Naming Standardization &amp; Migration</title>
-    <link>https://tomboo.github.io/quartz-site/_database/database-core/sessions-table/01KCCBJ6N1Y79VGEJ2N1X5SKZT</link>
-    <guid>https://tomboo.github.io/quartz-site/_database/database-core/sessions-table/01KCCBJ6N1Y79VGEJ2N1X5SKZT</guid>
-    <description><![CDATA[ Session 20251213-004: Vault Naming Standardization &amp; Migration User: tomboo Focus: Organization / Standardization / Migration Summary Completed comprehensive vault naming standardization audit and executed three-phase migration to achieve kebab-case compliance across templates, root directories,... ]]></description>
-    <pubDate>Sat, 17 Jan 2026 15:38:46 GMT</pubDate>
-  </item><item>
-    <title>Things 3 Migration &amp; App Consolidation</title>
-    <link>https://tomboo.github.io/quartz-site/_database/database-core/sessions-table/01KDA29KD5NQ3S461WZ1WWN8ES</link>
-    <guid>https://tomboo.github.io/quartz-site/_database/database-core/sessions-table/01KDA29KD5NQ3S461WZ1WWN8ES</guid>
-    <description><![CDATA[ Session 20251224-007: Things 3 Migration &amp; App Consolidation User: tomboo Focus: Projects, Organization Summary Completed comprehensive Things 3 schema alignment (Phase 1) migrating 131 files across Areas, Projects, Tasks, and Backlog. ]]></description>
-    <pubDate>Sat, 17 Jan 2026 15:38:46 GMT</pubDate>
+    <title>YouTube</title>
+    <link>https://tomboo.github.io/quartz-site/_database/database-core/youtube-table/01KF712QD4YCTQJH2TZ4A16QXB</link>
+    <guid>https://tomboo.github.io/quartz-site/_database/database-core/youtube-table/01KF712QD4YCTQJH2TZ4A16QXB</guid>
+    <description><![CDATA[ YouTube Videos I’m watching and have watched. Queue Transclude of youtube-queue Watched Transclude of youtube-watched. ]]></description>
+    <pubDate>Sat, 17 Jan 2026 22:26:52 GMT</pubDate>
   </item>
     </channel>
   </rss>
