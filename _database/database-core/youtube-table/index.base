@@ -1,0 +1,9 @@
+filters:
+  and:
+    - file.folder == "_database/database-core/youtube-table"
+views:
+  - type: table
+    name: Table
+    order:
+      - file.name
+      - title
