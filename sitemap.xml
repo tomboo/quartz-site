@@ -84,19 +84,19 @@
     <lastmod>2026-01-17T14:03:26.001Z</lastmod>
   </url><url>
     <loc>https://tomboo.github.io/quartz-site/_database/database-core/notes-table/01KEJ3MCECTNB24Q5RY6DVH59W</loc>
-    <lastmod>2026-01-17T14:15:27.611Z</lastmod>
+    <lastmod>2026-01-18T02:37:08.774Z</lastmod>
   </url><url>
     <loc>https://tomboo.github.io/quartz-site/_database/database-core/notes-table/01KEJ4HNDQN93A7SET3941E6CG</loc>
-    <lastmod>2026-01-17T14:03:26.037Z</lastmod>
+    <lastmod>2026-01-18T02:37:08.849Z</lastmod>
   </url><url>
     <loc>https://tomboo.github.io/quartz-site/_database/database-core/notes-table/01KEJ5BZ7MAEGA1Y6YNBBTFZ50</loc>
-    <lastmod>2026-01-17T14:03:26.038Z</lastmod>
+    <lastmod>2026-01-18T02:37:08.894Z</lastmod>
   </url><url>
     <loc>https://tomboo.github.io/quartz-site/_database/database-core/notes-table/01KEJBE2M9W806EM646MQZE4CX</loc>
-    <lastmod>2026-01-17T14:03:26.038Z</lastmod>
+    <lastmod>2026-01-18T02:37:08.940Z</lastmod>
   </url><url>
     <loc>https://tomboo.github.io/quartz-site/_database/database-core/notes-table/01KF17AD8CCKJPQ0PFESDNMCPP</loc>
-    <lastmod>2026-01-17T14:03:26.039Z</lastmod>
+    <lastmod>2026-01-18T02:37:08.986Z</lastmod>
   </url><url>
     <loc>https://tomboo.github.io/quartz-site/_database/database-core/projects-table/01KCPDVSCAB1J72T7ADTHKSQD2</loc>
     <lastmod>2026-01-17T14:03:26.040Z</lastmod>
@@ -138,7 +138,7 @@
     <lastmod>2026-01-17T15:30:44.654Z</lastmod>
   </url><url>
     <loc>https://tomboo.github.io/quartz-site/_database/database-core/projects-table/01KF712QKAJQ4AMEE8Z6VD6XJ8</loc>
-    <lastmod>2026-01-18T01:36:10.236Z</lastmod>
+    <lastmod>2026-01-18T02:37:08.730Z</lastmod>
   </url><url>
     <loc>https://tomboo.github.io/quartz-site/_database/database-core/subscriptions-table/01KCZZE4Y27SEGRRK4P9PZ34RF</loc>
     <lastmod>2026-01-17T14:03:26.094Z</lastmod>
@@ -189,7 +189,7 @@
     <lastmod>2026-01-17T22:12:49.956Z</lastmod>
   </url><url>
     <loc>https://tomboo.github.io/quartz-site/_database/database-core/youtube-table/01KF712QD4YCTQJH2TZ4A16QXB</loc>
-    <lastmod>2026-01-18T01:36:10.236Z</lastmod>
+    <lastmod>2026-01-18T02:37:08.688Z</lastmod>
   </url><url>
     <loc>https://tomboo.github.io/quartz-site/_database/database-docs/docs-table/01KDEHZMTNJ0MEKR2JYDZP8RA8</loc>
     <lastmod>2026-01-17T14:03:26.264Z</lastmod>
@@ -279,13 +279,16 @@
     <lastmod>2026-01-18T01:36:10.237Z</lastmod>
   </url><url>
     <loc>https://tomboo.github.io/quartz-site/_generated/projects-active</loc>
-    <lastmod>2026-01-18T01:43:37.509Z</lastmod>
+    <lastmod>2026-01-18T02:49:43.710Z</lastmod>
+  </url><url>
+    <loc>https://tomboo.github.io/quartz-site/_generated/projects-all</loc>
+    <lastmod>2026-01-18T02:49:43.710Z</lastmod>
   </url><url>
     <loc>https://tomboo.github.io/quartz-site/_generated/youtube-queue</loc>
-    <lastmod>2026-01-18T01:43:37.508Z</lastmod>
+    <lastmod>2026-01-18T02:49:43.709Z</lastmod>
   </url><url>
     <loc>https://tomboo.github.io/quartz-site/_generated/youtube-watched</loc>
-    <lastmod>2026-01-18T01:43:37.508Z</lastmod>
+    <lastmod>2026-01-18T02:49:43.709Z</lastmod>
   </url><url>
     <loc>https://tomboo.github.io/quartz-site/components/apps/README</loc>
     <lastmod>2026-01-06T14:17:14.893Z</lastmod>
