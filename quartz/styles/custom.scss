@@ -1,3 +1,86 @@
 @use "./base.scss";
 
-// put your custom CSS here!
+// Minimal theme: Normal weight typography for a clean, light feel
+
+// Remove all bold from links
+a, a.internal, a.external, a.tag-link {
+  font-weight: 400 !important;
+}
+
+// Normal weight bold/strong text
+strong {
+  font-weight: 500;
+}
+
+// Light headings
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 400;
+}
+
+// Page title - slightly heavier for hierarchy
+.page article > h1 {
+  font-weight: 500;
+}
+
+// Sidebar and navigation
+.page-title {
+  font-weight: 400;
+}
+
+// Table headers
+th, thead {
+  font-weight: 400;
+}
+
+// Explorer/file tree
+.explorer ul > li,
+.explorer-content,
+.folder-title,
+.folder-icon,
+.folder button,
+.file {
+  font-weight: 400 !important;
+}
+
+// Breadcrumbs
+.breadcrumb-container,
+.breadcrumb-element,
+nav.breadcrumb-container a {
+  font-weight: 400 !important;
+}
+
+// Table of contents
+.toc,
+.toc li,
+.toc a,
+#toc-content a,
+.depth-1, .depth-2, .depth-3 {
+  font-weight: 400 !important;
+}
+
+// Backlinks
+.backlinks li a,
+.backlinks a {
+  font-weight: 400 !important;
+}
+
+// Recent notes
+.recent-notes li a {
+  font-weight: 400 !important;
+}
+
+// Graph legend
+.graph-legend {
+  font-weight: 400 !important;
+}
+
+// Tags
+.tags a {
+  font-weight: 400 !important;
+}
+
+// Search
+#search-container input,
+.search-results li a {
+  font-weight: 400 !important;
+}
