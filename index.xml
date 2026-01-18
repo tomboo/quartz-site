@@ -10,37 +10,61 @@
     <link>https://tomboo.github.io/quartz-site/_generated/projects-active</link>
     <guid>https://tomboo.github.io/quartz-site/_generated/projects-active</guid>
     <description><![CDATA[ Active Projects Currently active projects ProjectDescriptionTypeDocs AppDesign and implement documentation/reference app for storing polished reference documents, guides, and long-form documentationfiniteFramework InfrastructureMaintain framework health through testing, documentation, and operationa... ]]></description>
-    <pubDate>Sun, 18 Jan 2026 01:27:43 GMT</pubDate>
+    <pubDate>Sun, 18 Jan 2026 01:36:16 GMT</pubDate>
   </item><item>
     <title>YouTube Queue</title>
     <link>https://tomboo.github.io/quartz-site/_generated/youtube-queue</link>
     <guid>https://tomboo.github.io/quartz-site/_generated/youtube-queue</guid>
     <description><![CDATA[ YouTube Queue Videos queued for watching VideoChannelDurationStatusHow to publish your notes for free with QuartzNicole van der Hoeven19:35queuedTask Queues Are Replacing Chat Interfaces. ]]></description>
-    <pubDate>Sun, 18 Jan 2026 01:27:43 GMT</pubDate>
+    <pubDate>Sun, 18 Jan 2026 01:36:16 GMT</pubDate>
   </item><item>
     <title>Watched Videos</title>
     <link>https://tomboo.github.io/quartz-site/_generated/youtube-watched</link>
     <guid>https://tomboo.github.io/quartz-site/_generated/youtube-watched</guid>
     <description><![CDATA[ Watched Videos Videos I have watched VideoChannelCategoryTrump Finally Gets His Nobel Peace Prize, Floats Skipping Midterms &amp; Fans the Flames of ViolenceJimmy Kimmel LiveentertainmentBuild a Foolproof Pickleball Serve from Scratch (Even If You’re Just Starting)Athena PickleballlearningBuilding a... ]]></description>
-    <pubDate>Sun, 18 Jan 2026 01:27:43 GMT</pubDate>
+    <pubDate>Sun, 18 Jan 2026 01:36:16 GMT</pubDate>
   </item><item>
-    <title>Tom&#039;s Digital Garden</title>
-    <link>https://tomboo.github.io/quartz-site/</link>
-    <guid>https://tomboo.github.io/quartz-site/</guid>
-    <description><![CDATA[ Welcome A collection of notes, projects, and ideas. ]]></description>
-    <pubDate>Sun, 18 Jan 2026 01:23:47 GMT</pubDate>
+    <title>PRD: Web Publishing with Quartz</title>
+    <link>https://tomboo.github.io/quartz-site/_database/database-docs/docs-table/01KF70N96A2Z84P3F5XPP328N4</link>
+    <guid>https://tomboo.github.io/quartz-site/_database/database-docs/docs-table/01KF70N96A2Z84P3F5XPP328N4</guid>
+    <description><![CDATA[ PRD: Web Publishing with Quartz Overview Publish selected vault content as a public digital garden using Quartz static site generator and GitHub Pages. ]]></description>
+    <pubDate>Sun, 18 Jan 2026 01:36:10 GMT</pubDate>
   </item><item>
     <title>Projects</title>
     <link>https://tomboo.github.io/quartz-site/_database/database-core/projects-table/01KF712QKAJQ4AMEE8Z6VD6XJ8</link>
     <guid>https://tomboo.github.io/quartz-site/_database/database-core/projects-table/01KF712QKAJQ4AMEE8Z6VD6XJ8</guid>
     <description><![CDATA[ Projects Active projects I’m working on. Transclude of projects-active. ]]></description>
-    <pubDate>Sat, 17 Jan 2026 22:26:52 GMT</pubDate>
+    <pubDate>Sun, 18 Jan 2026 01:36:10 GMT</pubDate>
   </item><item>
     <title>YouTube</title>
     <link>https://tomboo.github.io/quartz-site/_database/database-core/youtube-table/01KF712QD4YCTQJH2TZ4A16QXB</link>
     <guid>https://tomboo.github.io/quartz-site/_database/database-core/youtube-table/01KF712QD4YCTQJH2TZ4A16QXB</guid>
     <description><![CDATA[ YouTube Videos I’m watching and have watched. Queue Transclude of youtube-queue Watched Transclude of youtube-watched. ]]></description>
-    <pubDate>Sat, 17 Jan 2026 22:26:52 GMT</pubDate>
+    <pubDate>Sun, 18 Jan 2026 01:36:10 GMT</pubDate>
+  </item><item>
+    <title>Web Publishing Comparison and Recommendation</title>
+    <link>https://tomboo.github.io/quartz-site/_database/database-docs/docs-table/01KF61MH10Q8V8SDB0H4728VWA</link>
+    <guid>https://tomboo.github.io/quartz-site/_database/database-docs/docs-table/01KF61MH10Q8V8SDB0H4728VWA</guid>
+    <description><![CDATA[ Comprehensive comparison of Obsidian vault web publishing options with recommendation for this vault. ]]></description>
+    <pubDate>Sun, 18 Jan 2026 01:36:10 GMT</pubDate>
+  </item><item>
+    <title>Tom&#039;s Digital Garden</title>
+    <link>https://tomboo.github.io/quartz-site/</link>
+    <guid>https://tomboo.github.io/quartz-site/</guid>
+    <description><![CDATA[ Welcome A collection of notes, projects, and ideas. ]]></description>
+    <pubDate>Sun, 18 Jan 2026 01:36:10 GMT</pubDate>
+  </item><item>
+    <title>Turn Your Obsidian Notes Into A Website</title>
+    <link>https://tomboo.github.io/quartz-site/_database/database-core/youtube-table/01KF6SVCK1F6GPCYEC7T8JDV78</link>
+    <guid>https://tomboo.github.io/quartz-site/_database/database-core/youtube-table/01KF6SVCK1F6GPCYEC7T8JDV78</guid>
+    <description><![CDATA[ Turn Your Obsidian Notes Into A Website Channel: isak Duration: 16:35 Category: learning Step-by-step tutorial on publishing Obsidian notes using Quartz static site generator, from installation through GitHub Pages deployment. ]]></description>
+    <pubDate>Sat, 17 Jan 2026 22:12:49 GMT</pubDate>
+  </item><item>
+    <title>Turn Your Obsidian Notes Into A Website</title>
+    <link>https://tomboo.github.io/quartz-site/_database/content-storage/youtube/zGFroBGud7w</link>
+    <guid>https://tomboo.github.io/quartz-site/_database/content-storage/youtube/zGFroBGud7w</guid>
+    <description><![CDATA[ Turn Your Obsidian Notes Into A Website Description In this video I show you a simple way to share your Obsidian notes by creating a website. ]]></description>
+    <pubDate>Sat, 17 Jan 2026 22:12:37 GMT</pubDate>
   </item>
     </channel>
   </rss>
