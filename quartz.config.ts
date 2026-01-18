@@ -21,6 +21,11 @@ const config: QuartzConfig = {
       "tmp/**",
       ".cache/**",
       "*.base",
+      // Private content
+      "_database/database-core/sessions-table/**",
+      "_database/database-core/tasks-table/**",
+      "_database/database-core/backlog-table/**",
+      "_database/database-core/daily-notes-table/**",
     ],
     defaultDateType: "modified",
     theme: {
@@ -77,7 +82,7 @@ const config: QuartzConfig = {
       Plugin.Description(),
       Plugin.Latex({ renderEngine: "katex" }),
     ],
-    filters: [Plugin.ExplicitPublish()],
+    filters: [Plugin.RemoveDrafts()],
     emitters: [
       Plugin.AliasRedirects(),
       Plugin.ComponentResources(),
